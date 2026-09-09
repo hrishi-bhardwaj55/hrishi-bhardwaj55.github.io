@@ -1,28 +1,5 @@
-import { github, versions, type VersionId } from './data';
-export function VersionNav({ active }: { active: VersionId }) {
-  return (
-    <nav className="v-switcher" aria-label="Portfolio versions">
-      <a href="/versions" className="v-back">
-        ← All versions
-      </a>
-      <div>
-        {versions.map((v) => (
-          <a
-            key={v.id}
-            href={`/versions/${v.id}`}
-            aria-current={active === v.id ? 'page' : undefined}
-          >
-            {v.name}
-          </a>
-        ))}
-      </div>
-      <a href="/" className="v-original">
-        Original ↗
-      </a>
-    </nav>
-  );
-}
-export function VersionFooter() {
+import { github } from './projects';
+export function PortfolioFooter() {
   return (
     <footer className="v-footer">
       <div>

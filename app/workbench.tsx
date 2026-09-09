@@ -2,8 +2,8 @@
 import { useState } from 'react';
 import { TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Tabs as TabsPrimitive } from '@base-ui/react/tabs';
-import { projects, github } from '../data';
-import { VersionNav, VersionFooter, ProjectGlyph } from '../shared';
+import { projects, github } from './projects';
+import { PortfolioFooter, ProjectGlyph } from './project-visuals';
 const stageInfo = [
   [
     { name: 'Inspect', text: 'Parse the SQL and capture the PostgreSQL plan.' },
@@ -68,8 +68,7 @@ function StageExplorer({ index }: { index: number }) {
 }
 export default function WorkbenchClient() {
   return (
-    <div className="variant workbench">
-      <VersionNav active="workbench" />
+    <div className="portfolio workbench">
       <main className="desk-shell">
         <header className="desk-intro">
           <div>
@@ -163,7 +162,7 @@ export default function WorkbenchClient() {
           </div>
         </div>
       </main>
-      <VersionFooter />
+      <PortfolioFooter />
     </div>
   );
 }
