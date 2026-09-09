@@ -26,3 +26,9 @@ Confirm the display name and provide the resume, preferred contact email, Linked
 
 Production build and TypeScript checks passed. The demo's ordinary values, NULL behavior, duplicate preservation, and empty inputs were checked using Node assertions. The local route returned HTTP 200. Browser visual/interaction QA was not performed. WebMCP is omitted because the portfolio's primary journey is reading and navigation; the demonstration is supplementary.
 
+
+## Multiple directions
+
+Open `/versions` to compare five complete alternatives: `/versions/kinetic`, `/versions/professional`, `/versions/arcade`, `/versions/editorial`, and `/versions/workbench`. Each has a route-specific title and a shared version switcher. The original portfolio stays at `/`.
+
+Shared factual content lives in `app/versions/data.ts`. The Arcade mission engine is isolated from its interface and checks answers without giving duplicate completion credit. Progress is temporary React state and resets when the page reloads. Workbench uses the installed Base UI tabs root directly to preserve vertical keyboard behavior, composed with the existing tab wrappers. Kinetic suspends its canvas when paused, offscreen, the document is hidden, or reduced motion is requested.

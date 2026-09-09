@@ -55,7 +55,7 @@ export default function Home() {
         </a>
         <nav aria-label="Main navigation">
           <a href="#work">Selected work</a>
-          <a href="#about">About</a>
+          <a href="/versions">Five versions</a>
           <a href={github}>GitHub ↗</a>
         </nav>
         <a className="availability" href="#contact">

@@ -3,8 +3,9 @@
 import { useEffect } from 'react';
 
 /** A visual enhancement only: content stays visible before JS and without motion. */
-export default function Motion() {
+export default function Motion({ disabled = false }: { disabled?: boolean }) {
   useEffect(() => {
+    if (disabled) return;
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     const animations = new Set<Animation>();
     let observer: IntersectionObserver | undefined;
@@ -55,7 +56,7 @@ export default function Motion() {
       cancel();
       preference.removeEventListener('change', observe);
     };
-  }, []);
+  }, [disabled]);
 
   return null;
 }
