@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 
@@ -13,7 +13,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Hrishi Bhardwaj — Software Engineer', description: 'Selected engineering work: SQL verification, evidence-driven applications, and reproducible interactive systems.',
+  title: 'Hrishi Bhardwaj — Software Engineer',
+  description:
+    'Selected engineering work: SQL verification, evidence-driven applications, and reproducible interactive systems.',
+};
+
+export const viewport: Viewport = {
+  colorScheme: 'dark',
+  themeColor: '#090a0b',
 };
 
 export default function RootLayout({
@@ -22,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ backgroundColor: '#090a0b', colorScheme: 'dark' }}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -31,4 +38,3 @@ export default function RootLayout({
     </html>
   );
 }
-

@@ -6,5 +6,80 @@ export default function Counterexample() {
   const [hasNull, setHasNull] = useState(false);
   const excluded = hasNull ? [2, null] : [2];
   const result = compareAntiJoins([1, 2, 3], excluded);
-  return <section className="lab" id="lab" aria-labelledby="lab-title"><div className="lab-intro"><p className="eyebrow">A SMALL EXPERIMENT / TRY IT HERE</p><h2 id="lab-title">One NULL.<br/>A different answer.</h2><p>A rewrite can look right and still change the result. Add a missing value to see why Skeptic tests adversarial data.</p><p className="lab-caption">A browser-based illustration of SQL semantics, built for this portfolio. It does not connect to a database or run the full Skeptic verifier.</p></div><div className="lab-workspace"><div className="lab-controls"><span>Excluded IDs: <code>[{excluded.map(x => x === null ? 'NULL' : x).join(', ')}]</code></span><button type="button" aria-pressed={hasNull} onClick={()=>setHasNull(!hasNull)}>{hasNull ? 'Remove NULL −' : 'Add NULL +'}</button></div><p className="input-label">Input IDs: 1, 2, 3</p><div className="query-results"><div><span className="code-label">ORIGINAL</span><code>id NOT IN (...)</code><p>Returned IDs</p><strong>{result.notIn.length ? result.notIn.join(', ') : 'No rows'}</strong></div><div><span className="code-label">REWRITE</span><code>NOT EXISTS (...)</code><p>Returned IDs</p><strong>{result.notExists.join(', ')}</strong></div></div><div className={`lab-result ${result.matches ? 'matches' : 'differs'}`} role="status" aria-live="polite"><b>{result.matches ? '✓ Results match on this data' : '× The rewrite changes the result'}</b><p>{result.matches ? 'Both queries exclude ID 2. Now add NULL to the excluded IDs.' : 'With NULL in the subquery, NOT IN becomes unknown for unmatched IDs. WHERE keeps only true. NOT EXISTS still returns IDs 1 and 3.'}</p></div><a className="text-link" href="https://github.com/hrishi-bhardwaj55/skeptic#why-the-verifier-exists">See the original counterexample ↗</a></div></section>;
+  return (
+    <section data-reveal className="lab" id="lab" aria-labelledby="lab-title">
+      <div className="lab-intro">
+        <p className="eyebrow">A SMALL EXPERIMENT / TRY IT HERE</p>
+        <h2 id="lab-title">
+          One NULL.
+          <br />A different answer.
+        </h2>
+        <p>
+          A rewrite can look right and still change the result. Add a missing
+          value to see why Skeptic tests adversarial data.
+        </p>
+        <p className="lab-caption">
+          A browser-based illustration of SQL semantics, built for this
+          portfolio. It does not connect to a database or run the full Skeptic
+          verifier.
+        </p>
+      </div>
+      <div className="lab-workspace">
+        <div className="lab-controls">
+          <span>
+            Excluded IDs:{' '}
+            <code>
+              [{excluded.map((x) => (x === null ? 'NULL' : x)).join(', ')}]
+            </code>
+          </span>
+          <button
+            type="button"
+            aria-pressed={hasNull}
+            onClick={() => setHasNull(!hasNull)}
+          >
+            {hasNull ? 'Remove NULL −' : 'Add NULL +'}
+          </button>
+        </div>
+        <p className="input-label">Input IDs: 1, 2, 3</p>
+        <div className="query-results">
+          <div>
+            <span className="code-label">ORIGINAL</span>
+            <code>id NOT IN (...)</code>
+            <p>Returned IDs</p>
+            <strong key={String(hasNull)} className="result-value">
+              {result.notIn.length ? result.notIn.join(', ') : 'No rows'}
+            </strong>
+          </div>
+          <div>
+            <span className="code-label">REWRITE</span>
+            <code>NOT EXISTS (...)</code>
+            <p>Returned IDs</p>
+            <strong>{result.notExists.join(', ')}</strong>
+          </div>
+        </div>
+        <div
+          className={`lab-result ${result.matches ? 'matches' : 'differs'}`}
+          role="status"
+          aria-live="polite"
+        >
+          <b>
+            {result.matches
+              ? '✓ Results match on this data'
+              : '× The rewrite changes the result'}
+          </b>
+          <p>
+            {result.matches
+              ? 'Both queries exclude ID 2. Now add NULL to the excluded IDs.'
+              : 'With NULL in the subquery, NOT IN becomes unknown for unmatched IDs. WHERE keeps only true. NOT EXISTS still returns IDs 1 and 3.'}
+          </p>
+        </div>
+        <a
+          className="text-link"
+          href="https://github.com/hrishi-bhardwaj55/skeptic#why-the-verifier-exists"
+        >
+          See the original counterexample ↗
+        </a>
+      </div>
+    </section>
+  );
 }

@@ -1,6 +1,6 @@
 # Hrishi Bhardwaj — portfolio
 
-An original portfolio built with React, TypeScript, Vinext, and CSS. Content is grounded in the connected GitHub account's public repositories.
+A minimal dark portfolio built with React, TypeScript, Vinext, and CSS. Includes reduced-motion-aware viewport reveals and subtle interaction animations. Content is grounded in the connected GitHub account's public repositories.
 
 ## Develop
 
@@ -11,6 +11,7 @@ Install dependencies with `npm ci`, then run `npm run dev`. `npm run build` prod
 - Main portfolio and project stories: `app/page.tsx`
 - Metadata and fonts: `app/layout.tsx`
 - Design and responsive styling: `app/globals.css`
+- Motion enhancement: `app/motion.tsx`
 - SQL interaction: `app/counterexample.tsx`
 - Pure SQL-semantics illustration: `lib/sql-counterexample.ts`
 - Reference comparison and content provenance: `docs/design-research.md`
@@ -24,3 +25,4 @@ Confirm the display name and provide the resume, preferred contact email, Linked
 ## Validation
 
 Production build and TypeScript checks passed. The demo's ordinary values, NULL behavior, duplicate preservation, and empty inputs were checked using Node assertions. The local route returned HTTP 200. Browser visual/interaction QA was not performed. WebMCP is omitted because the portfolio's primary journey is reading and navigation; the demonstration is supplementary.
+

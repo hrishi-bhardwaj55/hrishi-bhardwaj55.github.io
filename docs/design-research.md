@@ -45,3 +45,11 @@ LowLevelDesign explicitly includes incomplete exercises. KeyBoardgame is a small
 ## Content still requiring the owner
 
 GitHub connection identifies hrishi-bhardwaj55. Display name Hrishi Bhardwaj is inferred from that handle and should be confirmed. No resume, work history, education, email, LinkedIn URL, or target role was provided at research time. Do not fabricate these. The site can showcase verified public projects meanwhile.
+
+## Dark refinement
+
+The owner requested a minimal black background and subtle motion. The active design now uses near-black (#090a0b), slightly raised charcoal panels, soft off-white type, and restrained diagram accents. Text-led technology lists replace outlined tags. Browser chrome and the initial HTML background also use the dark theme.
+
+Motion uses a brief staggered hero entrance, one-time viewport reveals, subtle diagram hover responses, and a single verification-line sweep on interaction. Content remains visible without JavaScript. Reduced-motion preferences disable CSS and JavaScript motion, including preference changes during a session. The mobile Explore my work link has an explicit accessible name; SQL panels stack on very narrow screens.
+
+Key text/background pairs passed calculated 4.5:1 contrast checks. Production build, type checking, and a local HTTP response were checked. No browser visual or interaction QA was requested or performed.
