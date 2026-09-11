@@ -2,56 +2,16 @@
 import { useState } from 'react';
 import { TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Tabs as TabsPrimitive } from '@base-ui/react/tabs';
-import { projects, github } from './projects';
+import { projects, github, type Project } from './projects';
+import { sitePath } from '@/lib/site-path';
 import { PortfolioFooter, ProjectGlyph } from './project-visuals';
-const stageInfo = [
-  [
-    { name: 'Inspect', text: 'Parse the SQL and capture the PostgreSQL plan.' },
-    {
-      name: 'Verify',
-      text: 'Compare result multisets and run adversarial fixtures.',
-    },
-    {
-      name: 'Measure',
-      text: 'Benchmark only candidates whose verification passed.',
-    },
-  ],
-  [
-    {
-      name: 'Extract',
-      text: 'Python extracts typed fields and retains page provenance.',
-    },
-    {
-      name: 'Reconcile',
-      text: 'A stateless Java engine owns the calculations.',
-    },
-    {
-      name: 'Investigate',
-      text: 'Eight audit-scoped tools investigate ambiguous findings.',
-    },
-  ],
-  [
-    {
-      name: 'Seed',
-      text: 'The seed and configuration version identify the challenge.',
-    },
-    {
-      name: 'Play',
-      text: 'React handles input; pure engines handle game logic.',
-    },
-    {
-      name: 'Review',
-      text: 'Local results report game-specific feedback and timing.',
-    },
-  ],
-];
-function StageExplorer({ index }: { index: number }) {
+function StageExplorer({ stages }: { stages: Project['stages'] }) {
   const [stage, setStage] = useState(0);
   return (
     <div className="desk-stages">
       <p className="v-kicker">FOLLOW THE FLOW</p>
       <div role="group" aria-label="Architecture stages">
-        {stageInfo[index].map((s, i) => (
+        {stages.map((s, i) => (
           <button
             type="button"
             key={s.name}
@@ -62,7 +22,7 @@ function StageExplorer({ index }: { index: number }) {
           </button>
         ))}
       </div>
-      <p role="status">{stageInfo[index][stage].text}</p>
+      <p role="status">{stages[stage].text}</p>
     </div>
   );
 }
@@ -82,7 +42,7 @@ export default function WorkbenchClient() {
           <p>
             Choose a project.
             <br />
-            Follow its decisions back to the source.
+            Explore the code, or read the story.
           </p>
         </header>
         <div className="desk-window">
@@ -93,7 +53,10 @@ export default function WorkbenchClient() {
               <i />
             </div>
             <span>hrishi / selected-work</span>
-            <a href={github}>GitHub ↗</a>
+            <nav aria-label="Selected work">
+              <a href="#project-stories">Project stories</a>
+              <a href={github}>GitHub ↗</a>
+            </nav>
           </div>
           <TabsPrimitive.Root
             defaultValue="skeptic"
@@ -103,15 +66,15 @@ export default function WorkbenchClient() {
             <aside className="desk-sidebar">
               <p>PROJECT EXPLORER</p>
               <TabsList className="desk-tablist" aria-label="Project files">
-                {projects.map((p, i) => (
+                {projects.map((p) => (
                   <TabsTrigger key={p.id} value={p.id} className="desk-tab">
-                    <span>{['PY', 'JV', 'TS'][i]}</span>
+                    <span>{p.label}</span>
                     {p.name}
                   </TabsTrigger>
                 ))}
               </TabsList>
               <div className="desk-sidebar-note">
-                Public repositories
+                Public code & project stories
                 <br />
                 Inspectable evidence
                 <br />
@@ -119,7 +82,7 @@ export default function WorkbenchClient() {
               </div>
               <a href={`${github}/GetMeAJob`}>↗ GetMeAJob</a>
             </aside>
-            {projects.map((p, i) => (
+            {projects.map((p) => (
               <TabsContent key={p.id} value={p.id} className="desk-panel">
                 <div className="desk-breadcrumb">
                   projects / {p.id} / overview
@@ -137,7 +100,7 @@ export default function WorkbenchClient() {
                   </div>
                   <ProjectGlyph id={p.id} />
                 </div>
-                <StageExplorer index={i} />
+                <StageExplorer stages={p.stages} />
                 <div className="desk-evidence">
                   <div>
                     <span>01 / DECISION</span>
@@ -150,17 +113,52 @@ export default function WorkbenchClient() {
                   </div>
                 </div>
                 <div className="desk-links">
-                  <a href={p.source}>Open repository ↗</a>
-                  <a href={p.documentation}>{p.detailLabel} ↗</a>
+                  {p.source && <a href={p.source}>Open repository ↗</a>}
+                  {p.story && (
+                    <a className="desk-story-link" href={sitePath(p.story)}>
+                      Read project story ↗
+                    </a>
+                  )}
+                  {p.documentation && (
+                    <a href={p.documentation}>{p.detailLabel} ↗</a>
+                  )}
                 </div>
               </TabsContent>
             ))}
           </TabsPrimitive.Root>
           <div className="desk-status">
-            <span>● 3 project files</span>
-            <span>Python · Java · TypeScript</span>
+            <span>{projects.length} project files</span>
+            <span>Public code + private-source stories</span>
           </div>
         </div>
+        <section
+          className="story-shelf"
+          id="project-stories"
+          aria-labelledby="stories-title"
+        >
+          <div className="story-shelf-heading">
+            <div>
+              <p className="v-kicker">NOTES FROM BUILDING</p>
+              <h2 id="stories-title">Project stories</h2>
+            </div>
+            <p>The decisions behind the work.</p>
+          </div>
+          {projects
+            .filter((p) => p.story)
+            .map((p) => (
+              <a className="story-preview" href={sitePath(p.story!)} key={p.id}>
+                <span className="story-file" aria-hidden="true">
+                  MD
+                </span>
+                <div>
+                  <span className="v-kicker">{p.name} / SOURCE PRIVATE</span>
+                  <h3>{p.title}</h3>
+                  <p>{p.description}</p>
+                </div>
+                <span className="story-read">Read the story ↗</span>
+              </a>
+            ))}
+        </section>
       </main>
       <PortfolioFooter />
     </div>

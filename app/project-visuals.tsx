@@ -20,7 +20,64 @@ export function ProjectGlyph({ id }: { id: string }) {
       fill="none"
       aria-hidden="true"
     >
-      {id === 'skeptic' ? (
+      {id === 'twitter-analytics' ? (
+        <>
+          <path
+            d="M75 150h62m65 0h61"
+            stroke="currentColor"
+            strokeOpacity=".6"
+          />
+          <rect
+            x="20"
+            y="115"
+            width="60"
+            height="70"
+            rx="5"
+            stroke="currentColor"
+          />
+          <rect
+            x="137"
+            y="115"
+            width="65"
+            height="70"
+            rx="5"
+            stroke="currentColor"
+          />
+          <rect
+            x="263"
+            y="105"
+            width="110"
+            height="90"
+            rx="5"
+            stroke="currentColor"
+          />
+          <g
+            fill="currentColor"
+            fontSize="14"
+            fontFamily="monospace"
+            textAnchor="middle"
+          >
+            <text x="50" y="156">
+              NLB
+            </text>
+            <text x="170" y="156">
+              Go
+            </text>
+            <text x="318" y="156">
+              MySQL
+            </text>
+          </g>
+          <text
+            x="28"
+            y="62"
+            fill="currentColor"
+            fontSize="12"
+            fontFamily="monospace"
+          >
+            LESS WORK PER REQUEST
+          </text>
+        </>
+      ) : id === 'skeptic' ? (
         <>
           <path
             d="M70 100h110m40 0h110M70 200h110m40 0h110"
