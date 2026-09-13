@@ -20,6 +20,7 @@ fs.writeFileSync(path.join(publicRoot, '.nojekyll'), '');
 for (const file of [
   'index.html',
   '404.html',
+  'blogs/index.html',
   'stories/twitter-analytics/index.html',
 ]) {
   if (!fs.existsSync(path.join(publicRoot, file)))

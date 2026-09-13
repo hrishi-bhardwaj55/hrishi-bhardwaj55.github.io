@@ -1,5 +1,32 @@
 import twitterAnalytics from '@/content/stories/twitter-analytics.md?raw';
 
+export const storyImageSizes: Record<
+  string,
+  { width: number; height: number }
+> = {
+  '/stories/twitter-analytics/phase1-topology.png': {
+    width: 1600,
+    height: 1250,
+  },
+  '/stories/twitter-analytics/data-pipeline.png': { width: 1600, height: 850 },
+  '/stories/twitter-analytics/schema-redesign.png': {
+    width: 1600,
+    height: 960,
+  },
+  '/stories/twitter-analytics/phase2-topology.png': {
+    width: 1600,
+    height: 1400,
+  },
+  '/stories/twitter-analytics/phase3-topology.png': {
+    width: 1600,
+    height: 1320,
+  },
+  '/stories/twitter-analytics/performance-milestones.png': {
+    width: 1600,
+    height: 890,
+  },
+};
+
 export const stories = [
   {
     slug: 'twitter-analytics',
@@ -7,7 +34,7 @@ export const stories = [
     title:
       'I built a Twitter analytics service. Most of the work was figuring out why it was slow.',
     excerpt:
-      'A terabyte of tweets. Five queries turned into one. A service that grew from 353 to about 10,000 requests per second.',
+      'A terabyte of tweets, five queries reduced to one, and about 10,000 requests per second in a warmed-database project benchmark.',
     period: 'February–April 2026',
     context: 'Cloud computing semester project',
     stack: ['Go', 'Java', 'Spark', 'MySQL', 'AWS'],

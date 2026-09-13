@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { sitePath } from '@/lib/site-path';
-import { headingId } from './data';
+import { headingId, storyImageSizes } from './data';
 
 // A deliberately small, text-only Markdown format. Raw HTML is never executed.
 function Inline({ text }: { text: string }) {
@@ -30,6 +30,7 @@ export function StoryBody({ markdown }: { markdown: string }) {
     );
     if (image) {
       const caption = blocks[i + 1]?.match(/^\*([^*]+)\*$/)?.[1];
+      const dimensions = storyImageSizes[image[2]];
       return (
         <figure key={i}>
           <a
@@ -43,7 +44,8 @@ export function StoryBody({ markdown }: { markdown: string }) {
               alt={image[1]}
               loading="lazy"
               decoding="async"
-              width="1600"
+              width={dimensions?.width}
+              height={dimensions?.height}
             />
           </a>
           {caption && <figcaption>{caption}</figcaption>}

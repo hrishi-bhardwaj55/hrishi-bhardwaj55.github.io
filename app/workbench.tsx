@@ -5,6 +5,7 @@ import { Tabs as TabsPrimitive } from '@base-ui/react/tabs';
 import { projects, github, type Project } from './projects';
 import { sitePath } from '@/lib/site-path';
 import { PortfolioFooter, ProjectGlyph } from './project-visuals';
+import { PortfolioNav, WindowBar } from './workspace-chrome';
 function StageExplorer({ stages }: { stages: Project['stages'] }) {
   const [stage, setStage] = useState(0);
   return (
@@ -29,6 +30,7 @@ function StageExplorer({ stages }: { stages: Project['stages'] }) {
 export default function WorkbenchClient() {
   return (
     <div className="portfolio workbench">
+      <PortfolioNav active="workbench" />
       <main className="desk-shell">
         <header className="desk-intro">
           <div>
@@ -46,18 +48,9 @@ export default function WorkbenchClient() {
           </p>
         </header>
         <div className="desk-window">
-          <div className="desk-titlebar">
-            <div aria-hidden="true">
-              <i />
-              <i />
-              <i />
-            </div>
-            <span>hrishi / selected-work</span>
-            <nav aria-label="Selected work">
-              <a href="#project-stories">Project stories</a>
-              <a href={github}>GitHub ↗</a>
-            </nav>
-          </div>
+          <WindowBar label="hrishi / selected-work">
+            <span>Project explorer</span>
+          </WindowBar>
           <TabsPrimitive.Root
             defaultValue="skeptic"
             orientation="vertical"
@@ -116,7 +109,7 @@ export default function WorkbenchClient() {
                   {p.source && <a href={p.source}>Open repository ↗</a>}
                   {p.story && (
                     <a className="desk-story-link" href={sitePath(p.story)}>
-                      Read project story ↗
+                      Read the blog ↗
                     </a>
                   )}
                   {p.documentation && (
@@ -139,9 +132,11 @@ export default function WorkbenchClient() {
           <div className="story-shelf-heading">
             <div>
               <p className="v-kicker">NOTES FROM BUILDING</p>
-              <h2 id="stories-title">Project stories</h2>
+              <h2 id="stories-title">From the blog</h2>
             </div>
-            <p>The decisions behind the work.</p>
+            <a className="story-read" href={sitePath('/blogs/')}>
+              All blogs ↗
+            </a>
           </div>
           {projects
             .filter((p) => p.story)
@@ -155,7 +150,7 @@ export default function WorkbenchClient() {
                   <h3>{p.title}</h3>
                   <p>{p.description}</p>
                 </div>
-                <span className="story-read">Read the story ↗</span>
+                <span className="story-read">Read the blog ↗</span>
               </a>
             ))}
         </section>

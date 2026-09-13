@@ -20,6 +20,8 @@ For a local subpath build in PowerShell, set `$env:NEXT_PUBLIC_BASE_PATH='/portf
 
 - Project descriptions, access links, technology labels, and architecture stages: `app/projects.ts`
 - Workbench interface: `app/workbench.tsx`
+- Blogs tab and index: `app/blogs/page.tsx`
+- Shared Workbench/Blogs navigation and window frame: `app/workspace-chrome.tsx`
 - Story text: `content/stories/twitter-analytics.md`
 - Story metadata and registry: `app/stories/data.ts`
 - Shared article layout: `app/stories/[slug]/page.tsx`
@@ -35,7 +37,7 @@ Workbench uses Base UI's tabs root directly to preserve vertical keyboard naviga
 
 ## Validation and hosting
 
-The static build checks page, image, script, stylesheet, and font references. Both root and `/portfolio` exports have been checked. Browser interaction and visual QA have not been performed. `npx tsc --noEmit --incremental false` checks types.
+The static build checks page, image, script, stylesheet, and font references. Both root and `/portfolio` exports have been checked. Blog navigation and the article’s layout have also been checked in the local browser. `npx tsc --noEmit --incremental false` checks types.
 
 The existing Sites preview remains a separate private publication. The GitHub Pages workflow does not use Sites credentials or require a Cloudflare account. `.openai/hosting.json` is only used for that private preview. You will publish publicly when you enable Pages and run the workflow in your GitHub repository.
 
