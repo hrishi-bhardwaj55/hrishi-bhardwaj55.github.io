@@ -10,7 +10,7 @@ Install with `npm ci`, then use `npm run dev`. `npm run build` exports the site 
 
 1. Push this portfolio folder to your own GitHub repository, including `.github/workflows/pages.yml` and `package-lock.json`. Do not copy the separate private project repository into it.
 2. In the repository, open **Settings → Pages → Build and deployment → Source**, and choose **GitHub Actions**.
-3. Push to `main` or `master`, or run **Publish portfolio to GitHub Pages** from the Actions tab. The workflow builds and publishes the static site. GitHub displays its URL in Pages settings and the deployment summary.
+3. When you are ready to publish, run **Publish portfolio to GitHub Pages** from the Actions tab. The workflow builds and publishes the static site. GitHub displays its URL in Pages settings and the deployment summary. Pushing code alone does not publish the website; deployment starts only when you run the workflow.
 
 The workflow gets the URL prefix from GitHub automatically. It supports both a profile repository such as `hrishi-bhardwaj55.github.io` and a project repository such as `portfolio`. A custom domain can be configured in GitHub's Pages settings. See [GitHub's custom workflow documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 
