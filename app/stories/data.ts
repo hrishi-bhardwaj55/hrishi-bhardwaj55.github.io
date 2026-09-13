@@ -1,4 +1,15 @@
 import twitterAnalytics from '@/content/stories/twitter-analytics.md?raw';
+import awsFoundations from '@/content/stories/aws-foundations.md?raw';
+import elasticScaling from '@/content/stories/elastic-scaling.md?raw';
+import wecloudChat from '@/content/stories/wecloud-chat.md?raw';
+import cloudStorage from '@/content/stories/cloud-storage.md?raw';
+import socialNetworkStorage from '@/content/stories/social-network-storage.md?raw';
+import uberRideMatching from '@/content/stories/uber-ride-matching.md?raw';
+import cloudMachineLearning from '@/content/stories/cloud-machine-learning.md?raw';
+import serverlessFunctions from '@/content/stories/serverless-functions.md?raw';
+import { blogCatalog } from '../blog-catalog';
+import diagramDefinitions from '@/content/stories/diagrams.json';
+import type { Diagram } from './story-diagram';
 
 export const storyImageSizes: Record<
   string,
@@ -27,26 +38,33 @@ export const storyImageSizes: Record<
   },
 };
 
-export const stories = [
-  {
-    slug: 'twitter-analytics',
-    project: 'Twitter Analytics',
-    title:
-      'I built a Twitter analytics service. Most of the work was figuring out why it was slow.',
-    excerpt:
-      'A terabyte of tweets, five queries reduced to one, and about 10,000 requests per second in a warmed-database project benchmark.',
-    period: 'February–April 2026',
-    context: 'Cloud computing semester project',
-    stack: ['Go', 'Java', 'Spark', 'MySQL', 'AWS'],
-    sourceNote:
-      'Based on the project’s four submitted reports, repository history, ETL notebook, application code, and deployment configurations. Throughput and cost figures are historical project results, not measurements rerun for this article.',
-    markdown: twitterAnalytics,
-  },
-] as const;
+const articleText: Record<string, string> = {
+  'twitter-analytics': twitterAnalytics,
+  'aws-foundations': awsFoundations,
+  'elastic-scaling': elasticScaling,
+  'wecloud-chat': wecloudChat,
+  'cloud-storage': cloudStorage,
+  'social-network-storage': socialNetworkStorage,
+  'uber-ride-matching': uberRideMatching,
+  'cloud-machine-learning': cloudMachineLearning,
+  'serverless-functions': serverlessFunctions,
+};
+export const storyDiagrams = diagramDefinitions as readonly Diagram[];
+export const stories = blogCatalog.map((item) => {
+  const markdown = articleText[item.slug];
+  if (!markdown) throw new Error(`Missing article: ${item.slug}`);
+  return { ...item, markdown };
+});
 
 export function readingMinutes(markdown: string) {
-  return Math.ceil(
-    markdown.replace(/!\[[^\]]*\]\([^)]*\)/g, '').split(/\s+/).length / 220,
+  return Math.max(
+    1,
+    Math.ceil(
+      markdown
+        .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+        .replace(/^:::diagram .+$/gm, '')
+        .split(/\s+/).length / 220,
+    ),
   );
 }
 

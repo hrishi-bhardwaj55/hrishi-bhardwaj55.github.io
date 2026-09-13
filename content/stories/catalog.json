@@ -1,0 +1,118 @@
+[
+  {
+    "slug": "twitter-analytics",
+    "project": "Twitter Analytics",
+    "title": "I built a Twitter analytics service. Most of the work was figuring out why it was slow.",
+    "excerpt": "From Spark graph processing to a terabyte-scale service: one database lookup, a Go rewrite, and the measurements that shaped four project phases.",
+    "period": "February–April 2026",
+    "context": "CMU 15-619 · Semester project",
+    "stack": ["Go", "Java", "Spark", "MySQL", "AWS"],
+    "sourceNote": "Adapted from my updated Spring 2026 build log and the earlier project story, which drew on the submitted reports, repository history, ETL notebook and deployment configurations. Costs and throughput are historical project results. The 20,000+ RPS peak is a reported run outside the graded window, with no run duration or exact configuration supplied."
+  },
+  {
+    "slug": "aws-foundations",
+    "project": "AWS Foundations",
+    "title": "Small cloud projects, expensive assumptions",
+    "excerpt": "A Wikipedia pageview pipeline and a reusable Terraform workspace taught me to make correctness, reproducibility, and cost part of the same design.",
+    "period": "January 2026",
+    "context": "Carnegie Mellon · 15-619 Cloud Computing · P0",
+    "stack": ["AWS EC2", "Terraform", "Java", "JUnit", "JaCoCo", "Python"],
+    "sourceNote": "Based on my Spring 2026 build log and the preserved Terraform module. The Java filter, analysis notebook, and shell runner lived on the course workspace VM; the record does not include a final benchmark table or coverage report."
+  },
+  {
+    "slug": "elastic-scaling",
+    "project": "Elastic Scaling",
+    "title": "Teaching an AWS fleet when to grow",
+    "excerpt": "I built an AWS scaling controller, then moved the same decisions into an Auto Scaling Group—balancing responsiveness, instance-hours, and what the monitoring data could actually tell me.",
+    "period": "January–February 2026",
+    "context": "Carnegie Mellon · 15-619 Cloud Computing · P1",
+    "stack": [
+      "Java",
+      "AWS SDK",
+      "EC2",
+      "Auto Scaling",
+      "CloudWatch",
+      "Terraform"
+    ],
+    "sourceNote": "Based on my Spring 2026 build log, recorded configuration, and its inventory of 18 load-test logs. Throughput figures described as targets are assignment requirements, not reconstructed achieved scores. Monitoring semantics were checked against official AWS documentation."
+  },
+  {
+    "slug": "wecloud-chat",
+    "project": "WeCloud Chat",
+    "title": "One chat application, two clouds, one deployment model",
+    "excerpt": "I took supplied Spring services through containers, Helm, GKE, and AKS, making the differences between clouds explicit while keeping one understandable application definition.",
+    "period": "February 2026",
+    "context": "Carnegie Mellon · 15-619 Cloud Computing · P2",
+    "stack": ["Docker", "Kubernetes", "Helm", "GKE", "AKS", "Azure Front Door"],
+    "sourceNote": "Based on my Spring 2026 build log and its description of Docker, Helm, and Terraform artifacts. The Spring application code was supplied. The local CI/CD file remains a course template; a completed pipeline is reported in a separate repository but is not established by that local copy."
+  },
+  {
+    "slug": "cloud-storage",
+    "project": "Cloud Storage",
+    "title": "One dataset, three ways to think about storage",
+    "excerpt": "A week with Yelp data, SQL, MongoDB and Redis—and the small ownership check that made a distributed lock worth thinking about.",
+    "period": "February 2026",
+    "context": "CMU 15-619 · Cloud Storage",
+    "stack": ["Java", "Python", "MySQL", "MongoDB", "Redis", "Azure"],
+    "sourceNote": "Adapted from my Spring 2026 build log and its project reference. Dataset sizes describe the supplied coursework data; no achieved throughput or latency is claimed. Redis transaction semantics checked against [Redis transaction documentation](https://redis.io/docs/latest/develop/using-commands/transactions/)."
+  },
+  {
+    "slug": "social-network-storage",
+    "project": "Social Network Storage",
+    "title": "Building one timeline across three databases",
+    "excerpt": "How I assembled a social feed from MySQL, Neo4j and MongoDB, then added a cache policy I could actually observe.",
+    "period": "March 2026",
+    "context": "CMU 15-619 · Heterogeneous Storage",
+    "stack": ["Java", "MySQL", "Neo4j", "MongoDB", "Azure", "Terraform"],
+    "sourceNote": "Adapted from my Spring 2026 build log and its project reference. The approximately 2.6 million users, 16 million follow edges and 37.5 million comments are coursework dataset sizes. The 300 ms cached-response threshold was a requirement, not a reported measurement."
+  },
+  {
+    "slug": "uber-ride-matching",
+    "project": "Uber Ride Matching",
+    "title": "Uber Ride Matching: making the next event count",
+    "excerpt": "Inside my Kafka and Samza ride-matching backend: partitioning by city block, tracking driver availability, and joining live events with rider profiles.",
+    "period": "March 2026",
+    "context": "CMU 15-619 · Stateful Stream Processing",
+    "stack": ["Java", "Kafka", "Samza", "AWS EMR", "YARN", "Terraform"],
+    "sourceNote": "Adapted from my Spring 2026 build log and its NYCabs project reference. Uber Ride Matching is an Uber-style coursework project, not work for Uber or a deployed commercial booking service. The data and scoring rules came from the course. Samza state and changelog behavior checked against [Samza state-management documentation](https://samza.apache.org/learn/documentation/1.8.0/container/state-management.html)."
+  },
+  {
+    "slug": "cloud-machine-learning",
+    "project": "NYC Fare Prediction",
+    "title": "Teaching a taxi fare model what a New York trip looks like",
+    "excerpt": "Distance, time, airport trips, and the feature-engineering choices behind a cloud ML project that grew toward a voice-driven NYC assistant.",
+    "period": "April 2026",
+    "context": "CMU 15-619 · Machine Learning on the Cloud",
+    "stack": [
+      "Python",
+      "pandas",
+      "NumPy",
+      "XGBoost",
+      "Vertex AI",
+      "Flask",
+      "App Engine",
+      "LangGraph"
+    ],
+    "sourceNote": "Adapted from my Spring 2026 build log. The exploration and feature-engineering notebooks are complete in the retained local copy. Later training and application details are recorded in the log; most retained App Engine and RAG files remain course scaffolding. No final RMSE or end-to-end reliability result was recorded."
+  },
+  {
+    "slug": "serverless-functions",
+    "project": "CloudTube Media Pipeline",
+    "title": "Turning one video upload into previews and searchable tags",
+    "excerpt": "An event-driven media pipeline across Azure Functions, Blob Storage, AI Vision, and Search—and the runtime details that made the handlers more careful.",
+    "period": "April 2026",
+    "context": "CMU 15-619 · Functions as a Service",
+    "stack": [
+      "Python",
+      "Azure Functions",
+      "Event Grid",
+      "Blob Storage",
+      "ffmpeg",
+      "Azure AI Vision",
+      "Azure AI Search",
+      "AWS Lambda",
+      "Cloud Run functions"
+    ],
+    "sourceNote": "Adapted from my Spring 2026 build log. Architecture and handler details describe the coursework implementation; assignment limits and alert thresholds are historical project requirements. No end-to-end throughput, delivery guarantee, or production reliability measurement was recorded."
+  }
+]

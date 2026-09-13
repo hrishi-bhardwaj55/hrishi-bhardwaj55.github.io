@@ -1090,6 +1090,367 @@ button {
 .story-mobile-outline {
   display: none;
 }
+/* Article diagrams use real text so their explanations scale with the reader. */
+.article-window .story-article .story-diagram {
+  padding: 26px;
+  margin-block: 36px;
+  background: #0e1721;
+  border-color: #304356;
+  border-radius: 6px;
+}
+.diagram-heading {
+  margin-bottom: 24px;
+}
+.diagram-heading .v-kicker {
+  font-size: 12px;
+  color: #84a9c7;
+}
+.diagram-heading h3 {
+  font-size: 20px;
+  line-height: 1.45;
+  margin: 10px 0 0;
+  color: #dde8f1;
+  letter-spacing: -0.02em;
+}
+.diagram-flow {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.diagram-flow li {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 18px;
+  position: relative;
+  padding-bottom: 22px;
+}
+.diagram-flow li:last-child {
+  padding-bottom: 0;
+}
+.diagram-flow li:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  top: 38px;
+  bottom: 0;
+  left: 19px;
+  border-left: 1px solid #496781;
+}
+.diagram-step-index {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 38px;
+  z-index: 1;
+  color: #aed3ee;
+  background: #1a2b3b;
+  border: 1px solid #42607b;
+  border-radius: 4px;
+  font:
+    13px var(--font-geist-mono),
+    monospace;
+}
+.diagram-flow li > div {
+  border: 1px solid #293b4c;
+  padding: 14px 18px;
+  border-radius: 4px;
+  background: #142130;
+}
+.story-diagram h4 {
+  color: #d5e5f1;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+.story-diagram p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #a3b6c8;
+  margin: 5px 0 0;
+  overflow-wrap: anywhere;
+}
+.diagram-columns {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  gap: 12px;
+}
+.diagram-column {
+  padding: 17px 16px;
+  border-top: 2px solid #739bbd;
+  background: #172330;
+  min-width: 0;
+}
+.diagram-column-index {
+  color: #7d98ae;
+  font:
+    12px var(--font-geist-mono),
+    monospace;
+}
+.diagram-column h4 {
+  margin-top: 14px;
+}
+.diagram-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+}
+.diagram-column li {
+  color: #afbdca;
+  font-size: 14px;
+  line-height: 1.65;
+  padding: 12px 0;
+  border-top: 1px solid #2b3c4c;
+  overflow-wrap: anywhere;
+}
+.diagram-column li:last-child {
+  padding-bottom: 0;
+}
+.article-window .story-article .story-diagram figcaption {
+  padding: 20px 0 0;
+  margin-top: 22px;
+  border-top: 1px solid #2c3e50;
+  font-size: 14px;
+}
+.diagram-bars {
+  display: grid;
+  gap: 24px;
+}
+.diagram-bar-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.diagram-bar-label strong {
+  font:
+    16px var(--font-geist-mono),
+    monospace;
+  color: #c2e2f8;
+}
+.diagram-bar-track {
+  height: 10px;
+  margin: 12px 0 8px;
+  background: #213040;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.diagram-bar-track > span {
+  display: block;
+  height: 100%;
+  background: #91bddc;
+  min-width: 2px;
+}
+.peak-bar {
+  border-top: 1px dashed #55728c;
+  padding-top: 24px;
+}
+.peak-bar .diagram-bar-track > span {
+  background: repeating-linear-gradient(
+    120deg,
+    #688ca9 0,
+    #688ca9 5px,
+    #253f54 5px,
+    #253f54 9px
+  );
+}
+.ride-event-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 16px 0 20px;
+}
+.ride-event-buttons button {
+  background: #13202d;
+  color: #aac0d3;
+  border: 1px solid #334a5f;
+  min-height: 44px;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 14px;
+}
+.ride-event-buttons button:hover {
+  color: #e1eef8;
+  background: #203449;
+}
+.ride-event-buttons button[aria-pressed='true'] {
+  background: #294760;
+  border-color: #97c0df;
+  color: #eef7ff;
+}
+.ride-event-buttons button > span {
+  color: #8aaac3;
+  font-size: 12px;
+  margin-right: 3px;
+}
+.ride-event-buttons button:focus-visible {
+  outline: 2px solid #bad9ef;
+  outline-offset: 3px;
+}
+.ride-state {
+  border: 1px solid #385069;
+  border-radius: 4px;
+  padding: 22px;
+  background: #13202d;
+}
+.ride-state-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  justify-content: space-between;
+  color: #93b7d3;
+  font:
+    12px/1.6 var(--font-geist-mono),
+    monospace;
+}
+.ride-state-path {
+  display: flex;
+  align-items: center;
+  margin: 30px 0;
+  gap: 12px;
+}
+.ride-state-path > span:not(.ride-path-line) {
+  border: 1px solid #385069;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 13px;
+  white-space: nowrap;
+  color: #91a6b9;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s;
+}
+.ride-state-path > span.active {
+  color: #edf7ff;
+  border-color: #9bc7e5;
+  background: #305773;
+}
+.ride-path-line {
+  height: 1px;
+  flex: 1;
+  background: #476b88;
+  position: relative;
+  min-width: 8px;
+}
+.ride-path-line::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 5px;
+  height: 5px;
+  border-top: 1px solid #83a8c6;
+  border-right: 1px solid #83a8c6;
+  transform: translateY(-2px) rotate(45deg);
+}
+.ride-state-result {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px 15px;
+}
+.ride-state-result strong {
+  font-size: 22px;
+  color: #dceeff;
+}
+.ride-state-result > span {
+  font-size: 13px;
+  color: #9fb4c6;
+}
+.ride-state > p {
+  min-height: 72px;
+  margin-top: 14px;
+}
+.story-article article a {
+  color: #aad1ee;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.story-article .story-source p a {
+  font-size: inherit;
+  margin: 0;
+  display: inline;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+.story-next {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--v-line);
+}
+.story-next a {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #c5dfef;
+}
+.story-next a:last-child {
+  text-align: right;
+}
+.story-next span {
+  display: block;
+  font-size: 12px;
+  color: #8fa8bd;
+  margin-bottom: 8px;
+}
+@media (max-width: 1180px) and (min-width: 1001px) {
+  .diagram-columns {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 680px) {
+  .article-window .story-article .story-diagram {
+    margin-inline: 0;
+    padding: 18px 14px;
+  }
+  .diagram-columns {
+    grid-template-columns: 1fr;
+  }
+  .diagram-heading h3 {
+    font-size: 19px;
+  }
+  .diagram-flow li {
+    gap: 12px;
+    grid-template-columns: 32px minmax(0, 1fr);
+  }
+  .diagram-step-index {
+    width: 32px;
+    height: 34px;
+    font-size: 12px;
+  }
+  .diagram-flow li:not(:last-child)::before {
+    left: 15px;
+    top: 34px;
+  }
+  .diagram-flow li > div {
+    padding: 12px;
+  }
+  .ride-event-buttons {
+    grid-template-columns: 1fr 1fr;
+  }
+  .ride-state {
+    padding: 16px;
+  }
+  .ride-state-path {
+    gap: 7px;
+  }
+  .ride-state-path > span:not(.ride-path-line) {
+    font-size: 12px;
+    padding: 9px 7px;
+  }
+  .ride-state > p {
+    min-height: 120px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ride-state-path > span {
+    transition: none;
+  }
+}
 @media (max-width: 1000px) {
   .article-window .story-contents {
     display: none;

@@ -17,11 +17,16 @@ if (publicRoot !== exportRoot)
     path.join(publicRoot, '404.html'),
   );
 fs.writeFileSync(path.join(publicRoot, '.nojekyll'), '');
+const catalog = JSON.parse(
+  fs.readFileSync('content/stories/catalog.json', 'utf8'),
+);
+if (new Set(catalog.map((story) => story.slug)).size !== catalog.length)
+  throw new Error('Duplicate story slug.');
 for (const file of [
   'index.html',
   '404.html',
   'blogs/index.html',
-  'stories/twitter-analytics/index.html',
+  ...catalog.map((story) => `stories/${story.slug}/index.html`),
 ]) {
   if (!fs.existsSync(path.join(publicRoot, file)))
     throw new Error(`Static export is missing ${file}`);

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { sitePath } from '@/lib/site-path';
 import { stories, readingMinutes, headingId } from '../data';
-import { StoryBody } from '../story-body';
+import { StoryBody, Inline } from '../story-body';
 import { PortfolioNav, WindowBar } from '../../workspace-chrome';
 import { PortfolioFooter } from '../../project-visuals';
 
@@ -25,6 +25,9 @@ export default async function ProjectStory({ params }: Props) {
   const { slug } = await params;
   const story = stories.find((item) => item.slug === slug);
   if (!story) notFound();
+  const currentIndex = stories.indexOf(story);
+  const previous = stories[currentIndex - 1];
+  const next = stories[currentIndex + 1];
   const headings = [...story.markdown.matchAll(/^## (.+)$/gm)].map((match) =>
     match[1].trim(),
   );
@@ -97,8 +100,28 @@ export default async function ProjectStory({ params }: Props) {
                 <StoryBody markdown={story.markdown} />
               </article>
               <footer className="story-source">
-                <p>{story.sourceNote}</p>
+                <p>
+                  <Inline text={story.sourceNote} />
+                </p>
                 <a href={sitePath('/blogs/')}>Back to blogs ↗</a>
+                <nav className="story-next" aria-label="More project stories">
+                  {previous ? (
+                    <a href={sitePath(`/stories/${previous.slug}/`)}>
+                      <span>← PREVIOUS STORY</span>
+                      {previous.project}
+                    </a>
+                  ) : (
+                    <div />
+                  )}
+                  {next ? (
+                    <a href={sitePath(`/stories/${next.slug}/`)}>
+                      <span>NEXT STORY →</span>
+                      {next.project}
+                    </a>
+                  ) : (
+                    <div />
+                  )}
+                </nav>
               </footer>
             </div>
           </div>

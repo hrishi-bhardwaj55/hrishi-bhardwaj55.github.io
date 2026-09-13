@@ -20,7 +20,43 @@ export function ProjectGlyph({ id }: { id: string }) {
       fill="none"
       aria-hidden="true"
     >
-      {id === 'twitter-analytics' ? (
+      {id === 'uber-ride-matching' ? (
+        <>
+          <path
+            d="M55 90h105v120h130M160 90h130"
+            stroke="currentColor"
+            strokeOpacity=".5"
+            strokeDasharray="5 6"
+          />
+          <circle cx="55" cy="90" r="8" fill="currentColor" />
+          <circle cx="160" cy="90" r="8" fill="#151b20" stroke="currentColor" />
+          <circle cx="290" cy="90" r="8" fill="currentColor" />
+          <circle cx="290" cy="210" r="8" fill="currentColor" />
+          <g fill="currentColor" fontSize="13" fontFamily="monospace">
+            <text x="35" y="65">
+              EVENT
+            </text>
+            <text x="133" y="65">
+              STATE
+            </text>
+            <text x="260" y="65">
+              MATCH
+            </text>
+            <text x="240" y="248">
+              AVAILABLE
+            </text>
+          </g>
+          <text
+            x="28"
+            y="25"
+            fill="currentColor"
+            fontSize="12"
+            fontFamily="monospace"
+          >
+            AVAILABILITY CHANGES WITH EVENTS
+          </text>
+        </>
+      ) : id === 'twitter-analytics' ? (
         <>
           <path
             d="M75 150h62m65 0h61"

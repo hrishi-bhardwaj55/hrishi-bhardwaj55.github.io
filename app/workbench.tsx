@@ -6,6 +6,7 @@ import { projects, github, type Project } from './projects';
 import { sitePath } from '@/lib/site-path';
 import { PortfolioFooter, ProjectGlyph } from './project-visuals';
 import { PortfolioNav, WindowBar } from './workspace-chrome';
+import { blogCatalog } from './blog-catalog';
 function StageExplorer({ stages }: { stages: Project['stages'] }) {
   const [stage, setStage] = useState(0);
   return (
@@ -138,17 +139,21 @@ export default function WorkbenchClient() {
               All blogs ↗
             </a>
           </div>
-          {projects
-            .filter((p) => p.story)
+          {['twitter-analytics', 'uber-ride-matching', 'wecloud-chat']
+            .map((slug) => blogCatalog.find((entry) => entry.slug === slug)!)
             .map((p) => (
-              <a className="story-preview" href={sitePath(p.story!)} key={p.id}>
+              <a
+                className="story-preview"
+                href={sitePath(`/stories/${p.slug}/`)}
+                key={p.slug}
+              >
                 <span className="story-file" aria-hidden="true">
                   MD
                 </span>
                 <div>
-                  <span className="v-kicker">{p.name} / SOURCE PRIVATE</span>
+                  <span className="v-kicker">{p.project} / SOURCE PRIVATE</span>
                   <h3>{p.title}</h3>
-                  <p>{p.description}</p>
+                  <p>{p.excerpt}</p>
                 </div>
                 <span className="story-read">Read the blog ↗</span>
               </a>

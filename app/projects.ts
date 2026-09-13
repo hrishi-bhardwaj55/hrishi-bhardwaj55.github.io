@@ -132,7 +132,7 @@ export const projects: readonly Project[] = [
     decision:
       'Replace five sequential database queries with one denormalized lookup. Precompute reusable features in Spark, then follow the next bottleneck.',
     evidence:
-      'Reported throughput grew from 353.25 to about 10,000 requests per second across three project phases.',
+      'About 10,000 requests per second in the final graded live test; a later best run above 20,000 RPS is reported separately in the blog.',
     limitation:
       'Historical semester-project benchmarks across evolving configurations. The final result used a warmed database; it is not production traffic.',
     story: '/stories/twitter-analytics/',
@@ -148,6 +148,37 @@ export const projects: readonly Project[] = [
       {
         name: 'Measure',
         text: 'Load tests and utilization measurements guide schema, placement, and task-count decisions.',
+      },
+    ],
+  },
+  {
+    id: 'uber-ride-matching',
+    name: 'Uber Ride Matching',
+    label: 'JV',
+    category: 'Stream processing · Source private',
+    stack: ['Java', 'Kafka', 'Samza', 'AWS EMR'],
+    title: 'The next event changes who can accept a ride.',
+    description:
+      'An Uber-style coursework backend that matches ride requests with available drivers, updates block-local state, and joins rider events with advertising data.',
+    decision:
+      'Partition driver and ride events by city block. Keep availability in a recoverable state store, and remove a selected driver before processing the next match.',
+    evidence:
+      'Separate driver-match, ad-match, and ad-price jobs; explicit event transitions; rider-profile updates broadcast to the partitions that need them.',
+    limitation:
+      'Built over supplied NYCabs event traces. The build log records implementation details, without measured throughput or recovery-time results.',
+    story: '/stories/uber-ride-matching/',
+    stages: [
+      {
+        name: 'Route',
+        text: 'Kafka sends block events to blockId % 5; profile updates reach all five partitions.',
+      },
+      {
+        name: 'Match',
+        text: 'Samza updates availability and scores drivers in the same block as the ride request.',
+      },
+      {
+        name: 'Update',
+        text: 'A match removes the chosen driver; ride completion registers the driver at the destination.',
       },
     ],
   },

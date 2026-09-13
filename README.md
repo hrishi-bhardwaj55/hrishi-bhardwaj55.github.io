@@ -23,15 +23,19 @@ For a local subpath build in PowerShell, set `$env:NEXT_PUBLIC_BASE_PATH='/portf
 - Blogs tab and index: `app/blogs/page.tsx`
 - Shared Workbench/Blogs navigation and window frame: `app/workspace-chrome.tsx`
 - Story text: `content/stories/twitter-analytics.md`
-- Story metadata and registry: `app/stories/data.ts`
+- All nine blog articles: `content/stories/*.md`
+- Story titles, descriptions and source notes: `content/stories/catalog.json`
+- Article imports and registry: `app/stories/data.ts`
+- Responsive diagrams: `content/stories/diagrams.json` and `app/stories/story-diagram.tsx`
+- Interactive ride lifecycle illustration: `app/stories/ride-lifecycle.tsx`
 - Shared article layout: `app/stories/[slug]/page.tsx`
 - Article diagrams: `public/stories/twitter-analytics/`
 - Fonts and metadata: `app/layout.tsx`
 - Styling: `app/globals.css`
 
-To add a story, create a Markdown file in `content/stories`, import it with `?raw` in `app/stories/data.ts`, and add its metadata to the registry. Add a project entry in `app/projects.ts` with `story: '/stories/your-slug/'`. Omit `source` and `documentation` when code is private. The story gets its own page at build time and appears in the homepage's Project stories section.
+To add a story, create a Markdown file in `content/stories`, add its metadata to `content/stories/catalog.json`, then import it with `?raw` and register its text in `app/stories/data.ts`. Every article gets a static page and appears in Blogs. The homepage highlights Twitter Analytics, Uber Ride Matching, and WeCloud Chat. A selected project can also link to its story through `app/projects.ts`; omit `source` and `documentation` when code is private.
 
-The article renderer supports paragraphs, a `#` title, `##` section headings, inline backticks, emphasis, bold text, and PNG diagrams at `/stories/your-slug/file.png`. Put an italic caption immediately after a diagram. Raw HTML and scripts are rendered as text, never executed. This deliberately small format does not support general Markdown tables, lists, or embedded HTML.
+The article renderer supports paragraphs, a `#` title, `##` section headings, inline backticks, emphasis, bold text, HTTPS Markdown links, and PNG diagrams at `/stories/your-slug/file.png`. Put an italic caption immediately after an image. A standalone `:::diagram diagram-id` block renders a matching definition from `diagrams.json`; supported types are flows, comparisons, and bars. Raw HTML and scripts are rendered as text, never executed. This deliberately small format does not support general Markdown tables, lists, or embedded HTML.
 
 Workbench uses Base UI's tabs root directly to preserve vertical keyboard navigation. The former `/versions/workbench/` address uses a static HTML redirect to the homepage.
 

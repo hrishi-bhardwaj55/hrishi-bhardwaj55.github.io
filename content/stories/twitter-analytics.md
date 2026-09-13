@@ -6,6 +6,20 @@ That is the tidy version. It skips the hours spent rerunning ETL, the database i
 
 The less tidy version is more useful.
 
+## Before the service, learning to work with the graph
+
+The semester project began with a different Twitter dataset: a 10.4 GB follower graph. Before I had an HTTP service to optimize, I had to learn what Spark was doing with hundreds of millions of relationships. The recorded analysis found 1,006,458 vertices and 564,768,812 directed edges.
+
+I wrote the follower-count calculation twice. In the RDD version, I mapped each edge to a followee and a count, then used `reduceByKey` so Spark could combine counts within a partition before shuffling them. The DataFrame version expressed the same problem as an aggregation, sort and limit, then wrote the result as Parquet. That let me compare two ways of describing the work instead of hiding one API behind the other.
+
+PageRank introduced repeated computation. The graph stayed fixed while each user's rank changed, so I computed and cached the adjacency and out-degree information once. Each iteration joined that static data with the current ranks. I also had to account for dangling nodes: rank mass could not simply disappear when a vertex had no outgoing contribution.
+
+:::diagram twitter-spark-foundations
+
+The retained implementation handles PageRank and dangling mass; the bonus recommendation aggregation still has an unfinished section. The separate graph-analysis answer file is complete. I do not have a final runtime proving the under-thirty-minute performance target or evidence that the Databricks bonus was finished.
+
+That preparatory phase shaped the later service. I started looking for work that could be done once, stored, and reused. When the tweet dataset arrived, that became the central design decision in the ETL pipeline and the database schema.
+
 ## The request and the constraints
 
 I built this for the Spring 2026 cloud computing semester project, from February through April: first getting the service correct, then making it fast, then moving it onto managed AWS services. Along the way, I changed where the work happened, how the data was stored, and how much infrastructure I actually needed.
@@ -140,13 +154,17 @@ Once I understood that behavior, I could make a better decision about task count
 
 *The reported live-test configuration. Fargate runs the containers without EC2 workers for me to manage. Arrows show allowed request paths; auth and RDS accept traffic from the Twitter security group.*
 
-With a warmed database, that setup reached about 10,000 RPS. One ten-minute run approached 11,000, but it was a one-off. I would use 10,000 when describing the outcome. The saved Terraform currently specifies three Twitter tasks, so it is not an exact snapshot of the two-task live-test configuration described in the report.
+With a warmed database, the graded one-hour Phase 3 run reached about 10,000 RPS at a reported cost of roughly $0.355 an hour. That remains the result I use for the live test. The saved Terraform currently specifies three Twitter tasks, so it is not an exact snapshot of the two-task live-test configuration described in the report.
 
 Warm-up and the earlier optimizations let fewer tasks handle more traffic. Scaling down by itself was not a performance trick.
 
-![Reported throughput rose from 353.25 RPS in Phase 1 to 5,516.19 in Phase 2 and about 10,000 after warm-up in Phase 3.](/stories/twitter-analytics/performance-milestones.png)
+## The live test and the later peak
 
-*These are reported project milestones across different configurations. Phase 3 is approximate and reflects a warmed database. The costs use the historical project accounting assumptions, rather than a current AWS price quote or a complete production bill.*
+My updated build log records a best run above 20,000 requests per second at $0.31 an hour outside the graded window. It is a useful additional result, but it answers a different question from the one-hour live test. The log does not supply that peak run's duration, exact configuration, correctness breakdown or warm-up conditions.
+
+I keep both numbers visible: roughly 10,000 RPS for the graded, warmed Phase 3 run, and 20,000+ for the separately reported peak. The lower reported cost suggests further right-sizing, but the available record is not detailed enough to attribute the whole difference to a particular change.
+
+:::diagram twitter-throughput
 
 ## What the numbers leave out
 
@@ -156,7 +174,7 @@ By the final phase, Java tests, Go tests, and Helm linting ran independently. A 
 
 That endpoint check needs strengthening. It accepts HTTP 200, but the service also returns 200 with an `INVALID` body, and the test omits the required timestamp. I would verify a valid request and its response body before calling it deployment validation. The automation improved, but some checks were narrower than their names suggested.
 
-There were experiments I left on the table too. I did not run a full ALB-versus-NLB comparison in Phase 2. I considered Redis, but did not implement it within the time and budget. I kept MySQL instead of redesigning the service around a NoSQL database. Each of those could have been another project, and I had enough unfinished work in the one I was already doing.
+There were experiments I left on the table too. I did not run a full ALB-versus-NLB comparison in Phase 2. Redis and Memcached were prohibited in that phase, which is why the caches lived inside the Go service. I kept MySQL when moving to managed storage instead of redesigning the service around a NoSQL database. Each alternative would have added another experiment to an already constrained project.
 
 The final system made a reliability tradeoff. Multiple tasks gave the web tier some resilience while ECS replaced failures, but Single-AZ RDS remained a critical dependency. It fit the budget. Running successfully during a test did not erase that risk or give a nearly saturated system much spare capacity.
 
@@ -166,4 +184,4 @@ What I am happiest with is the change in how I approached performance. Early on,
 
 The part I would want another engineer to remember is simple: five sequential queries became one lookup, the database stopped being the slowest part, and that gave me a different set of decisions to make.
 
-The 10,000-RPS result is the number I can put at the top of the post. The work underneath it was learning to make those decisions with evidence, including when the evidence said my previous decision was wrong.
+The graded 10,000-RPS result and the later reported peak belong to different runs. The work underneath it was learning to make those decisions with evidence, including when the evidence said my previous decision was wrong.

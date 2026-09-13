@@ -1,0 +1,493 @@
+[
+  {
+    "id": "aws-foundations-pipeline",
+    "title": "From compressed logs to a stable ranking",
+    "kind": "flow",
+    "summary": "Each stage enforces a specific part of the pageview data contract.",
+    "steps": [
+      {
+        "label": "Read",
+        "detail": "Stream the hourly gzip input"
+      },
+      {
+        "label": "Decode + validate",
+        "detail": "Preserve Wikimedia title semantics; require four columns"
+      },
+      {
+        "label": "Filter",
+        "detail": "Keep English article rows; apply title exclusions"
+      },
+      {
+        "label": "Aggregate + order",
+        "detail": "Merge desktop/mobile counts; sort count ↓, title ↑"
+      }
+    ]
+  },
+  {
+    "id": "aws-foundations-reproducibility",
+    "title": "Three boundaries for reproducibility",
+    "kind": "comparison",
+    "summary": "The deployment, the data rules, and the runner each have their own contract.",
+    "columns": [
+      {
+        "label": "Environment",
+        "items": [
+          "Parameterized Terraform",
+          "Explicit AMI and instance inputs",
+          "Project tagging"
+        ]
+      },
+      {
+        "label": "Data",
+        "items": [
+          "One predicate per rule",
+          "Positive and negative tests",
+          "Stable tie ordering"
+        ]
+      },
+      {
+        "label": "Execution",
+        "items": [
+          "UTF-8 and explicit newlines",
+          "Relative file paths",
+          "Prebuilt timed runner"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "elastic-scaling-control-loop",
+    "title": "The controller's decision path",
+    "kind": "flow",
+    "summary": "Launch spacing and test completion are checked separately.",
+    "steps": [
+      {
+        "label": "Provision",
+        "detail": "Create and track resources through AWS APIs"
+      },
+      {
+        "label": "Wait + register",
+        "detail": "Confirm EC2 readiness; register the service"
+      },
+      {
+        "label": "Observe + expand",
+        "detail": "Poll progress; respect time since last launch"
+      },
+      {
+        "label": "Finish + clean up",
+        "detail": "Wait for test completion before termination"
+      }
+    ]
+  },
+  {
+    "id": "elastic-scaling-timing",
+    "title": "Responsiveness has several clocks",
+    "kind": "comparison",
+    "summary": "The recorded alarm period alone does not establish the controller's response time.",
+    "columns": [
+      {
+        "label": "Signal",
+        "items": [
+          "EC2 detailed CPU metrics: 1 minute",
+          "Saved alarm period: 10 seconds",
+          "Verify resolution before interpreting behavior"
+        ]
+      },
+      {
+        "label": "Decision",
+        "items": [
+          "Scale out: 60%, 3 periods",
+          "Scale in: 40%, 4 periods",
+          "Capacity range: 1–5 instances"
+        ]
+      },
+      {
+        "label": "Actuation",
+        "items": [
+          "Two-instance adjustments",
+          "Separate 50s / 30s cooldowns",
+          "180s health-check grace"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "wecloud-chart",
+    "title": "One chart, explicit environment differences",
+    "kind": "flow",
+    "summary": "Shared templates produce service deployments from common and cloud-specific values.",
+    "steps": [
+      {
+        "label": "Spring services",
+        "detail": "Supplied login, profile, and chat applications"
+      },
+      {
+        "label": "Container images",
+        "detail": "Package the applications; version each image"
+      },
+      {
+        "label": "Helm chart",
+        "detail": "Deployments, services, configuration, secrets, and HPA"
+      },
+      {
+        "label": "Environment values",
+        "detail": "Select registries, database names, and service placement"
+      }
+    ]
+  },
+  {
+    "id": "wecloud-placement",
+    "title": "The deployment is intentionally asymmetric",
+    "kind": "comparison",
+    "summary": "Chat's profile endpoint list spans clouds; chat itself remains on GCP.",
+    "columns": [
+      {
+        "label": "GKE · Google Cloud",
+        "items": [
+          "Login + profile + chat",
+          "Redis for chat coordination",
+          "Profile endpoint reachable by chat"
+        ]
+      },
+      {
+        "label": "AKS · Azure",
+        "items": [
+          "Login + profile",
+          "Environment-specific images and database names",
+          "Second profile endpoint for chat"
+        ]
+      },
+      {
+        "label": "Shared entrance",
+        "items": [
+          "Azure Front Door",
+          "Login/profile and chat routes",
+          "Health probes per origin group"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "storage-models",
+    "title": "The same project, three storage responsibilities",
+    "kind": "comparison",
+    "summary": "The Yelp queries and reservation exercise exposed different operations and correctness concerns.",
+    "columns": [
+      {
+        "label": "MySQL",
+        "items": [
+          "Filter, join and aggregate Yelp rows",
+          "Deterministic sorting and query plans",
+          "Correct population for every aggregate"
+        ]
+      },
+      {
+        "label": "MongoDB",
+        "items": [
+          "Query business records on Cosmos DB",
+          "Attribute dictionaries stored as strings",
+          "Server-side sorting and distinct values"
+        ]
+      },
+      {
+        "label": "Redis",
+        "items": [
+          "Hash and list data structures",
+          "Expiring marketplace reservation keys",
+          "Owner-checked lock release"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "storage-lock-release",
+    "title": "Releasing only the lock I still own",
+    "kind": "flow",
+    "summary": "This is the coursework's optimistic transaction path. A changed key causes EXEC to abort.",
+    "steps": [
+      {
+        "label": "Watch the key",
+        "detail": "Track modifications before checking ownership"
+      },
+      {
+        "label": "Read the owner",
+        "detail": "Mismatch: UNWATCH and refuse release"
+      },
+      {
+        "label": "Queue deletion",
+        "detail": "Matching owner: MULTI, then DEL"
+      },
+      {
+        "label": "Commit conditionally",
+        "detail": "EXEC succeeds only if the watched key stayed unchanged"
+      }
+    ]
+  },
+  {
+    "id": "social-store-responsibilities",
+    "title": "Three stores behind one API",
+    "kind": "comparison",
+    "summary": "Each store holds a different part of the social application. The Java backend assembles their results.",
+    "columns": [
+      {
+        "label": "MySQL",
+        "items": [
+          "Account and profile records",
+          "Managed MySQL on Azure",
+          "Credentials supplied through environment variables"
+        ]
+      },
+      {
+        "label": "Neo4j",
+        "items": [
+          "Users and directed FOLLOWS edges",
+          "Separate followers and followees queries",
+          "Names ordered in Cypher"
+        ]
+      },
+      {
+        "label": "MongoDB",
+        "items": [
+          "Reddit comment documents",
+          "Shared filter, sort and projection",
+          "Parent and grandparent context"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "social-timeline-request",
+    "title": "Assembling a timeline on a cache miss",
+    "kind": "flow",
+    "summary": "Cache hits return earlier. On a miss, the response also supplies the follower count used for cache admission.",
+    "steps": [
+      {
+        "label": "Profile and graph",
+        "detail": "Fetch profile, followers and followees"
+      },
+      {
+        "label": "Ranked comments",
+        "detail": "Top 30 across followees; upvotes then timestamp"
+      },
+      {
+        "label": "Conversation context",
+        "detail": "Resolve each parent and grandparent by comment ID"
+      },
+      {
+        "label": "Response and cache",
+        "detail": "Assemble JSON; cache only when followers exceed 300"
+      }
+    ]
+  },
+  {
+    "id": "uber-event-routing",
+    "title": "Route decisions to the state they need",
+    "kind": "comparison",
+    "summary": "The project used different routing rules for block-local decisions and rider information needed across blocks.",
+    "columns": [
+      {
+        "label": "Block events",
+        "items": [
+          "Driver locations and ride requests",
+          "Partition = blockId % 5",
+          "Reach the state for the rider's block"
+        ]
+      },
+      {
+        "label": "Profile updates",
+        "items": [
+          "Rider status and interest changes",
+          "Broadcast to all five partitions",
+          "Refresh each local rider-profile view"
+        ]
+      },
+      {
+        "label": "Downstream output",
+        "items": [
+          "Driver decisions → match-stream",
+          "Advertisement decisions → ad-stream",
+          "Click transformation → ad-price"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "uber-driver-lifecycle",
+    "title": "One driver's availability lifecycle",
+    "kind": "flow",
+    "summary": "Location updates refresh known drivers; they do not create availability on their own.",
+    "steps": [
+      {
+        "label": "Enter a block",
+        "detail": "Register full driver state through ENTERING_BLOCK"
+      },
+      {
+        "label": "Stay available",
+        "detail": "Update known coordinates; leaving removes availability"
+      },
+      {
+        "label": "Accept a match",
+        "detail": "RIDE_REQUEST emits a match and removes the winner"
+      },
+      {
+        "label": "Complete the ride",
+        "detail": "Average the rating and register at the destination block"
+      }
+    ]
+  },
+  {
+    "id": "ml-cleaning",
+    "title": "One preprocessing contract, two row policies",
+    "kind": "comparison",
+    "summary": "Fixed bounds keep feature generation stateless. Training can reject implausible examples; prediction must preserve every input row.",
+    "columns": [
+      {
+        "label": "Training examples",
+        "items": [
+          "Check fare, passenger count, and coordinates",
+          "Drop rows outside the chosen envelope",
+          "Build distance, time, airport, and location features"
+        ]
+      },
+      {
+        "label": "Prediction requests",
+        "items": [
+          "Check the available input fields",
+          "Clip inputs; preserve row count and order",
+          "Build the same feature definitions"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ml-service",
+    "title": "The fare assistant described in the build log",
+    "kind": "flow",
+    "summary": "Logged application architecture. Retained local application files are mostly scaffolding, so this is not a claim of a currently verified deployment.",
+    "steps": [
+      {
+        "label": "Hear the request",
+        "detail": "Speech-to-Text transcribes an uploaded recording."
+      },
+      {
+        "label": "Find the trip",
+        "detail": "Entity extraction identifies places; Maps Directions supplies route information."
+      },
+      {
+        "label": "Estimate the fare",
+        "detail": "Engineered trip features feed the custom prediction model."
+      },
+      {
+        "label": "Return a response",
+        "detail": "Text-to-Speech speaks the estimate; the chat extension can also retrieve NYC information."
+      }
+    ]
+  },
+  {
+    "id": "serverless-flow",
+    "title": "One upload fans out into media processing",
+    "kind": "flow",
+    "summary": "Video events feed thumbnail and preview generation. Thumbnail events continue to tagging and search indexing.",
+    "steps": [
+      {
+        "label": "Video uploaded",
+        "detail": "Blob Storage emits a created event for the input container."
+      },
+      {
+        "label": "Two media outputs",
+        "detail": "generateThumbnail writes PNGs; generatePreview writes a GIF to a separate container."
+      },
+      {
+        "label": "Thumbnail labeled",
+        "detail": "A thumbnail event calls Azure AI Vision, with bounded retries for HTTP 429."
+      },
+      {
+        "label": "Search document indexed",
+        "detail": "The thumbnail ID and tags are sent to Azure AI Search."
+      }
+    ]
+  },
+  {
+    "id": "serverless-boundaries",
+    "title": "The runtime details behind the handlers",
+    "kind": "comparison",
+    "summary": "Each helper responds to a specific behavior encountered in the project's function environment.",
+    "columns": [
+      {
+        "label": "Runtime behavior",
+        "items": [
+          "Deployment share is read-only",
+          "A warm instance may retain files",
+          "Blob URLs may contain escaped characters",
+          "Vision can reject a burst with HTTP 429"
+        ]
+      },
+      {
+        "label": "Implementation response",
+        "items": [
+          "Copy ffmpeg into /tmp and make it executable",
+          "Reset the per-video workspace",
+          "Decode the URL before extracting the blob name",
+          "Retry up to ten times with a two-second wait"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "twitter-spark-foundations",
+    "title": "Separate the graph from the changing ranks",
+    "kind": "flow",
+    "summary": "Phase 0 used a 10.4 GB follower graph. The graph analysis is distinct from the later tweet ETL and serving database.",
+    "steps": [
+      {
+        "label": "Explore the graph",
+        "detail": "1,006,458 vertices and 564,768,812 directed edges in the recorded task output."
+      },
+      {
+        "label": "Aggregate two ways",
+        "detail": "RDD reduceByKey for counts; DataFrame aggregation for a Parquet result."
+      },
+      {
+        "label": "Cache the static side",
+        "detail": "Reuse adjacency and out-degree while ranks change across iterations."
+      },
+      {
+        "label": "Keep dangling mass",
+        "detail": "Preserve vertices without outgoing contributions and redistribute rank mass."
+      }
+    ]
+  },
+  {
+    "id": "twitter-throughput",
+    "title": "Four measurements, different test conditions",
+    "kind": "bars",
+    "summary": "Historical project figures, not a controlled comparison. The peak bar stops at 20,000 as a lower bound; its run duration, correctness details and exact configuration were not supplied.",
+    "rows": [
+      {
+        "label": "Phase 1",
+        "value": 353.25,
+        "display": "353.25 RPS",
+        "detail": "Best 10-minute submission · $0.27/hr budget cap, not measured spend"
+      },
+      {
+        "label": "Phase 2",
+        "value": 5516.19,
+        "display": "5,516.19 RPS",
+        "detail": "One-hour live test · $0.3753/hr reported cost"
+      },
+      {
+        "label": "Phase 3",
+        "value": 10000,
+        "display": "~10,000 RPS",
+        "detail": "One-hour graded live test · warmed database · ~$0.355/hr"
+      },
+      {
+        "label": "Outside the graded window",
+        "value": 20000,
+        "display": "20,000+ RPS",
+        "detail": "Reported best run · $0.31/hr · different configuration",
+        "peak": true
+      }
+    ]
+  }
+]
