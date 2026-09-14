@@ -9,7 +9,7 @@ export const socialImage = {
   url: sitePath('/og.png'),
   width: 1200,
   height: 630,
-  alt: 'Hrishikesh Bhardwaj — Backend & Distributed Systems Engineer',
+  alt: 'Hrishikesh Bhardwaj — Software Engineer',
 };
 
 export function pageMetadata({

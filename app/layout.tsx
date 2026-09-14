@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 const title = 'Hrishikesh Bhardwaj — Software Engineer';
 const description =
-  'Backend and distributed systems engineer. 4.5 years at ION Group, now a Master of Software Engineering student at Carnegie Mellon. Available January 2027.';
+  'Software engineer. 4.5 years at ION Group in Java, AWS, and distributed systems. Now a Master of Software Engineering student at Carnegie Mellon. Available January 2027.';
 
 // Defaults for any route without its own metadata. Each page sets its own
 // title, description and canonical URL through `pageMetadata`.

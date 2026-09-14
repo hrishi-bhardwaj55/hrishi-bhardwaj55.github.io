@@ -8,7 +8,7 @@ import { email, github, linkedin } from '../projects';
 export const metadata: Metadata = pageMetadata({
   title: 'Resume — Hrishikesh Bhardwaj',
   description:
-    'Backend and distributed systems engineer. 4.5 years at ION Group, CMU Master of Software Engineering, and projects in cloud systems, streaming, and applied AI. Available January 2027.',
+    'Software engineer. 4.5 years at ION Group, CMU Master of Software Engineering, and projects in cloud systems, streaming, and applied AI. Available January 2027.',
   path: '/resume/',
 });
 
@@ -64,13 +64,11 @@ export default function Resume() {
             <h1>
               Hrishikesh Bhardwaj<span>.</span>
             </h1>
-            <p className="resume-role">
-              Backend &amp; Distributed Systems Engineer
-            </p>
+            <p className="resume-role">Software Engineer</p>
           </div>
           <div className="resume-heading-actions">
             <DownloadResume />
-            <span>1 page · PDF · 346 KB</span>
+            <span>1 page · PDF · 53 KB</span>
           </div>
         </header>
 
