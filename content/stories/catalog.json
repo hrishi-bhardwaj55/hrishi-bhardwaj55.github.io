@@ -3,11 +3,11 @@
     "slug": "twitter-analytics",
     "project": "Twitter Analytics",
     "title": "I built a Twitter analytics service. Most of the work was figuring out why it was slow.",
-    "excerpt": "From Spark graph processing to a terabyte-scale service: one database lookup, a Go rewrite, and the measurements that shaped four project phases.",
+    "excerpt": "20,000 requests per second at $0.31/hour in Phase 3, plus a separate 70,000-RPS Redis-only experiment that traded cost for throughput.",
     "period": "February–April 2026",
     "context": "CMU 15-619 · Semester project",
     "stack": ["Go", "Java", "Spark", "MySQL", "AWS"],
-    "sourceNote": "Adapted from my updated Spring 2026 build log and the earlier project story, which drew on the submitted reports, repository history, ETL notebook and deployment configurations. Costs and throughput are historical project results. The 20,000+ RPS peak is a reported run outside the graded window, with no run duration or exact configuration supplied."
+    "sourceNote": "Based on my Spring 2026 build log, project reports and subsequent measurement updates. Phase 3 reached 20,000 RPS at $0.31/hour. The 70,000-RPS Redis-only result was a separate, expensive in-memory experiment; its hourly cost is not specified. These are historical project measurements across different configurations."
   },
   {
     "slug": "aws-foundations",

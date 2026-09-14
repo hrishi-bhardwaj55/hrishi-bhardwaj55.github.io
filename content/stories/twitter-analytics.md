@@ -1,6 +1,6 @@
 # I built a Twitter analytics service. Most of the work was figuring out why it was slow.
 
-By the end of this project, I had a Twitter analytics service handling about 10,000 requests per second on ECS Fargate and RDS, at a reported project cost of roughly $0.35 an hour. My Phase 1 result had been 353.25 requests per second.
+By Phase 3, I had a Twitter analytics service handling 20,000 requests per second on ECS Fargate and RDS at $0.31 an hour. My Phase 1 result had been 353.25 requests per second. A separate Redis-only experiment pushed throughput to 70,000 requests per second by keeping the data in memory, but it was expensive.
 
 That is the tidy version. It skips the hours spent rerunning ETL, the database imports that took another three hours, the memory setting that stopped MySQL from starting, and the deployment that looked fine until the application tried to connect to its database.
 
@@ -132,7 +132,7 @@ The final Phase 2 performance run reached 5,516.19 RPS, about 15.6 times the Pha
 
 Phase 3 changed the infrastructure question. I had to use managed services, and the performance-to-cost ratio mattered. I explored ECS with Fargate and EKS with Fargate, and costed an EKS managed-node alternative. I did not complete a comparable performance experiment for every architecture.
 
-I chose ECS Fargate for the final performance deployment. The application was straightforward enough that ECS services and task definitions covered what I needed. In the project's cost model, the EKS control-plane fee alone was about $0.10 an hour. Against a total running cost around $0.35, that was a substantial amount of budget before adding application capacity.
+I chose ECS Fargate for the final performance deployment. The application was straightforward enough that ECS services and task definitions covered what I needed. In the project's cost model, the EKS control-plane fee alone was about $0.10 an hour. Against the $0.31-an-hour Phase 3 result, that was a substantial amount of budget before adding application capacity.
 
 The final deployment put an internet-facing Network Load Balancer in front of the Twitter tasks. The auth service was discovered through private DNS, and the database became a private, Single-AZ RDS MySQL instance. Terraform described the infrastructure, including the services, task definitions, networking rules, load balancer, and logging. The task definitions used ARM64 images, and database credentials came through AWS Secrets Manager.
 
@@ -148,23 +148,33 @@ These were not especially glamorous fixes. Reading the logs, inspecting the pod,
 
 The biggest Phase 3 performance lesson came from database warm-up. I initially saw around 6,000 RPS with a larger application deployment. Repeated runs with the same configuration improved, and the utilization pattern changed as useful database pages became resident in memory. I had been treating the first run as more representative than it was.
 
-Once I understood that behavior, I could make a better decision about task counts. I scaled down and watched whether the remaining tasks could still handle the workload. The final configuration described in my report used two Twitter tasks, each with 1 vCPU and 2 GB of memory, and two authentication tasks, each with 0.25 vCPU and 0.5 GB of memory. The cost calculation lists a db.r6g.large RDS instance with 120 GB of gp3 storage.
+Once I understood that behavior, I could make a better decision about task counts. I scaled down and watched whether the remaining tasks could still handle the workload. One configuration documented in my report used two Twitter tasks, each with 1 vCPU and 2 GB of memory, and two authentication tasks, each with 0.25 vCPU and 0.5 GB of memory. The report lists a db.r6g.large RDS instance with 120 GB of gp3 storage.
 
 ![Phase 3: a public NLB forwards to two ARM64 Twitter Fargate tasks; each can reach two auth tasks through private DNS and a private Single-AZ RDS MySQL database.](/stories/twitter-analytics/phase3-topology.png)
 
-*The reported live-test configuration. Fargate runs the containers without EC2 workers for me to manage. Arrows show allowed request paths; auth and RDS accept traffic from the Twitter security group.*
+*The ECS and RDS topology documented in the report. Task counts describe that recorded configuration. Arrows show allowed request paths; auth and RDS accept traffic from the Twitter security group.*
 
-With a warmed database, the graded one-hour Phase 3 run reached about 10,000 RPS at a reported cost of roughly $0.355 an hour. That remains the result I use for the live test. The saved Terraform currently specifies three Twitter tasks, so it is not an exact snapshot of the two-task live-test configuration described in the report.
+The Phase 3 result I achieved was 20,000 RPS at $0.31 an hour. The saved Terraform specifies three Twitter tasks, while the report describes a two-task configuration; those artifacts capture different points in the tuning process rather than one exact snapshot of every performance run.
 
 Warm-up and the earlier optimizations let fewer tasks handle more traffic. Scaling down by itself was not a performance trick.
 
-## The live test and the later peak
+## Reaching 20,000 requests per second
 
-My updated build log records a best run above 20,000 requests per second at $0.31 an hour outside the graded window. It is a useful additional result, but it answers a different question from the one-hour live test. The log does not supply that peak run's duration, exact configuration, correctness breakdown or warm-up conditions.
+Getting to 20,000 requests per second was the combined result of the work that came before it: removing repeated database queries, precomputing reusable features, changing the web tier, and measuring how the deployment behaved under load. The cost mattered alongside the throughput. At $0.31 an hour, the Phase 3 configuration gave me a result I could defend on both measures.
 
-I keep both numbers visible: roughly 10,000 RPS for the graded, warmed Phase 3 run, and 20,000+ for the separately reported peak. The lower reported cost suggests further right-sizing, but the available record is not detailed enough to attribute the whole difference to a particular change.
+I also wanted to see how far I could push the service with a different storage approach. That led to the Redis-only experiment below. Its higher throughput came with a different cost profile, so I keep it separate from the Phase 3 result in the graphic.
 
 :::diagram twitter-throughput
+
+## Pushing further with Redis and data in memory
+
+For the experiment, I used Redis as the only serving data store and kept the data in memory, without a separate MySQL database in the request path. This went beyond caching a few repeated requests: the data needed to serve the workload was held in memory.
+
+That version reached 70,000 requests per second. It showed what was possible when I changed the storage approach, but the configuration was expensive. I did not achieve that throughput at the Phase 3 cost of $0.31 an hour.
+
+:::diagram twitter-storage-experiment
+
+I would describe it as an experiment in throughput rather than the economical configuration I settled on. The exact hourly cost was not recorded here, and it was a different setup rather than a controlled comparison with the database-backed version. The useful lesson was to keep asking what I was optimizing for: the highest request rate, or a service that delivered strong performance within the budget.
 
 ## What the numbers leave out
 
@@ -174,7 +184,7 @@ By the final phase, Java tests, Go tests, and Helm linting ran independently. A 
 
 That endpoint check needs strengthening. It accepts HTTP 200, but the service also returns 200 with an `INVALID` body, and the test omits the required timestamp. I would verify a valid request and its response body before calling it deployment validation. The automation improved, but some checks were narrower than their names suggested.
 
-There were experiments I left on the table too. I did not run a full ALB-versus-NLB comparison in Phase 2. Redis and Memcached were prohibited in that phase, which is why the caches lived inside the Go service. I kept MySQL when moving to managed storage instead of redesigning the service around a NoSQL database. Each alternative would have added another experiment to an already constrained project.
+There were experiments I left on the table too. I did not run a full ALB-versus-NLB comparison in Phase 2. Redis and Memcached were prohibited in that phase, which is why its caches lived inside the Go service. I kept MySQL for the managed Phase 3 configuration and explored Redis separately in the in-memory experiment.
 
 The final system made a reliability tradeoff. Multiple tasks gave the web tier some resilience while ECS replaced failures, but Single-AZ RDS remained a critical dependency. It fit the budget. Running successfully during a test did not erase that risk or give a nearly saturated system much spare capacity.
 
@@ -184,4 +194,4 @@ What I am happiest with is the change in how I approached performance. Early on,
 
 The part I would want another engineer to remember is simple: five sequential queries became one lookup, the database stopped being the slowest part, and that gave me a different set of decisions to make.
 
-The graded 10,000-RPS result and the later reported peak belong to different runs. The work underneath it was learning to make those decisions with evidence, including when the evidence said my previous decision was wrong.
+The two results capture that tradeoff: 20,000 RPS at $0.31 an hour in Phase 3, and 70,000 RPS in an expensive Redis-only experiment. The work underneath them was learning to make decisions with evidence, including when the evidence said my previous decision was wrong.

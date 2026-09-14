@@ -132,9 +132,9 @@ export const projects: readonly Project[] = [
     decision:
       'Replace five sequential database queries with one denormalized lookup. Precompute reusable features in Spark, then follow the next bottleneck.',
     evidence:
-      'About 10,000 requests per second in the final graded live test; a later best run above 20,000 RPS is reported separately in the blog.',
+      'Phase 3 reached 20,000 requests per second at $0.31/hour. A separate Redis-only, in-memory experiment reached 70,000 RPS.',
     limitation:
-      'Historical semester-project benchmarks across evolving configurations. The final result used a warmed database; it is not production traffic.',
+      'Historical project benchmarks across different configurations. The Redis-only experiment was expensive; its throughput does not share the $0.31/hour cost.',
     story: '/stories/twitter-analytics/',
     stages: [
       {

@@ -32,10 +32,6 @@ export const storyImageSizes: Record<
     width: 1600,
     height: 1320,
   },
-  '/stories/twitter-analytics/performance-milestones.png': {
-    width: 1600,
-    height: 890,
-  },
 };
 
 const articleText: Record<string, string> = {

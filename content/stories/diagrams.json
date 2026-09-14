@@ -459,9 +459,9 @@
   },
   {
     "id": "twitter-throughput",
-    "title": "Four measurements, different test conditions",
+    "title": "Phase 3 performance and the Redis experiment",
     "kind": "bars",
-    "summary": "Historical project figures, not a controlled comparison. The peak bar stops at 20,000 as a lower bound; its run duration, correctness details and exact configuration were not supplied.",
+    "summary": "Historical project measurements across different configurations. Phase 3 reached 20,000 RPS at $0.31/hour. The hatched bar is the expensive Redis-only experiment; its hourly cost is not specified.",
     "rows": [
       {
         "label": "Phase 1",
@@ -477,16 +477,40 @@
       },
       {
         "label": "Phase 3",
-        "value": 10000,
-        "display": "~10,000 RPS",
-        "detail": "One-hour graded live test · warmed database · ~$0.355/hr"
+        "value": 20000,
+        "display": "20,000 RPS",
+        "detail": "ECS Fargate + RDS · $0.31/hour"
       },
       {
-        "label": "Outside the graded window",
-        "value": 20000,
-        "display": "20,000+ RPS",
-        "detail": "Reported best run · $0.31/hr · different configuration",
+        "label": "Redis-only experiment",
+        "value": 70000,
+        "display": "70,000 RPS",
+        "detail": "Data in memory · no separate database · expensive",
         "peak": true
+      }
+    ]
+  },
+  {
+    "id": "twitter-storage-experiment",
+    "title": "Two storage approaches, different cost tradeoffs",
+    "kind": "comparison",
+    "summary": "Redis was the sole serving data store in the experiment. The $0.31/hour figure belongs only to the ECS and RDS Phase 3 result.",
+    "columns": [
+      {
+        "label": "Phase 3 · ECS + RDS",
+        "items": [
+          "Go service with RDS MySQL",
+          "20,000 requests per second",
+          "$0.31/hour"
+        ]
+      },
+      {
+        "label": "Experimental · Redis only",
+        "items": [
+          "Serving data held in memory",
+          "70,000 requests per second",
+          "Expensive; exact cost not specified"
+        ]
       }
     ]
   }
