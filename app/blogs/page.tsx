@@ -46,9 +46,6 @@ export default function Blogs() {
               key={story.slug}
             >
               <div className="blog-entry-meta">
-                <span className="story-file" aria-hidden="true">
-                  MD
-                </span>
                 <span>{story.period}</span>
                 <span>{readingMinutes(story.markdown)} min read</span>
               </div>

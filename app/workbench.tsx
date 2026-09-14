@@ -147,9 +147,6 @@ export default function WorkbenchClient() {
                 href={sitePath(`/stories/${p.slug}/`)}
                 key={p.slug}
               >
-                <span className="story-file" aria-hidden="true">
-                  MD
-                </span>
                 <div>
                   <span className="v-kicker">{p.project} / SOURCE PRIVATE</span>
                   <h3>{p.title}</h3>

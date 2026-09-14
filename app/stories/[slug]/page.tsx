@@ -41,7 +41,7 @@ export default async function ProjectStory({ params }: Props) {
           <span aria-current="page">{story.project}</span>
         </nav>
         <div className="desk-window article-window">
-          <WindowBar label={`blogs / ${story.slug}.md`}>
+          <WindowBar label={`blogs / ${story.project}`}>
             <span>{readingMinutes(story.markdown)} min read</span>
           </WindowBar>
           <div className="story-layout">
