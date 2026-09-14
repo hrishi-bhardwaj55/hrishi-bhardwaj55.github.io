@@ -21,6 +21,41 @@ export const linkedin = 'https://www.linkedin.com/in/hrishikesh-bhardwaj/';
 export const email = 'hrishikb@andrew.cmu.edu';
 export const projects: readonly Project[] = [
   {
+    id: 'attribute-prediction',
+    label: 'PY',
+    stages: [
+      {
+        name: 'Ingest',
+        text: 'Normalize supplier catalog records into one attribute schema.',
+      },
+      {
+        name: 'Predict',
+        text: 'Combine deterministic rules with per-attribute model prediction.',
+      },
+      {
+        name: 'Route',
+        text: 'Send only low-confidence attributes to a human reviewer.',
+      },
+      {
+        name: 'Write back',
+        text: 'Apply idempotent updates and log every change for audit.',
+      },
+    ],
+    name: 'Attribute Prediction',
+    category: 'Applied AI · CMU capstone',
+    stack: ['Python', 'FastAPI', 'Azure', 'ChromaDB'],
+    title: 'Confidence decides what a person still has to read.',
+    description:
+      'Catalog ingestion and attribute prediction for eParts Services LLC, built by the five-engineer team I led as forward deployed engineer.',
+    decision:
+      'Route per attribute rather than per record. Each prediction carries its own confidence, so a reviewer sees only the fields the system is unsure about, and their corrections feed retraining.',
+    evidence:
+      'Manual catalog review dropped three to five times against the process the client had been using, across ingestion, prediction, routing, and writeback.',
+    limitation:
+      'Client-owned data and deployment; measured on their catalogs rather than a public benchmark, and the source stays private.',
+    symbol: '✓',
+  },
+  {
     id: 'skeptic',
     label: 'PY',
     stages: [

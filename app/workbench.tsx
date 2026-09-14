@@ -67,7 +67,7 @@ export default function WorkbenchClient() {
             <span>Project explorer</span>
           </WindowBar>
           <TabsPrimitive.Root
-            defaultValue="skeptic"
+            defaultValue="attribute-prediction"
             orientation="vertical"
             className="desk-tabs"
           >
@@ -120,17 +120,19 @@ export default function WorkbenchClient() {
                     <p className="v-caveat">{p.limitation}</p>
                   </div>
                 </div>
-                <div className="desk-links">
-                  {p.source && <a href={p.source}>Open repository ↗</a>}
-                  {p.story && (
-                    <a className="desk-story-link" href={sitePath(p.story)}>
-                      Read the blog ↗
-                    </a>
-                  )}
-                  {p.documentation && (
-                    <a href={p.documentation}>{p.detailLabel} ↗</a>
-                  )}
-                </div>
+                {(p.source || p.story || p.documentation) && (
+                  <div className="desk-links">
+                    {p.source && <a href={p.source}>Open repository ↗</a>}
+                    {p.story && (
+                      <a className="desk-story-link" href={sitePath(p.story)}>
+                        Read the blog ↗
+                      </a>
+                    )}
+                    {p.documentation && (
+                      <a href={p.documentation}>{p.detailLabel} ↗</a>
+                    )}
+                  </div>
+                )}
               </TabsContent>
             ))}
           </TabsPrimitive.Root>
@@ -149,9 +151,15 @@ export default function WorkbenchClient() {
               <p className="v-kicker">NOTES FROM BUILDING</p>
               <h2 id="stories-title">From the blog</h2>
             </div>
-            <a className="story-read" href={sitePath('/blogs/')}>
-              All blogs ↗
-            </a>
+            <div className="story-shelf-aside">
+              <p className="v-caveat">
+                Course and client work. The source is private; these are my own
+                notes on building it.
+              </p>
+              <a className="story-read" href={sitePath('/blogs/')}>
+                All blogs ↗
+              </a>
+            </div>
           </div>
           {['twitter-analytics', 'uber-ride-matching', 'wecloud-chat']
             .map((slug) => blogCatalog.find((entry) => entry.slug === slug)!)
@@ -162,7 +170,7 @@ export default function WorkbenchClient() {
                 key={p.slug}
               >
                 <div>
-                  <span className="v-kicker">{p.project} / SOURCE PRIVATE</span>
+                  <span className="v-kicker">{p.project}</span>
                   <h3>{p.title}</h3>
                   <p>{p.excerpt}</p>
                 </div>
