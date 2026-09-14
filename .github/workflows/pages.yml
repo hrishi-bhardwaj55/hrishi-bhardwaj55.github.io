@@ -1,14 +1,18 @@
 name: Publish portfolio to GitHub Pages
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
 
+# Let an in-flight publish finish; cancelling mid-deploy can leave Pages
+# serving a half-updated site.
 concurrency:
   group: github-pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
