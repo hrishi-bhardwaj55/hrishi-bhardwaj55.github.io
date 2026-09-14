@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { sitePath } from '@/lib/site-path';
+import { pageMetadata } from '@/lib/page-metadata';
 import { stories, readingMinutes, headingId } from '../data';
 import { StoryBody, Inline } from '../story-body';
 import { PortfolioNav, WindowBar } from '../../workspace-chrome';
@@ -15,10 +16,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const story = stories.find((item) => item.slug === slug);
   return story
-    ? {
+    ? pageMetadata({
         title: `${story.project} — Blog · Hrishikesh Bhardwaj`,
         description: story.excerpt,
-      }
+        path: `/stories/${story.slug}/`,
+        type: 'article',
+      })
     : {};
 }
 export default async function ProjectStory({ params }: Props) {

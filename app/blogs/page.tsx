@@ -1,14 +1,16 @@
 import type { Metadata } from 'next';
 import { sitePath } from '@/lib/site-path';
+import { pageMetadata } from '@/lib/page-metadata';
 import { PortfolioNav, WindowBar } from '../workspace-chrome';
 import { PortfolioFooter } from '../project-visuals';
 import { stories, readingMinutes } from '../stories/data';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Blogs — Hrishikesh Bhardwaj',
   description:
     'Project write-ups on architecture, performance, and the decisions behind the work.',
-};
+  path: '/blogs/',
+});
 
 export default function Blogs() {
   return (

@@ -1,14 +1,22 @@
-import { github } from './projects';
+import { email, github, linkedin } from './projects';
 export function PortfolioFooter() {
   return (
     <footer className="v-footer">
       <div>
         <span className="v-kicker">
-          OPEN TO SOFTWARE ENGINEERING OPPORTUNITIES
+          OPEN TO SOFTWARE ENGINEERING ROLES FROM JANUARY 2027
         </span>
         <h2>Let’s build something useful.</h2>
       </div>
-      <a href={github}>Explore my GitHub ↗</a>
+      <div className="v-footer-contact">
+        <a className="v-footer-email" href={`mailto:${email}`}>
+          {email}
+        </a>
+        <span>
+          <a href={linkedin}>LinkedIn ↗</a>
+          <a href={github}>GitHub ↗</a>
+        </span>
+      </div>
     </footer>
   );
 }

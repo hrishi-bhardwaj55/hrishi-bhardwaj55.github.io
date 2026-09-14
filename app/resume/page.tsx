@@ -1,14 +1,16 @@
 import type { Metadata } from 'next';
 import { Download } from 'lucide-react';
 import { sitePath } from '@/lib/site-path';
+import { pageMetadata } from '@/lib/page-metadata';
 import { PortfolioNav, WindowBar } from '../workspace-chrome';
-import { github } from '../projects';
+import { email, github, linkedin } from '../projects';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Resume — Hrishikesh Bhardwaj',
   description:
     'Backend and distributed systems engineer. 4.5 years at ION Group, CMU Master of Software Engineering, and projects in cloud systems, streaming, and applied AI. Available January 2027.',
-};
+  path: '/resume/',
+});
 
 const pdf = '/files/Hrishikesh_Bhardwaj_Resume.pdf';
 const skills = [
@@ -85,13 +87,9 @@ export default function Resume() {
               AI.
             </p>
             <address className="resume-contact">
-              <a href="mailto:hrishikb@andrew.cmu.edu">
-                hrishikb@andrew.cmu.edu
-              </a>
+              <a href={`mailto:${email}`}>{email}</a>
               <a href="tel:+14123605635">(412) 360-5635</a>
-              <a href="https://www.linkedin.com/in/hrishikesh-bhardwaj/">
-                LinkedIn ↗
-              </a>
+              <a href={linkedin}>LinkedIn ↗</a>
               <a href={github}>GitHub ↗</a>
             </address>
             <p className="resume-availability">

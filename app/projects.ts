@@ -17,6 +17,8 @@ export type Project = {
   stages: readonly { name: string; text: string }[];
 };
 export const github = 'https://github.com/hrishi-bhardwaj55';
+export const linkedin = 'https://www.linkedin.com/in/hrishikesh-bhardwaj/';
+export const email = 'hrishikb@andrew.cmu.edu';
 export const projects: readonly Project[] = [
   {
     id: 'skeptic',

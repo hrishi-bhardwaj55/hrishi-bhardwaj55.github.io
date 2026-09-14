@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Tabs as TabsPrimitive } from '@base-ui/react/tabs';
-import { projects, github, type Project } from './projects';
+import { projects, github, email, linkedin, type Project } from './projects';
 import { sitePath } from '@/lib/site-path';
 import { PortfolioFooter, ProjectGlyph } from './project-visuals';
 import { PortfolioNav, WindowBar } from './workspace-chrome';
@@ -35,18 +35,32 @@ export default function WorkbenchClient() {
       <main className="desk-shell">
         <header className="desk-intro">
           <div>
-            <p className="v-kicker">HRISHIKESH BHARDWAJ / SOFTWARE ENGINEER</p>
+            <p className="v-kicker">
+              BACKEND &amp; DISTRIBUTED SYSTEMS ENGINEER
+            </p>
             <h1>
-              A look inside
+              Hrishikesh
               <br />
-              the work.
+              Bhardwaj.
             </h1>
+            <p className="desk-pitch">
+              4.5 years building high-throughput distributed systems at ION
+              Group, from FX execution to post-trade processing. Now a Master of
+              Software Engineering student at Carnegie Mellon, focused on
+              reliable backends, cloud infrastructure, and applied AI.
+            </p>
           </div>
-          <p>
-            Choose a project.
-            <br />
-            Explore the code, or read the story.
-          </p>
+          <div className="desk-intro-aside">
+            <p className="desk-available">Available January 2027</p>
+            <p className="desk-contact">
+              <a href={`mailto:${email}`}>{email}</a>
+              <a href={linkedin}>LinkedIn ↗</a>
+            </p>
+            <p className="desk-hint">
+              A look inside the work. Choose a project, explore the code, or
+              read the story.
+            </p>
+          </div>
         </header>
         <div className="desk-window">
           <WindowBar label="hrishi / selected-work">
