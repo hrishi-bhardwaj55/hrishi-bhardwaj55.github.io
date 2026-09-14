@@ -26,6 +26,8 @@ for (const file of [
   'index.html',
   '404.html',
   'blogs/index.html',
+  'resume/index.html',
+  'files/Hrishikesh_Bhardwaj_Resume.pdf',
   ...catalog.map((story) => `stories/${story.slug}/index.html`),
 ]) {
   if (!fs.existsSync(path.join(publicRoot, file)))

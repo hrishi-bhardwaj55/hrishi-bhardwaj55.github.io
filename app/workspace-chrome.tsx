@@ -2,7 +2,11 @@ import type { ReactNode } from 'react';
 import { sitePath } from '@/lib/site-path';
 import { github } from './projects';
 
-export function PortfolioNav({ active }: { active: 'workbench' | 'blogs' }) {
+export function PortfolioNav({
+  active,
+}: {
+  active: 'workbench' | 'blogs' | 'resume';
+}) {
   return (
     <nav className="portfolio-nav" aria-label="Portfolio">
       <a
@@ -24,6 +28,12 @@ export function PortfolioNav({ active }: { active: 'workbench' | 'blogs' }) {
           aria-current={active === 'blogs' ? 'page' : undefined}
         >
           <span aria-hidden="true">≡</span> Blogs
+        </a>
+        <a
+          href={sitePath('/resume/')}
+          aria-current={active === 'resume' ? 'page' : undefined}
+        >
+          <span aria-hidden="true">▤</span> Resume
         </a>
       </div>
       <a className="portfolio-github" href={github}>

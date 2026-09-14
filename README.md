@@ -21,7 +21,9 @@ For a local subpath build in PowerShell, set `$env:NEXT_PUBLIC_BASE_PATH='/portf
 - Project descriptions, access links, technology labels, and architecture stages: `app/projects.ts`
 - Workbench interface: `app/workbench.tsx`
 - Blogs tab and index: `app/blogs/page.tsx`
-- Shared Workbench/Blogs navigation and window frame: `app/workspace-chrome.tsx`
+- Resume page, experience, education, skills, and project links: `app/resume/page.tsx`
+- Original downloadable resume: `public/files/Hrishikesh_Bhardwaj_Resume.pdf`
+- Shared Workbench/Blogs/Resume navigation and window frame: `app/workspace-chrome.tsx`
 - Story text: `content/stories/twitter-analytics.md`
 - All nine blog articles: `content/stories/*.md`
 - Story titles, descriptions and source notes: `content/stories/catalog.json`
@@ -45,4 +47,4 @@ The static build checks page, image, script, stylesheet, and font references. Bo
 
 The existing Sites preview remains a separate private publication. The GitHub Pages workflow does not use Sites credentials or require a Cloudflare account. `.openai/hosting.json` is only used for that private preview. You will publish publicly when you enable Pages and run the workflow in your GitHub repository.
 
-Before using the portfolio in applications, confirm the display name and add your preferred contact details, resume, and work history. The project claims come from public repositories and the supplied project story; unprovided credentials and employment details are not invented.
+The `/resume/` page uses the supplied resume PDF and consolidated resume bank, with the latest Twitter performance corrections from the author. Its download buttons serve the uploaded PDF unchanged. Both the page and PDF are static files hosted entirely by GitHub Pages. To update the downloadable document, replace `public/files/Hrishikesh_Bhardwaj_Resume.pdf` and update the size/page-count label in `app/resume/page.tsx` if needed; edit the web resume separately.
