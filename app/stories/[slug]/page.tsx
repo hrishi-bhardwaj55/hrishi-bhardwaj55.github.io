@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const story = stories.find((item) => item.slug === slug);
   return story
     ? {
-        title: `${story.project} — Blog · Hrishi Bhardwaj`,
+        title: `${story.project} — Blog · Hrishikesh Bhardwaj`,
         description: story.excerpt,
       }
     : {};
@@ -70,7 +70,7 @@ export default async function ProjectStory({ params }: Props) {
                 <p className="v-kicker">{story.context}</p>
                 <h1>{story.title}</h1>
                 <div className="story-byline">
-                  <span>Hrishi Bhardwaj</span>
+                  <span>Hrishikesh Bhardwaj</span>
                   <span>{story.period}</span>
                 </div>
                 <ul className="story-stack" aria-label="Technologies">

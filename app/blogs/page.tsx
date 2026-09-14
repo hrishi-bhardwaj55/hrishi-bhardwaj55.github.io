@@ -5,7 +5,7 @@ import { PortfolioFooter } from '../project-visuals';
 import { stories, readingMinutes } from '../stories/data';
 
 export const metadata: Metadata = {
-  title: 'Blogs — Hrishi Bhardwaj',
+  title: 'Blogs — Hrishikesh Bhardwaj',
   description:
     'Project write-ups on architecture, performance, and the decisions behind the work.',
 };
@@ -17,7 +17,7 @@ export default function Blogs() {
       <main className="desk-shell blogs-shell">
         <header className="desk-intro blogs-intro">
           <div>
-            <p className="v-kicker">HRISHI BHARDWAJ / ENGINEERING NOTES</p>
+            <p className="v-kicker">HRISHIKESH BHARDWAJ / ENGINEERING NOTES</p>
             <h1>Behind the build.</h1>
           </div>
           <p>
@@ -66,7 +66,7 @@ export default function Blogs() {
           ))}
           <div className="desk-status">
             <span>First-hand project notes</span>
-            <span>Written by Hrishi Bhardwaj</span>
+            <span>Written by Hrishikesh Bhardwaj</span>
           </div>
         </section>
       </main>

@@ -1,4 +1,4 @@
-# Hrishi Bhardwaj — Workbench portfolio
+# Hrishikesh Bhardwaj — Workbench portfolio
 
 A dark portfolio with public-code projects and long-form stories for work whose source is private. Built with React, TypeScript, Vinext, and CSS; every page is exported as static HTML for GitHub Pages.
 

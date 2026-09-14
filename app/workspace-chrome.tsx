@@ -8,7 +8,7 @@ export function PortfolioNav({ active }: { active: 'workbench' | 'blogs' }) {
       <a
         href={sitePath('/')}
         className="portfolio-brand"
-        aria-label="Hrishi Bhardwaj home"
+        aria-label="Hrishikesh Bhardwaj home"
       >
         hb<span>.</span>
       </a>

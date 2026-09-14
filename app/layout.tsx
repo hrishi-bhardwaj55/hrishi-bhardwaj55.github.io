@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Hrishi Bhardwaj — Software Engineer',
+  title: 'Hrishikesh Bhardwaj — Software Engineer',
   description:
     'Selected engineering work: SQL verification, evidence-driven applications, and reproducible interactive systems.',
 };

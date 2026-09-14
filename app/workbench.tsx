@@ -35,7 +35,7 @@ export default function WorkbenchClient() {
       <main className="desk-shell">
         <header className="desk-intro">
           <div>
-            <p className="v-kicker">HRISHI BHARDWAJ / SOFTWARE ENGINEER</p>
+            <p className="v-kicker">HRISHIKESH BHARDWAJ / SOFTWARE ENGINEER</p>
             <h1>
               A look inside
               <br />
