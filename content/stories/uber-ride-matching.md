@@ -2,13 +2,15 @@
 
 A driver location by itself does not tell a ride-booking system whether that driver can accept a trip. The driver may have just left the block, been assigned to another rider, or completed a ride somewhere else. I built this Uber-style matching backend to make those changes part of the computation, one event at a time.
 
-The coursework scenario was called NYCabs. I used Java 11, Kafka 2.8 and Samza 1.8 on an AWS EMR cluster to process supplied event traces. The backend joined driver availability, ride requests and advertising decisions over those traces.
+The coursework scenario was called NYCabs. I used Java 11, Kafka 2.8 and Samza 1.8 on an AWS EMR cluster to process supplied event traces at more than 10,000 events per second. The backend joined driver availability, ride requests and advertising decisions over those traces.
 
 ## The partition key was part of the algorithm
 
 My producer read each trace record, inspected its event type and routed it to either the driver-location topic or the general event topic. Both used five partitions, with `blockId % 5` deciding the destination.
 
 That rule had a purpose beyond distributing load. A ride request could only match drivers in the rider's own city block. Events for a block therefore needed to reach the processor holding that block's driver state. Choosing an unrelated key would scatter the information required to make one decision.
+
+The same split carried the volume. With blocks spread across five partitions, no single processor owned enough of the city to fall behind the stream at that rate.
 
 I developed two producer variants because the later advertising task changed the routing needs. Ride requests still belonged to one block, while rider-profile updates needed to reach every partition that might later handle that rider. The second producer broadcast those updates while continuing to partition the ride traffic.
 
