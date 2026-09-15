@@ -28,6 +28,7 @@ for (const file of [
   'blogs/index.html',
   'resume/index.html',
   'og.png',
+  'CNAME',
   'files/Hrishikesh_Bhardwaj_Resume.pdf',
   ...catalog.map((story) => `stories/${story.slug}/index.html`),
 ]) {

@@ -12,7 +12,16 @@ Install with `npm ci`, then use `npm run dev`. `npm run build` exports the site 
 2. In the repository, open **Settings → Pages → Build and deployment → Source**, and choose **GitHub Actions**.
 3. Publishing is automatic: every push to `main` runs the workflow, which builds the static site and deploys it. You can also publish on demand with **Run workflow** on **Publish portfolio to GitHub Pages** in the Actions tab. GitHub shows the live URL in Pages settings and in each deployment summary.
 
-The workflow gets the URL prefix from GitHub automatically. It supports both a profile repository such as `hrishi-bhardwaj55.github.io` and a project repository such as `portfolio`. A custom domain can be configured in GitHub's Pages settings. See [GitHub's custom workflow documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+The workflow gets the URL prefix from GitHub automatically, so it works from both a profile repository such as `hrishi-bhardwaj55.github.io` and a project repository such as `portfolio`. See [GitHub's custom workflow documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+
+## Custom domain
+
+The site serves from `hrishikeshbhardwaj.com`. Two things make that work, and both must agree:
+
+- `public/CNAME` holds the domain so it is copied into the uploaded artifact. A `CNAME` at the repository root does nothing when Pages builds from Actions, because only the artifact is published.
+- `NEXT_PUBLIC_SITE_ORIGIN` in `.github/workflows/pages.yml` supplies the absolute origin for canonical links and Open Graph image URLs, which cannot be derived from a relative base path.
+
+At the registrar the apex needs four A records pointing to `185.199.108.153`, `185.199.109.153`, `185.199.110.153` and `185.199.111.153`, and `www` needs a CNAME to `hrishi-bhardwaj55.github.io`. Point DNS at GitHub before publishing a `CNAME`: with the file deployed and DNS still elsewhere, Pages redirects the site to a domain that does not reach it. To move to another domain, change all three together and regenerate `public/og.png`, which has the domain drawn into the image.
 
 For a local subpath build in PowerShell, set `$env:NEXT_PUBLIC_BASE_PATH='/portfolio'`, then run `npm run build`. That output is in `dist/client/portfolio`; upload the contents of that directory because GitHub mounts it at `/portfolio` itself. Clear the environment variable before building a root-domain site. The workflow selects the correct directory automatically.
 
