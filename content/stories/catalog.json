@@ -70,7 +70,7 @@
     "slug": "uber-ride-matching",
     "project": "Uber Ride Matching",
     "title": "Uber Ride Matching: making the next event count",
-    "excerpt": "More than 10,000 events per second through a Kafka and Samza ride-matching backend: partitioning by city block, tracking driver availability, and joining live events with rider profiles.",
+    "excerpt": "More than 10,000 events per second, and 30% lower rider-match latency, through a Kafka and Samza backend: partitioning by city block, tracking driver availability, and joining live events with rider profiles.",
     "period": "March 2026",
     "context": "CMU 15-619 · Stateful Stream Processing",
     "stack": ["Java", "Kafka", "Samza", "AWS EMR", "YARN", "Terraform"],

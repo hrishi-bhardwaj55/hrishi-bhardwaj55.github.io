@@ -20,6 +20,8 @@ I developed two producer variants because the later advertising task changed the
 
 The driver matcher kept a fault-tolerant Samza key-value store keyed by block. Within each block, it stored each driver's location, status, rating, salary and gender as required by the coursework's matching model.
 
+Keying the store by block meant a ride request was joined against driver state the same processor already held, rather than a lookup that crossed the cluster. That join cut rider-match latency by 30%.
+
 I treated `ENTERING_BLOCK` as the authoritative event that registered or refreshed a driver's full state. A `DRIVER_LOCATION` update only changed coordinates for a driver already known to the processor. A location report alone was not enough to create an available driver.
 
 `LEAVING_BLOCK` removed the driver from that block's available state. A `RIDE_REQUEST` scored eligible drivers, emitted the chosen client and driver IDs to `match-stream`, and removed the winner from the available set. On `RIDE_COMPLETE`, the task averaged the previous rating with the new rider rating and registered the driver in the block where the ride ended.

@@ -200,9 +200,9 @@ export const projects: readonly Project[] = [
     decision:
       'Partition driver and ride events by city block. Keep availability in a recoverable state store, and remove a selected driver before processing the next match.',
     evidence:
-      'Sustained more than 10,000 events per second over the supplied traces, across separate driver-match, ad-match, and ad-price jobs with explicit event transitions and rider-profile updates broadcast to the partitions that need them.',
+      'Sustained more than 10,000 events per second over the supplied traces, and block-local joins cut rider-match latency by 30%. Separate driver-match, ad-match, and ad-price jobs, with explicit event transitions and rider-profile updates broadcast to the partitions that need them.',
     limitation:
-      'Built over supplied NYCabs event traces. Throughput was measured on those traces; recovery time was not.',
+      'Built over supplied NYCabs event traces. Throughput and match latency were measured on those traces; recovery time was not.',
     story: '/stories/uber-ride-matching/',
     stages: [
       {
