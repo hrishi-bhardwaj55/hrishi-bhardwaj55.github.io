@@ -1286,6 +1286,50 @@ button {
   font-size: 0.875rem;
   margin-top: 18px;
 }
+.resume-coursework {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid #263647;
+}
+.resume-coursework > h3 {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px 24px;
+  flex-wrap: wrap;
+  font-size: 1rem;
+  font-weight: 550;
+  margin: 0;
+}
+.resume-coursework > h3 > span {
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: #97adbf;
+}
+.portfolio .resume-coursework ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+.portfolio .resume-coursework li + li {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #1e2c3b;
+}
+.resume-coursework li > a {
+  font-size: 0.9375rem;
+  color: #cfe0ec;
+}
+.resume-coursework li > a:hover {
+  color: #9cc5df;
+}
+.portfolio .resume-coursework li > p {
+  color: #9fb0c0;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin-top: 5px;
+}
 .resume-skills {
   margin: 0;
 }

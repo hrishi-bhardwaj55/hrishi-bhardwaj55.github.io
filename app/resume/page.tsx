@@ -13,6 +13,53 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const pdf = '/files/Hrishikesh_Bhardwaj_Resume.pdf';
+
+// Course projects that have a write-up but do not warrant a full resume
+// entry. Slugs must match content/stories/catalog.json.
+const coursework = [
+  {
+    slug: 'aws-foundations',
+    name: 'AWS Foundations',
+    summary:
+      'A Wikipedia pageview pipeline and a reusable Terraform workspace, treating correctness, reproducibility, and cost as one design problem.',
+  },
+  {
+    slug: 'elastic-scaling',
+    name: 'Elastic Scaling',
+    summary:
+      'A custom AWS scaling controller, then the same decisions moved into an Auto Scaling Group and weighed against instance-hours.',
+  },
+  {
+    slug: 'wecloud-chat',
+    name: 'WeCloud Chat',
+    summary:
+      'Spring services taken through containers, Helm, GKE, and AKS under a single deployment model across two clouds.',
+  },
+  {
+    slug: 'cloud-storage',
+    name: 'Cloud Storage',
+    summary:
+      'One Yelp dataset across MySQL, MongoDB, and Redis, including the ownership check that made a distributed lock worth thinking about.',
+  },
+  {
+    slug: 'social-network-storage',
+    name: 'Social Network Storage',
+    summary:
+      'One social timeline assembled from MySQL, Neo4j, and MongoDB, with a cache policy I could actually observe.',
+  },
+  {
+    slug: 'cloud-machine-learning',
+    name: 'NYC Fare Prediction',
+    summary:
+      'Feature engineering for a taxi fare model — distance, time, airport trips — that grew into a voice-driven NYC assistant.',
+  },
+  {
+    slug: 'serverless-functions',
+    name: 'CloudTube Media Pipeline',
+    summary:
+      'An event-driven pipeline turning one video upload into previews and searchable tags on Azure Functions and AI Vision.',
+  },
+] as const;
 const skills = [
   ['Languages', 'Java, Python, C++, Go, Scala, SQL'],
   [
@@ -336,6 +383,14 @@ export default function Resume() {
                       Kubernetes, EKS, and ECS.
                     </li>
                     <li>
+                      Collapsed a five-table serving schema into one
+                      denormalized pair table, turning requests that needed{' '}
+                      <strong>
+                        five sequential queries and up to three seconds
+                      </strong>{' '}
+                      into a single lookup.
+                    </li>
+                    <li>
                       Reached <strong>20,000 requests/sec at $0.31/hour</strong>{' '}
                       in Phase 3 using ECS Fargate and RDS. A separate,
                       expensive{' '}
@@ -401,6 +456,107 @@ export default function Resume() {
                     </li>
                   </ul>
                 </article>
+                <article className="resume-project">
+                  <div className="resume-entry-heading">
+                    <h3>
+                      <a href={`${github}/skeptic`}>Skeptic</a>
+                    </h3>
+                    <p>Independent project</p>
+                  </div>
+                  <p className="resume-entry-context">
+                    Public source · Python, PostgreSQL, SQL
+                  </p>
+                  <ul>
+                    <li>
+                      Built a Postgres performance advisor that refuses to
+                      benchmark a SQL rewrite until it is verified to return the
+                      same rows, comparing result multisets and deliberately
+                      challenging NULLs and duplicates.
+                    </li>
+                    <li>
+                      In the committed eight-proposal evaluation,{' '}
+                      <strong>two rewrites passed the main dataset</strong> and
+                      then failed adversarial fixtures — caught before any
+                      timing was reported.
+                    </li>
+                  </ul>
+                  <a className="resume-story-link" href={`${github}/skeptic`}>
+                    Open repository <span aria-hidden="true">↗</span>
+                  </a>
+                </article>
+                <article className="resume-project">
+                  <div className="resume-entry-heading">
+                    <h3>
+                      <a href={`${github}/ServiceSwitcher`}>ServicerSwitch</a>
+                    </h3>
+                    <p>Independent project</p>
+                  </div>
+                  <p className="resume-entry-context">
+                    Public source · Java, Python, Next.js
+                  </p>
+                  <ul>
+                    <li>
+                      Built a mortgage-transfer audit pairing document
+                      extraction with deterministic calculation, keeping every
+                      finding traceable to the page it came from.
+                    </li>
+                    <li>
+                      Kept the arithmetic in a stateless Java service while
+                      Python handled extraction and orchestration across eight
+                      audit-scoped tools. Evaluated over{' '}
+                      <strong>300 synthetic accounts and 1,500 PDFs</strong>.
+                    </li>
+                  </ul>
+                  <a
+                    className="resume-story-link"
+                    href={`${github}/ServiceSwitcher`}
+                  >
+                    Open repository <span aria-hidden="true">↗</span>
+                  </a>
+                </article>
+                <article className="resume-project">
+                  <div className="resume-entry-heading">
+                    <h3>
+                      <a href={`${github}/ZapN`}>Cortex</a>
+                    </h3>
+                    <p>Independent project</p>
+                  </div>
+                  <p className="resume-entry-context">
+                    Public source · React, TypeScript, Vitest
+                  </p>
+                  <ul>
+                    <li>
+                      Built <strong>nine cognitive practice games</strong> with
+                      seeded, replayable challenges and five progressive levels,
+                      storing the seed and configuration version so a session
+                      can be reproduced exactly.
+                    </li>
+                    <li>
+                      Separated pure game engines from React rendering and
+                      measured response timing independently of the render path,
+                      with pause-aware timing and local history that needs no
+                      account.
+                    </li>
+                  </ul>
+                  <a className="resume-story-link" href={`${github}/ZapN`}>
+                    Open repository <span aria-hidden="true">↗</span>
+                  </a>
+                </article>
+                <div className="resume-coursework">
+                  <h3>
+                    Cloud computing coursework <span>CMU 15-619 · 2026</span>
+                  </h3>
+                  <ul>
+                    {coursework.map((item) => (
+                      <li key={item.slug}>
+                        <a href={sitePath(`/stories/${item.slug}/`)}>
+                          {item.name} <span aria-hidden="true">↗</span>
+                        </a>
+                        <p>{item.summary}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </section>
 
               <section
