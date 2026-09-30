@@ -1617,6 +1617,64 @@ button {
 .story-mobile-outline {
   display: none;
 }
+/* Article lists and code blocks. */
+.story-article article > ul {
+  list-style: disc outside;
+  margin: 0 0 28px;
+  padding-left: 22px;
+  color: #bcc5ce;
+  font-size: 17px;
+  line-height: 1.8;
+}
+.story-article article > ul li {
+  margin-bottom: 12px;
+  padding-left: 4px;
+  overflow-wrap: anywhere;
+}
+.story-article article > ul li::marker {
+  color: #70869b;
+}
+.article-window .story-article .story-code {
+  padding: 0;
+  background: #0e1721;
+  border-color: #304356;
+  overflow: hidden;
+}
+.article-window .story-article .story-code figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 16px;
+  padding: 10px 16px;
+  border-bottom: 1px solid #253547;
+  background: #111c28;
+  color: #84a9c7;
+  font:
+    12px/1.6 var(--font-geist-mono),
+    monospace;
+}
+.story-code pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  tab-size: 2;
+}
+.story-article .story-code code {
+  padding: 0;
+  background: none;
+  color: #c7d6e2;
+  font:
+    13px/1.75 var(--font-geist-mono),
+    monospace;
+}
+@media (max-width: 600px) {
+  .story-article article > ul {
+    font-size: 16px;
+  }
+  .story-article .story-code code {
+    font-size: 12px;
+  }
+}
 /* Article diagrams use real text so their explanations scale with the reader. */
 .article-window .story-article .story-diagram {
   padding: 26px;
@@ -1779,6 +1837,48 @@ button {
     #253f54 5px,
     #253f54 9px
   );
+}
+.diagram-seam-lanes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.diagram-lane {
+  min-width: 0;
+  padding-right: 22px;
+}
+.diagram-lane + .diagram-lane {
+  padding: 0 0 0 22px;
+  border-left: 1px dashed #7fa4c4;
+}
+.story-diagram .diagram-lane-label {
+  margin: 0 0 16px;
+  color: #aed3ee;
+  font:
+    12px/1.6 var(--font-geist-mono),
+    monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.story-diagram .diagram-lane-note {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #2c3e50;
+  font-size: 13px;
+  color: #84a9c7;
+}
+@media (max-width: 760px) {
+  .diagram-seam-lanes {
+    grid-template-columns: 1fr;
+  }
+  .diagram-lane {
+    padding-right: 0;
+  }
+  .diagram-lane + .diagram-lane {
+    margin-top: 24px;
+    padding: 24px 0 0;
+    border-left: 0;
+    border-top: 1px dashed #7fa4c4;
+  }
 }
 .ride-event-buttons {
   display: grid;

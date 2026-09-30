@@ -1,4 +1,10 @@
-import { sitePath } from '@/lib/site-path';
+import type { Metadata } from 'next';
+import { siteUrl, sitePath } from '@/lib/site-path';
+
+// The canonical link tells search engines this address is the homepage.
+export const metadata: Metadata = {
+  alternates: { canonical: siteUrl('/') },
+};
 
 export default function WorkbenchRedirect() {
   return (

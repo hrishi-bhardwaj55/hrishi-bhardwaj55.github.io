@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { sitePath } from '@/lib/site-path';
-import { pageMetadata } from '@/lib/page-metadata';
-import { stories, readingMinutes, headingId } from '../data';
-import { StoryBody, Inline } from '../story-body';
-import { PortfolioNav, WindowBar } from '../../workspace-chrome';
-import { PortfolioFooter } from '../../project-visuals';
+import { blogPath } from '../../blog-catalog';
+import { stories, storyMetadata } from '../data';
 
+// Posts moved from /stories/<slug>/ to /blogs/<slug>/. GitHub Pages cannot
+// send a 301, so each old address is a page that forwards at once and names
+// the new URL as canonical, which search engines treat as a permanent move.
+// Its metadata matches the article so shared old links still get the card.
 type Props = { params: Promise<{ slug: string }> };
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -15,126 +16,23 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const story = stories.find((item) => item.slug === slug);
-  return story
-    ? pageMetadata({
-        title: `${story.project} — Blog · Hrishikesh Bhardwaj`,
-        description: story.excerpt,
-        path: `/stories/${story.slug}/`,
-        type: 'article',
-      })
-    : {};
+  return story ? storyMetadata(story) : {};
 }
-export default async function ProjectStory({ params }: Props) {
+export default async function MovedStory({ params }: Props) {
   const { slug } = await params;
-  const story = stories.find((item) => item.slug === slug);
-  if (!story) notFound();
-  const currentIndex = stories.indexOf(story);
-  const previous = stories[currentIndex - 1];
-  const next = stories[currentIndex + 1];
-  const headings = [...story.markdown.matchAll(/^## (.+)$/gm)].map((match) =>
-    match[1].trim(),
-  );
+  if (!stories.some((item) => item.slug === slug)) notFound();
+  const target = sitePath(blogPath(slug));
   return (
-    <div className="portfolio workbench story-page">
-      <PortfolioNav active="blogs" />
-      <main className="desk-shell story-workspace">
-        <nav className="story-breadcrumb" aria-label="Breadcrumb">
-          <a href={sitePath('/blogs/')}>Blogs</a>
-          <span aria-hidden="true">/</span>
-          <span aria-current="page">{story.project}</span>
-        </nav>
-        <div className="desk-window article-window">
-          <WindowBar label={`blogs / ${story.project}`}>
-            <span>{readingMinutes(story.markdown)} min read</span>
-          </WindowBar>
-          <div className="story-layout">
-            <aside className="story-contents">
-              <nav aria-label="On this page">
-                <p className="v-kicker">CONTENTS</p>
-                <ol>
-                  {headings.map((title, index) => (
-                    <li key={title}>
-                      <a href={`#${headingId(title)}`}>
-                        <span aria-hidden="true">
-                          {String(index + 1).padStart(2, '0')}
-                        </span>
-                        {title}
-                      </a>
-                    </li>
-                  ))}
-                </ol>
-                <a className="story-back" href={sitePath('/blogs/')}>
-                  ← All blogs
-                </a>
-              </nav>
-            </aside>
-            <div className="story-article" id="article">
-              <header className="story-header">
-                <p className="v-kicker">{story.context}</p>
-                <h1>{story.title}</h1>
-                <div className="story-byline">
-                  <span>Hrishikesh Bhardwaj</span>
-                  <span>{story.period}</span>
-                </div>
-                <ul className="story-stack" aria-label="Technologies">
-                  {story.stack.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-                <p className="story-access">
-                  Source private · Architecture and results shared here.
-                </p>
-                <details className="story-mobile-outline">
-                  <summary>
-                    In this blog <span>{headings.length} sections</span>
-                  </summary>
-                  <nav aria-label="Article sections">
-                    <ol>
-                      {headings.map((title) => (
-                        <li key={title}>
-                          <a href={`#${headingId(title)}`}>{title}</a>
-                        </li>
-                      ))}
-                    </ol>
-                  </nav>
-                </details>
-              </header>
-              <article>
-                <StoryBody markdown={story.markdown} />
-              </article>
-              <footer className="story-source">
-                <p>
-                  <Inline text={story.sourceNote} />
-                </p>
-                <a href={sitePath('/blogs/')}>Back to blogs ↗</a>
-                <nav className="story-next" aria-label="More project stories">
-                  {previous ? (
-                    <a href={sitePath(`/stories/${previous.slug}/`)}>
-                      <span>← PREVIOUS STORY</span>
-                      {previous.project}
-                    </a>
-                  ) : (
-                    <div />
-                  )}
-                  {next ? (
-                    <a href={sitePath(`/stories/${next.slug}/`)}>
-                      <span>NEXT STORY →</span>
-                      {next.project}
-                    </a>
-                  ) : (
-                    <div />
-                  )}
-                </nav>
-              </footer>
-            </div>
-          </div>
-          <div className="desk-status">
-            <span>{story.project}</span>
-            <span>Project notes / {story.period}</span>
-          </div>
-        </div>
-      </main>
-      <PortfolioFooter />
-    </div>
+    <>
+      <meta httpEquiv="refresh" content={`0;url=${target}`} />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `location.replace(${JSON.stringify(target)} + location.hash)`,
+        }}
+      />
+      <p>
+        <a href={target}>This post has moved. Continue reading ↗</a>
+      </p>
+    </>
   );
 }

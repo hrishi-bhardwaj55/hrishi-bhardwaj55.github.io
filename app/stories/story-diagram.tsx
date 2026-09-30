@@ -1,12 +1,16 @@
 import type { CSSProperties } from 'react';
 import { RideLifecycle } from './ride-lifecycle';
 
+type Step = { label: string; detail: string };
+
 export type Diagram = {
   id: string;
   title: string;
   summary: string;
 } & (
-  | { kind: 'flow'; steps: { label: string; detail: string }[] }
+  | { kind: 'flow'; steps: Step[] }
+  // Two flows either side of a dashed line, such as code a test can reach and code it cannot.
+  | { kind: 'seam'; lanes: { label: string; steps: Step[]; note?: string }[] }
   | { kind: 'comparison'; columns: { label: string; items: string[] }[] }
   | {
       kind: 'bars';
@@ -19,6 +23,24 @@ export type Diagram = {
       }[];
     }
 );
+
+function FlowSteps({ steps }: { steps: Step[] }) {
+  return (
+    <ol className="diagram-flow">
+      {steps.map((step, index) => (
+        <li key={step.label}>
+          <span className="diagram-step-index" aria-hidden="true">
+            {String(index + 1).padStart(2, '0')}
+          </span>
+          <div>
+            <h4>{step.label}</h4>
+            <p>{step.detail}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  );
+}
 
 export function StoryDiagram({ diagram }: { diagram: Diagram }) {
   return (
@@ -35,19 +57,17 @@ export function StoryDiagram({ diagram }: { diagram: Diagram }) {
       {diagram.id === 'uber-driver-lifecycle' ? (
         <RideLifecycle />
       ) : diagram.kind === 'flow' ? (
-        <ol className="diagram-flow">
-          {diagram.steps.map((step, index) => (
-            <li key={step.label}>
-              <span className="diagram-step-index" aria-hidden="true">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-              <div>
-                <h4>{step.label}</h4>
-                <p>{step.detail}</p>
-              </div>
-            </li>
+        <FlowSteps steps={diagram.steps} />
+      ) : diagram.kind === 'seam' ? (
+        <div className="diagram-seam-lanes">
+          {diagram.lanes.map((lane) => (
+            <div className="diagram-lane" key={lane.label}>
+              <p className="diagram-lane-label">{lane.label}</p>
+              <FlowSteps steps={lane.steps} />
+              {lane.note && <p className="diagram-lane-note">{lane.note}</p>}
+            </div>
           ))}
-        </ol>
+        </div>
       ) : diagram.kind === 'comparison' ? (
         <div
           className="diagram-columns"

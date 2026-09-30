@@ -1,0 +1,176 @@
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { sitePath, siteUrl } from '@/lib/site-path';
+import { JsonLd, person } from '@/lib/structured-data';
+import {
+  stories,
+  readingMinutes,
+  headingId,
+  storyHeadings,
+  storyMetadata,
+} from '../../stories/data';
+import { StoryBody, Inline } from '../../stories/story-body';
+import { blogPath } from '../../blog-catalog';
+import { PortfolioNav, WindowBar } from '../../workspace-chrome';
+import { PortfolioFooter } from '../../project-visuals';
+
+type Props = { params: Promise<{ slug: string }> };
+export const dynamicParams = false;
+export function generateStaticParams() {
+  return stories.map(({ slug }) => ({ slug }));
+}
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const story = stories.find((item) => item.slug === slug);
+  return story ? storyMetadata(story) : {};
+}
+export default async function ProjectStory({ params }: Props) {
+  const { slug } = await params;
+  const story = stories.find((item) => item.slug === slug);
+  if (!story) notFound();
+  const currentIndex = stories.indexOf(story);
+  const previous = stories[currentIndex - 1];
+  const next = stories[currentIndex + 1];
+  const headings = storyHeadings(story.markdown);
+  const url = siteUrl(blogPath(story.slug));
+  return (
+    <div className="portfolio workbench story-page">
+      <JsonLd
+        data={{
+          '@graph': [
+            {
+              '@type': 'BlogPosting',
+              headline: story.title,
+              description: story.excerpt,
+              url,
+              mainEntityOfPage: url,
+              datePublished: story.published,
+              image: siteUrl('/og.png'),
+              keywords: story.stack.join(', '),
+              inLanguage: 'en',
+              author: person,
+            },
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Blogs',
+                  item: siteUrl('/blogs/'),
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: story.project,
+                  item: url,
+                },
+              ],
+            },
+          ],
+        }}
+      />
+      <PortfolioNav active="blogs" />
+      <main className="desk-shell story-workspace">
+        <nav className="story-breadcrumb" aria-label="Breadcrumb">
+          <a href={sitePath('/blogs/')}>Blogs</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">{story.project}</span>
+        </nav>
+        <div className="desk-window article-window">
+          <WindowBar label={`blogs / ${story.project}`}>
+            <span>{readingMinutes(story.markdown)} min read</span>
+          </WindowBar>
+          <div className="story-layout">
+            <aside className="story-contents">
+              <nav aria-label="On this page">
+                <p className="v-kicker">CONTENTS</p>
+                <ol>
+                  {headings.map((title, index) => (
+                    <li key={title}>
+                      <a href={`#${headingId(title)}`}>
+                        <span aria-hidden="true">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        {title}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+                <a className="story-back" href={sitePath('/blogs/')}>
+                  ← All blogs
+                </a>
+              </nav>
+            </aside>
+            <div className="story-article" id="article">
+              <header className="story-header">
+                <p className="v-kicker">{story.context}</p>
+                <h1>{story.title}</h1>
+                <div className="story-byline">
+                  <span>Hrishikesh Bhardwaj</span>
+                  <span>{story.period}</span>
+                </div>
+                <ul className="story-stack" aria-label="Technologies">
+                  {story.stack.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <p className="story-access">
+                  Source private · Architecture and results shared here.
+                </p>
+                <details className="story-mobile-outline">
+                  <summary>
+                    In this blog <span>{headings.length} sections</span>
+                  </summary>
+                  <nav aria-label="Article sections">
+                    <ol>
+                      {headings.map((title) => (
+                        <li key={title}>
+                          <a href={`#${headingId(title)}`}>{title}</a>
+                        </li>
+                      ))}
+                    </ol>
+                  </nav>
+                </details>
+              </header>
+              <article>
+                <StoryBody markdown={story.markdown} />
+              </article>
+              <footer className="story-source">
+                {story.sourceNote && (
+                  <p>
+                    <Inline text={story.sourceNote} />
+                  </p>
+                )}
+                <a href={sitePath('/blogs/')}>Back to blogs ↗</a>
+                <nav className="story-next" aria-label="More project stories">
+                  {previous ? (
+                    <a href={sitePath(blogPath(previous.slug))}>
+                      <span>← PREVIOUS STORY</span>
+                      {previous.project}
+                    </a>
+                  ) : (
+                    <div />
+                  )}
+                  {next ? (
+                    <a href={sitePath(blogPath(next.slug))}>
+                      <span>NEXT STORY →</span>
+                      {next.project}
+                    </a>
+                  ) : (
+                    <div />
+                  )}
+                </nav>
+              </footer>
+            </div>
+          </div>
+          <div className="desk-status">
+            <span>{story.project}</span>
+            <span>Project notes / {story.period}</span>
+          </div>
+        </div>
+      </main>
+      <PortfolioFooter />
+    </div>
+  );
+}

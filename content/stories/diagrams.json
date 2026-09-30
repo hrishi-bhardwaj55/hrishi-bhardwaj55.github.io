@@ -513,5 +513,56 @@
         ]
       }
     ]
+  },
+  {
+    "id": "eparts-harness-seam",
+    "title": "Where the model is allowed in",
+    "kind": "seam",
+    "summary": "Everything on the plain-code side is an ordinary function of its input, so it is tested like one. A model only gets involved inside an agent's run, and the review flag on the result decides whether a person sees it before the rest of the system does.",
+    "lanes": [
+      {
+        "label": "Plain code · no tokens",
+        "steps": [
+          {
+            "label": "Trigger",
+            "detail": "A transcript upload, a coach session, a Jira webhook, a pull request, a scheduled job or a proof-of-concept result."
+          },
+          {
+            "label": "Router",
+            "detail": "A dictionary lookup across eleven trigger types: trigger in, ordered list of agents out."
+          },
+          {
+            "label": "Queue",
+            "detail": "One agent at a time, so git, Jira and SQLite never see two writers."
+          },
+          {
+            "label": "Registry",
+            "detail": "Wraps each agent as a handler and gives it only the services it needs."
+          }
+        ],
+        "note": "20 eval scenarios cover this side in about a second, with no API key."
+      },
+      {
+        "label": "Needs a model or a person",
+        "steps": [
+          {
+            "label": "Base class",
+            "detail": "Times, retries, meters and logs every run."
+          },
+          {
+            "label": "The agent's run",
+            "detail": "Calls the model at temperature zero. Some agents fall back to keyword rules when there is no API key."
+          },
+          {
+            "label": "Result",
+            "detail": "Carries a flag saying whether a person needs to review it."
+          },
+          {
+            "label": "Where it lands",
+            "detail": "Flagged output goes to a pull request for review. The rest goes to the shared wiki and event bus."
+          }
+        ]
+      }
+    ]
   }
 ]

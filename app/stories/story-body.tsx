@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { sitePath } from '@/lib/site-path';
-import { headingId, storyImageSizes, storyDiagrams } from './data';
+import { headingId, storyBlocks, storyImageSizes, storyDiagrams } from './data';
 import { StoryDiagram } from './story-diagram';
 
 // A deliberately small, text-only Markdown format. Raw HTML is never executed.
@@ -24,8 +24,25 @@ export function Inline({ text }: { text: string }) {
 }
 
 export function StoryBody({ markdown }: { markdown: string }) {
-  const blocks = markdown.trim().split(/\r?\n\s*\r?\n/);
+  const blocks = storyBlocks(markdown);
   return blocks.map((block, i) => {
+    const code = block.match(/^```([^\n]*)\n([\s\S]*)\n```$/);
+    if (code) {
+      const [label, tag] = code[1].split(' | ').map((part) => part.trim());
+      return (
+        <figure className="story-code" key={i}>
+          {label && (
+            <figcaption>
+              <span>{label}</span>
+              {tag && <span>{tag}</span>}
+            </figcaption>
+          )}
+          <pre>
+            <code>{code[2]}</code>
+          </pre>
+        </figure>
+      );
+    }
     const diagramId = block.match(/^:::diagram ([a-z0-9-]+)$/)?.[1];
     if (diagramId) {
       const diagram = storyDiagrams.find((item) => item.id === diagramId);
@@ -41,6 +58,16 @@ export function StoryBody({ markdown }: { markdown: string }) {
         </h2>
       );
     }
+    if (block.startsWith('- '))
+      return (
+        <ul key={i}>
+          {block.split(/\n(?=- )/).map((item, index) => (
+            <li key={index}>
+              <Inline text={item.slice(2).replace(/\n\s*/g, ' ')} />
+            </li>
+          ))}
+        </ul>
+      );
     const image = block.match(
       /^!\[([^\]]*)\]\((\/stories\/[a-z0-9/-]+\.png)\)$/,
     );

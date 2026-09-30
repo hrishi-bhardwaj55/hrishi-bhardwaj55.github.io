@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/page-metadata';
+import { siteUrl } from '@/lib/site-path';
+import { JsonLd, person } from '@/lib/structured-data';
 import Workbench from './workbench';
 
 export const metadata: Metadata = pageMetadata({
@@ -10,5 +12,22 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function Home() {
-  return <Workbench />;
+  return (
+    <>
+      <JsonLd
+        data={{
+          '@graph': [
+            {
+              '@type': 'WebSite',
+              url: siteUrl('/'),
+              name: 'Hrishikesh Bhardwaj',
+              author: person,
+            },
+            person,
+          ],
+        }}
+      />
+      <Workbench />
+    </>
+  );
 }

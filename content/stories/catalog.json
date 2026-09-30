@@ -1,10 +1,28 @@
 [
   {
+    "slug": "eparts-agent-harness",
+    "project": "eParts Agent Harness",
+    "title": "Automating the boring parts of software engineering",
+    "excerpt": "Meeting transcripts in, requirements and design records out, until an agent committed small talk as requirements. Where people had to stay in the loop.",
+    "period": "April–September 2026",
+    "published": "2026-09-30",
+    "context": "CMU MSE Studio · Capstone",
+    "stack": [
+      "Python",
+      "FastAPI",
+      "SQLite",
+      "ChromaDB",
+      "GitHub Actions",
+      "MCP"
+    ]
+  },
+  {
     "slug": "twitter-analytics",
     "project": "Twitter Analytics",
     "title": "I built a Twitter analytics service. Most of the work was figuring out why it was slow.",
     "excerpt": "20,000 requests per second at $0.31/hour in Phase 3, plus a separate 70,000-RPS Redis-only experiment that traded cost for throughput.",
     "period": "February–April 2026",
+    "published": "2026-09-11",
     "context": "CMU 15-619 · Semester project",
     "stack": ["Go", "Java", "Spark", "MySQL", "AWS"],
     "sourceNote": "Based on my Spring 2026 build log, project reports and subsequent measurement updates. Phase 3 reached 20,000 RPS at $0.31/hour. The 70,000-RPS Redis-only result was a separate, expensive in-memory experiment; its hourly cost is not specified. These are historical project measurements across different configurations."
@@ -15,6 +33,7 @@
     "title": "Small cloud projects, expensive assumptions",
     "excerpt": "A Wikipedia pageview pipeline and a reusable Terraform workspace taught me to make correctness, reproducibility, and cost part of the same design.",
     "period": "January 2026",
+    "published": "2026-09-13",
     "context": "Carnegie Mellon · 15-619 Cloud Computing · P0",
     "stack": ["AWS EC2", "Terraform", "Java", "JUnit", "JaCoCo", "Python"],
     "sourceNote": "Based on my Spring 2026 build log and the preserved Terraform module. The Java filter, analysis notebook, and shell runner lived on the course workspace VM; the record does not include a final benchmark table or coverage report."
@@ -25,6 +44,7 @@
     "title": "Teaching an AWS fleet when to grow",
     "excerpt": "I built an AWS scaling controller, then moved the same decisions into an Auto Scaling Group—balancing responsiveness, instance-hours, and what the monitoring data could actually tell me.",
     "period": "January–February 2026",
+    "published": "2026-09-13",
     "context": "Carnegie Mellon · 15-619 Cloud Computing · P1",
     "stack": [
       "Java",
@@ -42,6 +62,7 @@
     "title": "One chat application, two clouds, one deployment model",
     "excerpt": "I took supplied Spring services through containers, Helm, GKE, and AKS, making the differences between clouds explicit while keeping one understandable application definition.",
     "period": "February 2026",
+    "published": "2026-09-13",
     "context": "Carnegie Mellon · 15-619 Cloud Computing · P2",
     "stack": ["Docker", "Kubernetes", "Helm", "GKE", "AKS", "Azure Front Door"],
     "sourceNote": "Based on my Spring 2026 build log and its description of Docker, Helm, and Terraform artifacts. The Spring application code was supplied. The local CI/CD file remains a course template; a completed pipeline is reported in a separate repository but is not established by that local copy."
@@ -52,6 +73,7 @@
     "title": "One dataset, three ways to think about storage",
     "excerpt": "A week with Yelp data, SQL, MongoDB and Redis—and the small ownership check that made a distributed lock worth thinking about.",
     "period": "February 2026",
+    "published": "2026-09-13",
     "context": "CMU 15-619 · Cloud Storage",
     "stack": ["Java", "Python", "MySQL", "MongoDB", "Redis", "Azure"],
     "sourceNote": "Adapted from my Spring 2026 build log and its project reference. Dataset sizes describe the supplied coursework data; no achieved throughput or latency is claimed. Redis transaction semantics checked against [Redis transaction documentation](https://redis.io/docs/latest/develop/using-commands/transactions/)."
@@ -62,6 +84,7 @@
     "title": "Building one timeline across three databases",
     "excerpt": "How I assembled a social feed from MySQL, Neo4j and MongoDB, then added a cache policy I could actually observe.",
     "period": "March 2026",
+    "published": "2026-09-13",
     "context": "CMU 15-619 · Heterogeneous Storage",
     "stack": ["Java", "MySQL", "Neo4j", "MongoDB", "Azure", "Terraform"],
     "sourceNote": "Adapted from my Spring 2026 build log and its project reference. The approximately 2.6 million users, 16 million follow edges and 37.5 million comments are coursework dataset sizes. The 300 ms cached-response threshold was a requirement, not a reported measurement."
@@ -72,6 +95,7 @@
     "title": "Uber Ride Matching: making the next event count",
     "excerpt": "More than 10,000 events per second, and 30% lower rider-match latency, through a Kafka and Samza backend: partitioning by city block, tracking driver availability, and joining live events with rider profiles.",
     "period": "March 2026",
+    "published": "2026-09-13",
     "context": "CMU 15-619 · Stateful Stream Processing",
     "stack": ["Java", "Kafka", "Samza", "AWS EMR", "YARN", "Terraform"],
     "sourceNote": "Adapted from my Spring 2026 build log and its NYCabs project reference. Uber Ride Matching is an Uber-style coursework project, not work for Uber or a deployed commercial booking service. The data and scoring rules came from the course. Samza state and changelog behavior checked against [Samza state-management documentation](https://samza.apache.org/learn/documentation/1.8.0/container/state-management.html)."
@@ -82,6 +106,7 @@
     "title": "Teaching a taxi fare model what a New York trip looks like",
     "excerpt": "Distance, time, airport trips, and the feature-engineering choices behind a cloud ML project that grew toward a voice-driven NYC assistant.",
     "period": "April 2026",
+    "published": "2026-09-13",
     "context": "CMU 15-619 · Machine Learning on the Cloud",
     "stack": [
       "Python",
@@ -101,6 +126,7 @@
     "title": "Turning one video upload into previews and searchable tags",
     "excerpt": "An event-driven media pipeline across Azure Functions, Blob Storage, AI Vision, and Search—and the runtime details that made the handlers more careful.",
     "period": "April 2026",
+    "published": "2026-09-13",
     "context": "CMU 15-619 · Functions as a Service",
     "stack": [
       "Python",
