@@ -101,9 +101,11 @@ export default async function ProjectStory({ params }: Props) {
                 <StoryBody markdown={story.markdown} />
               </article>
               <footer className="story-source">
-                <p>
-                  <Inline text={story.sourceNote} />
-                </p>
+                {story.sourceNote && (
+                  <p>
+                    <Inline text={story.sourceNote} />
+                  </p>
+                )}
                 <a href={sitePath('/blogs/')}>Back to blogs ↗</a>
                 <nav className="story-next" aria-label="More project stories">
                   {previous ? (

@@ -2,10 +2,10 @@
   {
     "slug": "eparts-agent-harness",
     "project": "eParts Agent Harness",
-    "title": "31 agents behind a contract you can test without a model",
-    "excerpt": "How a five-person capstone team built its own software engineering system, automated it past the point of safety, and put the humans back in the two places that mattered.",
+    "title": "I automated our capstone with 31 agents. It worked too well.",
+    "excerpt": "Meeting transcripts in, requirements and design records out, until an agent committed small talk as requirements. Where I put people back in the loop, and how we tested the rest without calling a model.",
     "period": "April–September 2026",
-    "context": "CMU MSE Studio · Capstone · Pimsie Supreme",
+    "context": "CMU MSE Studio · Capstone",
     "stack": [
       "Python",
       "FastAPI",
@@ -13,8 +13,7 @@
       "ChromaDB",
       "GitHub Actions",
       "MCP"
-    ],
-    "sourceNote": "Read from the eParts working tree on 2026-09-09, or produced by running it, with dates checked against its git history: 95 commits from 2026-04-17 to 2026-09-02. Primary files: `agents/base.py`, `orchestrator/{main,router,queue,registry}.py`, `pipeline/{pipelines,etvx,event_bus,shared_memory,process_inbox}.py`, `evals/{schema,runner}.py`, `evals/scenarios/*.json`, `tools/lint_ses.py`, `skills/defect-triage/SKILL.md`, `.github/workflows/*.yml`, `docs/{evals,prompt_management,defect_management,why_everything,quality_plan_implementation}.md`, `docs/etvx_manifest.yaml`, `Metamodel_framework.md`, `agentic-augmented-scrum.md` and `CURSOR_PROMPT.md`. Built by Pimsie Supreme: Ashritha Gonuguntla, Arjun Nair, Hrishikesh Bhardwaj, Jaivardhan Singh and Zheliang Liu. Mentor: Dennis Grinberg. Coaches: Ben, Christian and Cory."
+    ]
   },
   {
     "slug": "twitter-analytics",

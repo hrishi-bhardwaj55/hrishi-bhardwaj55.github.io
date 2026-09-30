@@ -515,346 +515,53 @@
     ]
   },
   {
-    "id": "eparts-metamodel",
-    "title": "Four elements, and where each one lives",
-    "kind": "table",
-    "summary": "Resources implement Processes, Processes consume and generate Artifacts, and Measurements cover all three.",
-    "columns": ["Element", "Relationship", "In this repository"],
-    "rows": [
-      [
-        "Resources",
-        "implement Processes",
-        "Agents, prompts, MCP clients, CI runners, humans"
-      ],
-      [
-        "Processes",
-        "consume and generate Artifacts",
-        "31 ETVX process definitions in `docs/etvx_manifest.yaml`"
-      ],
-      [
-        "Artifacts",
-        "are consumed by Processes",
-        "Minutes, requirements, ADRs, risk entries, eval reports"
-      ],
-      [
-        "Measurements",
-        "measure all three",
-        "Per-call token/latency/cost rows; per-run success and review flags"
-      ]
-    ]
-  },
-  {
     "id": "eparts-harness-seam",
-    "title": "The deterministic seam in the harness",
+    "title": "Where the model is allowed in",
     "kind": "seam",
-    "summary": "**The seam.** Everything on the verifiable side of the dashed line is a pure function of its input: a dict lookup, a FIFO queue, and a registry of handlers. Only inside `run()` does non-determinism enter — and even there, an agent with no API key falls back to keyword and regex extraction rather than failing. The `requires_human_review` flag on the result is the single most consequential field in the codebase: it decides whether an artifact lands on `main` or lands in a pull request.",
+    "summary": "Everything on the plain-code side is an ordinary function of its input, so it is tested like one. A model only gets involved inside an agent's run, and the review flag on the result decides whether a person sees it before the rest of the system does.",
     "lanes": [
       {
-        "label": "Verifiable · 0 tokens",
+        "label": "Plain code · no tokens",
         "steps": [
           {
             "label": "Trigger",
-            "detail": "`*.transcript.vtt`, a coach session VTT, a Jira webhook, a pull request event, cron, or a POC result."
+            "detail": "A transcript upload, a coach session, a Jira webhook, a pull request, a scheduled job or a proof-of-concept result."
           },
           {
-            "label": "`resolve_agents()`",
-            "detail": "`orchestrator/router.py`. A pure function: dict → ordered list, across 11 trigger types."
+            "label": "Router",
+            "detail": "A dictionary lookup across eleven trigger types: trigger in, ordered list of agents out."
           },
           {
-            "label": "`TaskQueue`",
-            "detail": "FIFO with one worker thread. Sequential by design: no races on git, Jira or SQLite."
+            "label": "Queue",
+            "detail": "One agent at a time, so git, Jira and SQLite never see two writers."
           },
           {
             "label": "Registry",
-            "detail": "`orchestrator/registry.py` wraps each agent as a handler with only the MCP clients it needs."
+            "detail": "Wraps each agent as a handler and gives it only the services it needs."
           }
         ],
-        "note": "20 eval scenarios cover this half, with no API key, in under one second."
+        "note": "20 eval scenarios cover this side in about a second, with no API key."
       },
       {
-        "label": "Needs a model, or a human",
+        "label": "Needs a model or a person",
         "steps": [
           {
-            "label": "`BaseAgent.execute()`",
-            "detail": "Timing, retry, metering and a JSONL audit line around every run."
+            "label": "Base class",
+            "detail": "Times, retries, meters and logs every run."
           },
           {
-            "label": "`run(trigger)`",
-            "detail": "`call_claude()` when an API key is configured, otherwise the keyword and regex path. Temperature 0.0, 3 retries, backoff ×2."
+            "label": "The agent's run",
+            "detail": "Calls the model at temperature zero. Some agents fall back to keyword rules when there is no API key."
           },
           {
-            "label": "`AgentResult`",
-            "detail": "Outputs, errors and data, plus `requires_human_review`."
+            "label": "Result",
+            "detail": "Carries a flag saying whether a person needs to review it."
           },
           {
             "label": "Where it lands",
-            "detail": "Flag set: a pull request labelled `needs-human-review`. Clear: the wiki and event bus, append-only."
+            "detail": "Flagged output goes to a pull request for review. The rest goes to the shared wiki and event bus."
           }
         ]
-      }
-    ]
-  },
-  {
-    "id": "eparts-base-agent",
-    "title": "What BaseAgent hands every agent",
-    "kind": "cards",
-    "summary": "An agent author writes `run()`. Timing, retries, metering, the audit trail, shared memory and events come from the base class.",
-    "cards": [
-      {
-        "label": "`run(trigger)`",
-        "detail": "The only thing an agent author writes. Abstract; enforced by `ABC`."
-      },
-      {
-        "label": "`execute(trigger)`",
-        "detail": "Wraps `run()` with timing, a run ID, token accounting and exception capture. A crash becomes a failed `AgentResult`, never a stack trace out of the queue."
-      },
-      {
-        "label": "`call_claude(...)`",
-        "detail": "The single LLM door. Auto-detects Gemini or Anthropic from the environment. `temperature=0.0`, 3 retries, backoff doubling from 1s on rate limits and 5xx."
-      },
-      {
-        "label": "`load_prompt(file, **kw)`",
-        "detail": "Reads from `prompts/*.txt` and substitutes with `string.Template`. Never an inline prompt string."
-      },
-      {
-        "label": "`.wiki`",
-        "detail": "Lazy handle on SharedMemory — the namespaced project wiki every agent reads and writes."
-      },
-      {
-        "label": "`.events` / `emit()`",
-        "detail": "Publishes a typed event to the EventBus. The agent does not know or care who subscribes."
-      },
-      {
-        "label": "`StructuredLogger`",
-        "detail": "Writes every run as a JSON line to `pipeline/logs/agent_runs.jsonl` — the audit trail."
-      },
-      {
-        "label": "`MetricsCollector`",
-        "detail": "Records per-call tokens, latency, model, prompt file and estimated cost; per-run duration, success and review flag. Wrapped so metrics can never break execution."
-      }
-    ]
-  },
-  {
-    "id": "eparts-roster",
-    "title": "The roster: 31 agents in eight domains",
-    "kind": "cards",
-    "summary": "Counts verified by reading the tree: 31 agent modules, 31 registry entries, 31 ETVX processes. The README’s prose still says 32 and its table lists 28 — documentation drift of exactly the kind rule SES002 exists to slow down.",
-    "cards": [
-      {
-        "label": "Requirements",
-        "meta": "4 agents",
-        "tags": [
-          "transcript_parser",
-          "priority_classifier",
-          "req_extractor",
-          "stale_detector"
-        ],
-        "detail": "Fires on a `.vtt` upload. Produces minutes, P0/P1/P2 classification, and the 12 requirement documents in `requirements/parsed/`."
-      },
-      {
-        "label": "Architecture",
-        "meta": "4 agents",
-        "tags": [
-          "drift_detector",
-          "adr_generator",
-          "diagram_updater",
-          "traceability_builder"
-        ],
-        "detail": "Fires on transcripts and PR events. Detects when a discussion contradicts the canonical architecture; drafts ADRs (21 in `docs/`)."
-      },
-      {
-        "label": "Coding",
-        "meta": "6 agents",
-        "tags": [
-          "pr_reviewer",
-          "test_generator",
-          "doc_generator",
-          "boilerplate_generator",
-          "refactor_agent",
-          "test_review_agent"
-        ],
-        "detail": "Fires on PR events. Reviews the diff, generates test stubs, updates API docs."
-      },
-      {
-        "label": "Project management",
-        "meta": "4 agents",
-        "tags": [
-          "ticket_creator",
-          "wbs_updater",
-          "weekly_digest",
-          "alert_agent"
-        ],
-        "detail": "Fires on Jira webhooks and cron. Friday 18:00 digest; six-hourly alert sweep."
-      },
-      {
-        "label": "Knowledge",
-        "meta": "4 agents",
-        "tags": [
-          "minutes_publisher",
-          "decision_logger",
-          "prompt_regression",
-          "context_packager"
-        ],
-        "detail": "Fires pre-meeting and on PRs. Publishes minutes, logs decisions, checks prompts for quality decay."
-      },
-      {
-        "label": "Coach memory",
-        "meta": "4 agents",
-        "tags": [
-          "session_memory",
-          "commitment_tracker",
-          "concern_tracker",
-          "briefing_generator"
-        ],
-        "detail": "Fires on a coach session `.vtt`. Embeds the session, tracks what the team promised, and surfaces concerns raised more than once."
-      },
-      {
-        "label": "ML decision memory",
-        "meta": "4 agents",
-        "tags": [
-          "decision_log",
-          "evidence_accumulator",
-          "readiness_detector",
-          "coach_linker"
-        ],
-        "detail": "Fires on a POC result. Accumulates evidence until a modelling decision is *ready* to make, then links it to what a coach already said about it."
-      },
-      {
-        "label": "Planning",
-        "meta": "1 agent",
-        "tags": ["plan_generator"],
-        "detail": "Fires on a spec ready for refinement. The only agent with no offline fallback — see below."
-      }
-    ]
-  },
-  {
-    "id": "eparts-events",
-    "title": "Who publishes what, and what it triggers",
-    "kind": "table",
-    "summary": "Read as a directed graph, every edge points downstream. No event re-fires its source.",
-    "columns": ["Event", "Source", "Triggers"],
-    "rows": [
-      ["`drift_detected`", "requirements pipeline", "architecture pipeline"],
-      ["`new_requirements`", "transcript_parser", "drift_detector"],
-      ["`recurring_concern`", "concern_tracker", "PM alert_agent"],
-      ["`commitment_overdue`", "commitment_tracker", "PM alert_agent"],
-      ["`action_items_extracted`", "transcript_parser", "PM ticket_creator"],
-      ["`poc_evidence_logged`", "evidence_accumulator", "readiness_detector"],
-      ["`decision_ready`", "readiness_detector", "coach_linker"],
-      ["`human_review_needed`", "any agent", "PM alert_agent"]
-    ]
-  },
-  {
-    "id": "eparts-checkpoints",
-    "title": "Three checkpoints, at three layers",
-    "kind": "cards",
-    "summary": "A flag on the result, a gate between runs, and a hard stop before any plan exists.",
-    "cards": [
-      {
-        "label": "The flag",
-        "detail": "`requires_human_review` plus a structured `review_items` list on the agent’s result. Set at ten call sites across six agents. It propagates to the step record, the pipeline record and the wiki entry, which is tagged `human_review`."
-      },
-      {
-        "label": "The pull request",
-        "meta": "load-bearing",
-        "detail": "CI-run pipelines cannot write to `main` — they can only open a PR labelled `agent-generated`, `needs-human-review`. Artifacts are drafts until a person merges, and downstream agents read the merged state on the next run."
-      },
-      {
-        "label": "The refusal",
-        "detail": "The planning agent will not emit a plan at all while any blocking question is unanswered, and stamps every plan it does emit `awaiting review — no code may start until accepted`. A hard stop rather than a flag."
-      }
-    ]
-  },
-  {
-    "id": "eparts-guardrail-ladder",
-    "title": "Five layers, cheapest first",
-    "kind": "flow",
-    "summary": "L1 and L2 cost nothing to run, so they block every pull request. L3 and L4 spend human time. Only L5 spends tokens, and only on demand.",
-    "steps": [
-      {
-        "marker": "L1",
-        "label": "The Agent Contract linter",
-        "detail": "A 380-line stdlib-only AST walker at `tools/lint_ses.py`, written for this repository because the four properties it checks are invisible to every general-purpose linter.",
-        "meta": "Zero tokens · 84 files · under 1 second · blocking on PR"
-      },
-      {
-        "marker": "L2",
-        "label": "The offline eval harness",
-        "detail": "20 scenarios across 2 suites in `evals/`, executing the real routing table against declared expectations. Regression detection against a recorded baseline per scenario ID.",
-        "meta": "Zero tokens · 20 scenarios · under 1 second · blocking on PR"
-      },
-      {
-        "marker": "L3",
-        "label": "In-band human-review gates",
-        "detail": "The `requires_human_review` flag and `review_items` list on every `AgentResult`. Set by `priority_classifier` for any P0 item, by `adr_generator` for every ADR, and by `plan_generator` for every plan and every blocking question.",
-        "meta": "Human time · per artifact · synchronous · blocks the artifact"
-      },
-      {
-        "marker": "L4",
-        "label": "The pull request as the gate",
-        "detail": "CI-run pipelines never write to `main`. `transcript-pipeline.yml` and `requirements-extraction.yml` both open a PR labelled `agent-generated`, `needs-human-review`. The merge is the approval; until then every generated artifact is a draft.",
-        "meta": "Human time · per run · asynchronous · blocks the baseline"
-      },
-      {
-        "marker": "L5",
-        "label": "Model-dependent evals, defect loop, throwaway QA",
-        "detail": "The `--live` eval tier that actually runs the model and scores its tool and label choices; the Jira defect taxonomy with the `rc-prompt` root-cause class; and single-module QA interfaces a human drives by hand.",
-        "meta": "Costs tokens · opt-in only · workflow_dispatch · advisory"
-      }
-    ]
-  },
-  {
-    "id": "eparts-build-timeline",
-    "title": "95 commits, 17 April to 2 September",
-    "kind": "timeline",
-    "summary": "Dates from the repository’s git log. The turning point is the 24 July coaching session; the quality layer landed five days later.",
-    "events": [
-      {
-        "date": "17–19 Apr",
-        "label": "First commit, then infrastructure",
-        "detail": "Two commits before any agent exists. The scaffolding comes first."
-      },
-      {
-        "date": "23 Apr",
-        "label": "The framework lands in one move",
-        "detail": "`SES framework: agents, pipelines, orchestrator, dashboards, docs`. Then, the same day, the corrections start: Jira MCP rewritten for the new `/search/jql` API, a GitHub MCP client added, and a commit whose message is the honest state of things — `wire all agents to real data, fix broken PM agents`."
-      },
-      {
-        "date": "24–25 Apr",
-        "label": "Traceability becomes a first-class store",
-        "detail": "A unified store chaining concern → decision → requirement → Jira → risk, then rebuilt to 184 artifacts and 760 links with zero orphans. This is the spine that later lets a dashboard answer “which meeting caused this requirement” with provenance rather than assertion."
-      },
-      {
-        "date": "27 Apr",
-        "label": "The agents start committing — badly, then well",
-        "detail": "The first four `[agent:req_extractor]` commits have summaries like `REQ-001: Yeah, starting. So… I think… So the…` — raw transcript filler promoted straight to a requirement title. All four were deleted within two hours. The second pass produces the real set — `REQ-001 Automated product attribute extraction`, `REQ-002 ML confidence scoring`, `REQ-011 Exclude pricing from ML pipeline` — with the last three following on 29 April: twelve in total, each typed as `FUNCTIONAL` / `NON_FUNCTIONAL` / `CONSTRAINT` / `USER_GOAL` / `SOFT_GOAL`."
-      },
-      {
-        "date": "20 Jul",
-        "label": "From laptop script to repository service",
-        "detail": "Five merged pull requests in one day, and the character of the project changes. The drop-folder CI trigger, the program-health dashboard with provenance-stamped answers, weekly auto-refresh, the LLM requirements-extraction workflow, and the defect management spec plus the `/defect-triage` skill. Also a summer batch run: ten client meetings from 14 May to 16 July pushed through the pipeline at once."
-      },
-      {
-        "date": "24 Jul",
-        "label": "The coaching session",
-        "detail": "Cory Gwin, GitHub Copilot. Three recommendations: lean hard into deterministic QA because it consumes no tokens; define eval scenarios per skill, for regression detection; build throwaway QA interfaces for humans, not more agents. All three are now cited by name in the source files that implement them.",
-        "mark": true
-      },
-      {
-        "date": "29 Jul",
-        "label": "The quality layer lands",
-        "detail": "`Add agent eval harness, custom SES linter, and CI quality gates` — five days after the session. Same day: the refactor, test-review and planning agents, all three registered; the QA interface for the VTT parser; and the risk register regenerated from the database rather than maintained by hand.",
-        "mark": true
-      },
-      {
-        "date": "28–30 Jul",
-        "label": "A requirements shift, absorbed in public",
-        "detail": "The client moves to ETIM — a standardised electrical-products classification — and the architecture has to answer for it. Spec v1.2 through v1.4, ADRs 0016 through 0021, and a rebuilt v6 diagram. One commit is a correction of the team’s own understanding: `Correct where ETIM matching happens: ML owns it, behind attribute matching`. Another is a small masterclass in intellectual honesty: `Explain the wrong-class failure instead of asserting it`. A third, `Adopt Arjun's v4 script; drop the \"same staging\" contradiction`, is a teammate’s edit winning over the generated draft."
-      },
-      {
-        "date": "2 Sep",
-        "label": "The privacy scrub",
-        "detail": "Two commits remove every real meeting transcript, client minute and coach session, and replace real participant identities with roles and placeholders. They contained other people’s verbatim speech and client material. The pipelines now run against synthetic fixtures in `examples/`, and `pipeline/vtt_processor.py` reads real speaker identities from an uncommitted file when one is supplied. The third, and the final commit of the project, rewrites the README: `Lead with what the system verifies, not what it contains.`"
       }
     ]
   }

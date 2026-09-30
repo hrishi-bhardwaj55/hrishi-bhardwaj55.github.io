@@ -1,11 +1,28 @@
+import { Fragment } from 'react';
 import { sitePath } from '@/lib/site-path';
 import { headingId, storyBlocks, storyImageSizes, storyDiagrams } from './data';
-import { Inline } from './inline';
 import { StoryDiagram } from './story-diagram';
 
-export { Inline };
-
 // A deliberately small, text-only Markdown format. Raw HTML is never executed.
+export function Inline({ text }: { text: string }) {
+  return text
+    .split(/(\[[^\]]+\]\(https:\/\/[^\s)]+\)|`[^`]+`|\*\*[^*]+\*\*|\*[^*]+\*)/g)
+    .map((part, i) => {
+      const link = part.match(/^\[([^\]]+)\]\((https:\/\/[^\s)]+)\)$/);
+      if (link)
+        return (
+          <a key={i} href={link[2]}>
+            {link[1]}
+          </a>
+        );
+      if (part.startsWith('`')) return <code key={i}>{part.slice(1, -1)}</code>;
+      if (part.startsWith('**'))
+        return <strong key={i}>{part.slice(2, -2)}</strong>;
+      if (part.startsWith('*')) return <em key={i}>{part.slice(1, -1)}</em>;
+      return <Fragment key={i}>{part}</Fragment>;
+    });
+}
+
 export function StoryBody({ markdown }: { markdown: string }) {
   const blocks = storyBlocks(markdown);
   return blocks.map((block, i) => {
@@ -34,35 +51,13 @@ export function StoryBody({ markdown }: { markdown: string }) {
     }
     if (block.startsWith('# ')) return null;
     if (block.startsWith('## ')) {
-      // A second line under a section heading is its kicker.
-      const [text, kicker] = block.slice(3).split('\n');
-      return [
-        <h2 id={headingId(text.trim())} key={i}>
-          {text.trim()}
-        </h2>,
-        kicker && (
-          <p className="story-section-kicker" key={`${i}-kicker`}>
-            {kicker.trim()}
-          </p>
-        ),
-      ];
-    }
-    if (block.startsWith('### ')) {
-      const text = block.slice(4).trim();
+      const text = block.slice(3).trim();
       return (
-        <h3 id={headingId(text)} key={i}>
+        <h2 id={headingId(text)} key={i}>
           {text}
-        </h3>
+        </h2>
       );
     }
-    if (block.split('\n').every((line) => line.startsWith('>')))
-      return (
-        <blockquote key={i}>
-          <p>
-            <Inline text={block.replace(/^>\s?/gm, '').replace(/\n/g, ' ')} />
-          </p>
-        </blockquote>
-      );
     if (block.startsWith('- '))
       return (
         <ul key={i}>
@@ -104,7 +99,7 @@ export function StoryBody({ markdown }: { markdown: string }) {
       return null;
     return (
       <p key={i}>
-        <Inline text={block.replace(/\n/g, ' ')} />
+        <Inline text={block.replace(/\r?\n/g, ' ')} />
       </p>
     );
   });
