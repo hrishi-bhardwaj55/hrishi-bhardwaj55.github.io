@@ -172,7 +172,7 @@ export const projects: readonly Project[] = [
       'Phase 3 reached 20,000 requests per second at $0.31/hour. A separate Redis-only, in-memory experiment reached 70,000 RPS.',
     limitation:
       'Historical project benchmarks across different configurations. The Redis-only experiment was expensive; its throughput does not share the $0.31/hour cost.',
-    story: '/stories/twitter-analytics/',
+    story: '/blogs/twitter-analytics/',
     stages: [
       {
         name: 'Prepare',
@@ -203,7 +203,7 @@ export const projects: readonly Project[] = [
       'Sustained more than 10,000 events per second over the supplied traces, and block-local joins cut rider-match latency by 30%. Separate driver-match, ad-match, and ad-price jobs, with explicit event transitions and rider-profile updates broadcast to the partitions that need them.',
     limitation:
       'Built over supplied NYCabs event traces. Throughput and match latency were measured on those traces; recovery time was not.',
-    story: '/stories/uber-ride-matching/',
+    story: '/blogs/uber-ride-matching/',
     stages: [
       {
         name: 'Route',

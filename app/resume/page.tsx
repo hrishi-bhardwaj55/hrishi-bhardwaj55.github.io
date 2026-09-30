@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import { Download } from 'lucide-react';
-import { sitePath } from '@/lib/site-path';
+import { sitePath, siteUrl } from '@/lib/site-path';
 import { pageMetadata } from '@/lib/page-metadata';
+import { JsonLd, person } from '@/lib/structured-data';
 import { PortfolioNav, WindowBar } from '../workspace-chrome';
 import { email, github, linkedin } from '../projects';
+import { blogPath } from '../blog-catalog';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Resume — Hrishikesh Bhardwaj',
@@ -103,6 +105,13 @@ function DownloadResume() {
 export default function Resume() {
   return (
     <div className="portfolio workbench">
+      <JsonLd
+        data={{
+          '@type': 'ProfilePage',
+          url: siteUrl('/resume/'),
+          mainEntity: person,
+        }}
+      />
       <PortfolioNav active="resume" />
       <main className="desk-shell resume-shell" id="resume-top">
         <header className="resume-heading">
@@ -365,7 +374,7 @@ export default function Resume() {
                 <article className="resume-project">
                   <div className="resume-entry-heading">
                     <h3>
-                      <a href={sitePath('/stories/twitter-analytics/')}>
+                      <a href={sitePath(blogPath('twitter-analytics'))}>
                         Twitter/X User Recommendation System
                       </a>
                     </h3>
@@ -402,7 +411,7 @@ export default function Resume() {
                   </ul>
                   <a
                     className="resume-story-link"
-                    href={sitePath('/stories/twitter-analytics/')}
+                    href={sitePath(blogPath('twitter-analytics'))}
                   >
                     Read the architecture and performance story{' '}
                     <span aria-hidden="true">↗</span>
@@ -411,7 +420,7 @@ export default function Resume() {
                 <article className="resume-project">
                   <div className="resume-entry-heading">
                     <h3>
-                      <a href={sitePath('/stories/uber-ride-matching/')}>
+                      <a href={sitePath(blogPath('uber-ride-matching'))}>
                         Uber Ride Booking System
                       </a>
                     </h3>
@@ -430,7 +439,7 @@ export default function Resume() {
                   </ul>
                   <a
                     className="resume-story-link"
-                    href={sitePath('/stories/uber-ride-matching/')}
+                    href={sitePath(blogPath('uber-ride-matching'))}
                   >
                     Read the streaming system story{' '}
                     <span aria-hidden="true">↗</span>
@@ -549,7 +558,7 @@ export default function Resume() {
                   <ul>
                     {coursework.map((item) => (
                       <li key={item.slug}>
-                        <a href={sitePath(`/stories/${item.slug}/`)}>
+                        <a href={sitePath(blogPath(item.slug))}>
                           {item.name} <span aria-hidden="true">↗</span>
                         </a>
                         <p>{item.summary}</p>

@@ -8,7 +8,8 @@ import uberRideMatching from '@/content/stories/uber-ride-matching.md?raw';
 import cloudMachineLearning from '@/content/stories/cloud-machine-learning.md?raw';
 import serverlessFunctions from '@/content/stories/serverless-functions.md?raw';
 import epartsAgentHarness from '@/content/stories/eparts-agent-harness.md?raw';
-import { blogCatalog } from '../blog-catalog';
+import { pageMetadata } from '@/lib/page-metadata';
+import { blogCatalog, blogPath } from '../blog-catalog';
 import diagramDefinitions from '@/content/stories/diagrams.json';
 import type { Diagram } from './story-diagram';
 
@@ -53,6 +54,18 @@ export const stories = blogCatalog.map((item) => {
   if (!markdown) throw new Error(`Missing article: ${item.slug}`);
   return { ...item, markdown };
 });
+
+// Shared by the article and its old /stories/ address, so both name the same
+// canonical URL and share the same social card.
+export function storyMetadata(story: (typeof stories)[number]) {
+  return pageMetadata({
+    title: `${story.title} — Hrishikesh Bhardwaj`,
+    description: story.excerpt,
+    path: blogPath(story.slug),
+    type: 'article',
+    publishedTime: story.published,
+  });
+}
 
 export function readingMinutes(markdown: string) {
   return Math.max(

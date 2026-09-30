@@ -35,20 +35,26 @@ For a local subpath build in PowerShell, set `$env:NEXT_PUBLIC_BASE_PATH='/portf
 - Shared Workbench/Blogs/Resume navigation and window frame: `app/workspace-chrome.tsx`
 - Story text: `content/stories/twitter-analytics.md`
 - All ten blog articles: `content/stories/*.md`
-- Story titles, descriptions and source notes: `content/stories/catalog.json`
+- Story titles, descriptions, publish dates and optional source notes: `content/stories/catalog.json`
 - Article imports and registry: `app/stories/data.ts`
 - Responsive diagrams: `content/stories/diagrams.json` and `app/stories/story-diagram.tsx`
 - Interactive ride lifecycle illustration: `app/stories/ride-lifecycle.tsx`
-- Shared article layout: `app/stories/[slug]/page.tsx`
+- Shared article layout, served at `/blogs/<slug>/`: `app/blogs/[slug]/page.tsx`
+- Forwarding pages for the old `/stories/<slug>/` addresses: `app/stories/[slug]/page.tsx`
+- Search metadata: `lib/page-metadata.ts` (titles, descriptions, canonical URLs, social cards) and `lib/structured-data.tsx` (schema.org JSON-LD)
 - Article diagrams: `public/stories/twitter-analytics/`
 - Fonts and metadata: `app/layout.tsx`
 - Styling: `app/globals.css`
 
-To add a story, create a Markdown file in `content/stories`, add its metadata to `content/stories/catalog.json`, then import it with `?raw` and register its text in `app/stories/data.ts`. Every article gets a static page and appears in Blogs. The homepage highlights Twitter Analytics, Uber Ride Matching, and WeCloud Chat. A selected project can also link to its story through `app/projects.ts`; omit `source` and `documentation` when code is private.
+To add a story, create a Markdown file in `content/stories`, add its metadata to `content/stories/catalog.json`, then import it with `?raw` and register its text in `app/stories/data.ts`. Give it a `published` date (YYYY-MM-DD) for search engines. Every article gets a static page at `/blogs/<slug>/`, appears in Blogs and is added to the sitemap. Link to posts with `blogPath()` from `app/blog-catalog.ts`. The homepage highlights Twitter Analytics, Uber Ride Matching, and WeCloud Chat. A selected project can also link to its story through `app/projects.ts`; omit `source` and `documentation` when code is private.
 
 The article renderer supports paragraphs, a `#` title, `##` section headings, `- ` bullet lists, fenced code blocks, inline backticks, emphasis, bold text, HTTPS Markdown links, and PNG diagrams at `/stories/your-slug/file.png`. A code fence's first line is its header, written as ```` ```label | tag ````. Put an italic caption immediately after an image. A standalone `:::diagram diagram-id` block renders a matching definition from `diagrams.json`; supported types are flows, comparisons, bars, and seams (two flows divided by a dashed line). `sourceNote` in the catalog is optional. Raw HTML and scripts are rendered as text, never executed. This deliberately small format does not support Markdown tables, nested or numbered lists, or embedded HTML.
 
-Workbench uses Base UI's tabs root directly to preserve vertical keyboard navigation. The former `/versions/workbench/` address uses a static HTML redirect to the homepage.
+Workbench uses Base UI's tabs root directly to preserve vertical keyboard navigation. The former `/versions/workbench/` address uses a static HTML redirect to the homepage. Posts moved from `/stories/<slug>/` to `/blogs/<slug>/`; GitHub Pages cannot send a 301, so each old address forwards immediately, keeps any `#section` anchor, and names the new URL as canonical.
+
+## Search engines
+
+Every page sets its own title, description, canonical URL and social card. Articles use the post headline as the title and add an Open Graph publish date. Pages carry schema.org JSON-LD: `WebSite` and `Person` on the homepage, `Blog` on the index, `BlogPosting` and `BreadcrumbList` on each article, and `ProfilePage` on the resume. The build writes `sitemap.xml`, listing canonical URLs only, and a `robots.txt` that points to it, both using `NEXT_PUBLIC_SITE_ORIGIN`. After deploying, submit `https://hrishikeshbhardwaj.com/sitemap.xml` in Google Search Console.
 
 ## Validation and hosting
 

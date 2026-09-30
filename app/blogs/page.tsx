@@ -1,14 +1,18 @@
 import type { Metadata } from 'next';
-import { sitePath } from '@/lib/site-path';
+import { sitePath, siteUrl } from '@/lib/site-path';
 import { pageMetadata } from '@/lib/page-metadata';
+import { JsonLd, person } from '@/lib/structured-data';
 import { PortfolioNav, WindowBar } from '../workspace-chrome';
 import { PortfolioFooter } from '../project-visuals';
 import { stories, readingMinutes } from '../stories/data';
+import { blogPath } from '../blog-catalog';
+
+const description =
+  'Project write-ups on architecture, performance, and the decisions behind the work.';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Blogs — Hrishikesh Bhardwaj',
-  description:
-    'Project write-ups on architecture, performance, and the decisions behind the work.',
+  description,
   path: '/blogs/',
 });
 
@@ -17,7 +21,7 @@ const FLAGSHIP_SLUG = 'twitter-analytics';
 
 function BlogEntry({ story }: { story: (typeof stories)[number] }) {
   return (
-    <a className="blog-entry" href={sitePath(`/stories/${story.slug}/`)}>
+    <a className="blog-entry" href={sitePath(blogPath(story.slug))}>
       <div className="blog-entry-meta">
         <span>{story.period}</span>
         <span>{readingMinutes(story.markdown)} min read</span>
@@ -48,6 +52,21 @@ export default function Blogs() {
 
   return (
     <div className="portfolio workbench">
+      <JsonLd
+        data={{
+          '@type': 'Blog',
+          url: siteUrl('/blogs/'),
+          name: 'Behind the build',
+          description,
+          author: person,
+          blogPost: stories.map((story) => ({
+            '@type': 'BlogPosting',
+            headline: story.title,
+            url: siteUrl(blogPath(story.slug)),
+            datePublished: story.published,
+          })),
+        }}
+      />
       <PortfolioNav active="blogs" />
       <main className="desk-shell blogs-shell">
         <header className="desk-intro blogs-intro">

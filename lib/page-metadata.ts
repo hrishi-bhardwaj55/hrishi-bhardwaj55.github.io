@@ -12,30 +12,38 @@ export const socialImage = {
   alt: 'Hrishikesh Bhardwaj — Software Engineer',
 };
 
-export function pageMetadata({
-  title,
-  description,
-  path,
-  type = 'website',
-}: {
+type PageDetails = {
   title: string;
   description: string;
   path: string;
-  type?: 'website' | 'article';
-}): Metadata {
+};
+
+export function pageMetadata(
+  page: PageDetails &
+    ({ type?: 'website' } | { type: 'article'; publishedTime: string }),
+): Metadata {
+  const { title, description, path } = page;
   const url = siteUrl(path);
+  const shared = {
+    siteName: 'Hrishikesh Bhardwaj',
+    url,
+    title,
+    description,
+    images: [socialImage],
+  };
   return {
     title,
     description,
     alternates: { canonical: url },
-    openGraph: {
-      type,
-      siteName: 'Hrishikesh Bhardwaj',
-      url,
-      title,
-      description,
-      images: [socialImage],
-    },
+    openGraph:
+      page.type === 'article'
+        ? {
+            ...shared,
+            type: 'article',
+            publishedTime: page.publishedTime,
+            authors: ['Hrishikesh Bhardwaj'],
+          }
+        : { ...shared, type: 'website' },
     twitter: {
       card: 'summary_large_image',
       title,

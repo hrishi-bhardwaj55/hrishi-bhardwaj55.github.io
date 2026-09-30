@@ -6,7 +6,7 @@ import { projects, github, email, linkedin, type Project } from './projects';
 import { sitePath } from '@/lib/site-path';
 import { PortfolioFooter, ProjectGlyph } from './project-visuals';
 import { PortfolioNav, WindowBar } from './workspace-chrome';
-import { blogCatalog } from './blog-catalog';
+import { blogCatalog, blogPath } from './blog-catalog';
 function StageExplorer({ stages }: { stages: Project['stages'] }) {
   const [stage, setStage] = useState(0);
   return (
@@ -164,7 +164,7 @@ export default function WorkbenchClient() {
             .map((p) => (
               <a
                 className="story-preview"
-                href={sitePath(`/stories/${p.slug}/`)}
+                href={sitePath(blogPath(p.slug))}
                 key={p.slug}
               >
                 <div>

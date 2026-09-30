@@ -22,6 +22,35 @@ const catalog = JSON.parse(
 );
 if (new Set(catalog.map((story) => story.slug)).size !== catalog.length)
   throw new Error('Duplicate story slug.');
+
+// Search engines find pages through the sitemap, which lists canonical URLs
+// only: the /stories/ and /versions/ redirects stay out. Mirrors siteUrl().
+const siteOrigin = (
+  process.env.NEXT_PUBLIC_SITE_ORIGIN ?? 'https://hrishi-bhardwaj55.github.io'
+).replace(/\/$/, '');
+const pages = [
+  '/',
+  '/blogs/',
+  '/resume/',
+  ...catalog.map((story) => `/blogs/${story.slug}/`),
+];
+fs.writeFileSync(
+  path.join(publicRoot, 'sitemap.xml'),
+  `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${pages.map((page) => `  <url><loc>${siteOrigin}${basePath}${page}</loc></url>`).join('\n')}
+</urlset>
+`,
+);
+fs.writeFileSync(
+  path.join(publicRoot, 'robots.txt'),
+  `User-agent: *
+Allow: /
+
+Sitemap: ${siteOrigin}${basePath}/sitemap.xml
+`,
+);
+
 for (const file of [
   'index.html',
   '404.html',
@@ -30,7 +59,12 @@ for (const file of [
   'og.png',
   'CNAME',
   'files/Hrishikesh_Bhardwaj_Resume.pdf',
-  ...catalog.map((story) => `stories/${story.slug}/index.html`),
+  'sitemap.xml',
+  'robots.txt',
+  ...catalog.flatMap((story) => [
+    `blogs/${story.slug}/index.html`,
+    `stories/${story.slug}/index.html`,
+  ]),
 ]) {
   if (!fs.existsSync(path.join(publicRoot, file)))
     throw new Error(`Static export is missing ${file}`);
