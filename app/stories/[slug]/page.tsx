@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { sitePath } from '@/lib/site-path';
 import { pageMetadata } from '@/lib/page-metadata';
-import { stories, readingMinutes, headingId } from '../data';
+import { stories, readingMinutes, headingId, storyHeadings } from '../data';
 import { StoryBody, Inline } from '../story-body';
 import { PortfolioNav, WindowBar } from '../../workspace-chrome';
 import { PortfolioFooter } from '../../project-visuals';
@@ -31,9 +31,7 @@ export default async function ProjectStory({ params }: Props) {
   const currentIndex = stories.indexOf(story);
   const previous = stories[currentIndex - 1];
   const next = stories[currentIndex + 1];
-  const headings = [...story.markdown.matchAll(/^## (.+)$/gm)].map((match) =>
-    match[1].trim(),
-  );
+  const headings = storyHeadings(story.markdown);
   return (
     <div className="portfolio workbench story-page">
       <PortfolioNav active="blogs" />

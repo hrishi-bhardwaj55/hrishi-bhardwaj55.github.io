@@ -7,6 +7,7 @@ import socialNetworkStorage from '@/content/stories/social-network-storage.md?ra
 import uberRideMatching from '@/content/stories/uber-ride-matching.md?raw';
 import cloudMachineLearning from '@/content/stories/cloud-machine-learning.md?raw';
 import serverlessFunctions from '@/content/stories/serverless-functions.md?raw';
+import epartsAgentHarness from '@/content/stories/eparts-agent-harness.md?raw';
 import { blogCatalog } from '../blog-catalog';
 import diagramDefinitions from '@/content/stories/diagrams.json';
 import type { Diagram } from './story-diagram';
@@ -44,6 +45,7 @@ const articleText: Record<string, string> = {
   'uber-ride-matching': uberRideMatching,
   'cloud-machine-learning': cloudMachineLearning,
   'serverless-functions': serverlessFunctions,
+  'eparts-agent-harness': epartsAgentHarness,
 };
 export const storyDiagrams = diagramDefinitions as readonly Diagram[];
 export const stories = blogCatalog.map((item) => {
@@ -62,6 +64,25 @@ export function readingMinutes(markdown: string) {
         .split(/\s+/).length / 220,
     ),
   );
+}
+
+// Fenced code keeps its blank lines, so split around fences before splitting paragraphs.
+export function storyBlocks(markdown: string) {
+  return markdown
+    .replace(/\r\n/g, '\n')
+    .trim()
+    .split(/^(```[^\n]*\n[\s\S]*?\n```)$/m)
+    .flatMap((part) =>
+      part.startsWith('```') ? [part] : part.split(/\n\s*\n/),
+    )
+    .map((block) => block.trim())
+    .filter(Boolean);
+}
+
+export function storyHeadings(markdown: string) {
+  return storyBlocks(markdown)
+    .filter((block) => block.startsWith('## '))
+    .map((block) => block.slice(3).split('\n')[0].trim());
 }
 
 export function headingId(text: string) {

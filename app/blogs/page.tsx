@@ -12,6 +12,7 @@ export const metadata: Metadata = pageMetadata({
   path: '/blogs/',
 });
 
+const CAPSTONE_SLUG = 'eparts-agent-harness';
 const FLAGSHIP_SLUG = 'twitter-analytics';
 
 function BlogEntry({ story }: { story: (typeof stories)[number] }) {
@@ -39,8 +40,11 @@ function BlogEntry({ story }: { story: (typeof stories)[number] }) {
 }
 
 export default function Blogs() {
+  const capstone = stories.find((story) => story.slug === CAPSTONE_SLUG);
   const featured = stories.find((story) => story.slug === FLAGSHIP_SLUG);
-  const rest = stories.filter((story) => story.slug !== FLAGSHIP_SLUG);
+  const rest = stories.filter(
+    (story) => story.slug !== FLAGSHIP_SLUG && story.slug !== CAPSTONE_SLUG,
+  );
 
   return (
     <div className="portfolio workbench">
@@ -74,6 +78,12 @@ export default function Blogs() {
             Course and client work. The source is private; these are my own
             notes on building it.
           </p>
+          {capstone && (
+            <>
+              <p className="blog-group-label">Capstone</p>
+              <BlogEntry story={capstone} />
+            </>
+          )}
           {featured && (
             <>
               <p className="blog-group-label">Semester project</p>

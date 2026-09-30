@@ -1,31 +1,31 @@
-import { Fragment } from 'react';
 import { sitePath } from '@/lib/site-path';
-import { headingId, storyImageSizes, storyDiagrams } from './data';
+import { headingId, storyBlocks, storyImageSizes, storyDiagrams } from './data';
+import { Inline } from './inline';
 import { StoryDiagram } from './story-diagram';
 
-// A deliberately small, text-only Markdown format. Raw HTML is never executed.
-export function Inline({ text }: { text: string }) {
-  return text
-    .split(/(\[[^\]]+\]\(https:\/\/[^\s)]+\)|`[^`]+`|\*\*[^*]+\*\*|\*[^*]+\*)/g)
-    .map((part, i) => {
-      const link = part.match(/^\[([^\]]+)\]\((https:\/\/[^\s)]+)\)$/);
-      if (link)
-        return (
-          <a key={i} href={link[2]}>
-            {link[1]}
-          </a>
-        );
-      if (part.startsWith('`')) return <code key={i}>{part.slice(1, -1)}</code>;
-      if (part.startsWith('**'))
-        return <strong key={i}>{part.slice(2, -2)}</strong>;
-      if (part.startsWith('*')) return <em key={i}>{part.slice(1, -1)}</em>;
-      return <Fragment key={i}>{part}</Fragment>;
-    });
-}
+export { Inline };
 
+// A deliberately small, text-only Markdown format. Raw HTML is never executed.
 export function StoryBody({ markdown }: { markdown: string }) {
-  const blocks = markdown.trim().split(/\r?\n\s*\r?\n/);
+  const blocks = storyBlocks(markdown);
   return blocks.map((block, i) => {
+    const code = block.match(/^```([^\n]*)\n([\s\S]*)\n```$/);
+    if (code) {
+      const [label, tag] = code[1].split(' | ').map((part) => part.trim());
+      return (
+        <figure className="story-code" key={i}>
+          {label && (
+            <figcaption>
+              <span>{label}</span>
+              {tag && <span>{tag}</span>}
+            </figcaption>
+          )}
+          <pre>
+            <code>{code[2]}</code>
+          </pre>
+        </figure>
+      );
+    }
     const diagramId = block.match(/^:::diagram ([a-z0-9-]+)$/)?.[1];
     if (diagramId) {
       const diagram = storyDiagrams.find((item) => item.id === diagramId);
@@ -34,13 +34,45 @@ export function StoryBody({ markdown }: { markdown: string }) {
     }
     if (block.startsWith('# ')) return null;
     if (block.startsWith('## ')) {
-      const text = block.slice(3).trim();
+      // A second line under a section heading is its kicker.
+      const [text, kicker] = block.slice(3).split('\n');
+      return [
+        <h2 id={headingId(text.trim())} key={i}>
+          {text.trim()}
+        </h2>,
+        kicker && (
+          <p className="story-section-kicker" key={`${i}-kicker`}>
+            {kicker.trim()}
+          </p>
+        ),
+      ];
+    }
+    if (block.startsWith('### ')) {
+      const text = block.slice(4).trim();
       return (
-        <h2 id={headingId(text)} key={i}>
+        <h3 id={headingId(text)} key={i}>
           {text}
-        </h2>
+        </h3>
       );
     }
+    if (block.split('\n').every((line) => line.startsWith('>')))
+      return (
+        <blockquote key={i}>
+          <p>
+            <Inline text={block.replace(/^>\s?/gm, '').replace(/\n/g, ' ')} />
+          </p>
+        </blockquote>
+      );
+    if (block.startsWith('- '))
+      return (
+        <ul key={i}>
+          {block.split(/\n(?=- )/).map((item, index) => (
+            <li key={index}>
+              <Inline text={item.slice(2).replace(/\n\s*/g, ' ')} />
+            </li>
+          ))}
+        </ul>
+      );
     const image = block.match(
       /^!\[([^\]]*)\]\((\/stories\/[a-z0-9/-]+\.png)\)$/,
     );
@@ -72,7 +104,7 @@ export function StoryBody({ markdown }: { markdown: string }) {
       return null;
     return (
       <p key={i}>
-        <Inline text={block.replace(/\r?\n/g, ' ')} />
+        <Inline text={block.replace(/\n/g, ' ')} />
       </p>
     );
   });
