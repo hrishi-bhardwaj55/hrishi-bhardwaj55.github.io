@@ -2,7 +2,7 @@
   {
     "slug": "eparts-agent-harness",
     "project": "eParts Agent Harness",
-    "title": "I automated our capstone with 31 agents. It worked too well.",
+    "title": "Automating the boring parts of software engineering",
     "excerpt": "Meeting transcripts in, requirements and design records out, until an agent committed small talk as requirements. Where I put people back in the loop, and how we tested the rest without calling a model.",
     "period": "April–September 2026",
     "context": "CMU MSE Studio · Capstone",

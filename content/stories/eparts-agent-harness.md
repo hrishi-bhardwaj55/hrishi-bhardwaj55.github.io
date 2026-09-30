@@ -1,4 +1,4 @@
-# I automated our capstone with 31 agents. It worked too well.
+# Automating the boring parts of software engineering
 
 Our capstone ran on meetings: with the client, with our mentor, with our coaches. Each one produced decisions that somebody had to write up as requirements, check against the architecture and turn into tickets. So I built a system of agents to do that work. By the end of the project it had 31 of them.
 
