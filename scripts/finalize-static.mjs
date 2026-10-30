@@ -80,6 +80,21 @@ function collect(directory, extension) {
         : [];
   });
 }
+// The /scraper/ dashboards are written by separate scraper jobs that replace
+// the whole file on each run, so their link back to the hub is added here.
+const scraperRoot = path.join(publicRoot, 'scraper');
+const scraperBar = `<style>.scraper-home-bar{font:500 13px/1 Inter,system-ui,sans-serif;padding:10px 16px;border-bottom:1px solid #e4e7ec;background:#fff}.scraper-home-bar a{color:#5f6670;text-decoration:none;display:inline-flex;align-items:center;gap:6px}.scraper-home-bar a:hover{color:#0a66c2}@media (prefers-color-scheme:dark){.scraper-home-bar{background:#171a20;border-color:#272b33}.scraper-home-bar a{color:#a0a6b0}.scraper-home-bar a:hover{color:#6cb2f5}}</style><nav class="scraper-home-bar"><a href="${basePath}/scraper/">&larr; Scraper home</a></nav>`;
+if (fs.existsSync(scraperRoot))
+  for (const file of collect(scraperRoot, '.html')) {
+    if (file === path.join(scraperRoot, 'index.html')) continue;
+    const html = fs.readFileSync(file, 'utf8');
+    if (html.includes('scraper-home-bar')) continue;
+    fs.writeFileSync(
+      file,
+      html.replace(/<body[^>]*>/, (body) => body + scraperBar),
+    );
+  }
+
 let referenceCount = 0;
 function checkReference(url, file) {
   if (!url.startsWith('/') || url.startsWith('//')) return;
