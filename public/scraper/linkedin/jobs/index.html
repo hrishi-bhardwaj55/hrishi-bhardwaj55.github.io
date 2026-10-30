@@ -1,0 +1,2258 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LinkedIn Job Matches</title>
+<meta name="description" content="Private LinkedIn job matches dashboard.">
+<style>
+:root{--bg:#f6f7f9;--fg:#17191d;--muted:#626a75;--card:#fff;--line:#e3e7ec;--accent:#0a66c2;--accent-bg:#e7f1fb;--chip:#f0f3f6;--green:#137a46;--shadow:0 1px 2px rgba(16,24,40,.05)}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1115;--fg:#e9ebee;--muted:#a1a8b2;--card:#171a20;--line:#292e37;--accent:#73b7f4;--accent-bg:#142a3d;--chip:#22262e;--green:#56ce8d;--shadow:none}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 Inter,ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:920px;margin:0 auto;padding:36px 16px 64px}h1{font-size:28px;letter-spacing:-.025em;margin:0}.sub{color:var(--muted);margin:5px 0 0;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0}.stat{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;box-shadow:var(--shadow)}.stat b{display:block;font-size:22px}.stat span{color:var(--muted);font-size:12px}
+.controls{position:sticky;top:0;z-index:3;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(8px);padding:10px 0;border-bottom:1px solid var(--line);margin-bottom:14px;display:flex;gap:8px;flex-wrap:wrap}
+.controls input{flex:1 1 260px;min-width:0;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:9px;padding:9px 12px;font:inherit}.toggle{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:9px;padding:9px 12px;font:600 13px inherit;cursor:pointer}.toggle.on{color:var(--accent);background:var(--accent-bg);border-color:var(--accent)}
+.count{color:var(--muted);font-size:13px;margin:0 0 10px}.job{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 16px;margin-bottom:10px;box-shadow:var(--shadow);display:flex;gap:16px;align-items:flex-start}.job:hover{border-color:var(--accent)}.job[hidden]{display:none}.job-main{flex:1;min-width:0}.top{display:flex;justify-content:space-between;gap:12px}h2{font-size:16px;line-height:1.35;margin:0;letter-spacing:-.01em}.company{font-weight:600;margin:2px 0 0}.when{color:var(--muted);font-size:12px;white-space:nowrap}.location{color:var(--muted);font-size:13px;margin:3px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.chip{background:var(--chip);color:var(--muted);padding:2px 9px;border-radius:999px;font-size:12px}.chip.pay{color:var(--green);font-weight:600}.apply{flex:none;background:var(--accent);color:white;text-decoration:none;font-weight:650;font-size:13px;padding:7px 12px;border-radius:8px}.apply:hover{filter:brightness(1.08)}
+details{color:var(--muted);font-size:13px;margin-top:9px}details summary{cursor:pointer}details p{margin:5px 0 0}.empty{display:none;text-align:center;color:var(--muted);padding:48px 0}.empty.show{display:block}
+@media(max-width:620px){.stats{grid-template-columns:repeat(3,1fr)}.job{display:block}.top{display:block}.when{display:block;margin-top:3px}.apply{display:block;text-align:center;margin-top:13px}}
+</style></head><body><main>
+<header><h1>LinkedIn job matches</h1><p class="sub">Fresh roles that passed the scraper filters. Last updated <time data-generated-at="2026-10-29T23:02:35-04:00">Oct 29, 2026 at 11:02 PM</time>.</p></header>
+<section class="stats"><div class="stat"><b>248</b><span>matching jobs</span></div><div class="stat"><b>175</b><span>companies</span></div><div class="stat"><b>0</b><span>remote roles</span></div></section>
+<div class="controls"><input id="search" type="search" placeholder="Search role, company, location, or skill" aria-label="Search jobs"><button id="remote" class="toggle" type="button" aria-pressed="false">Remote only</button></div>
+<p class="count" id="count"></p>
+<section id="jobs"><article class="job" data-search="systems engineer, vdi (sql server and windows server) w/secret clearance teksynap new cumberland, pa" data-remote="false" data-posted="2026-10-30T02:51:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Systems Engineer, VDI (SQL Server and Windows Server) w/Secret Clearance</h2><p class="company">TekSynap</p></div><span class="when">11 minutes ago</span></div>
+    <p class="location">New Cumberland, PA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/systems-engineer-vdi-sql-server-and-windows-server-w-secret-clearance-at-teksynap-4484596744" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="full stack engineer *o/a - originarc holdings, inc. miami, fl" data-remote="false" data-posted="2026-10-30T02:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Full Stack Engineer</h2><p class="company">*O/A - OriginArc Holdings, Inc.</p></div><span class="when">1 hour ago</span></div>
+    <p class="location">Miami, FL</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/full-stack-engineer-at-o-a-originarc-holdings-inc-4485281508" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="machine learning engineer nyla technology solutions annapolis junction, md" data-remote="false" data-posted="2026-10-30T02:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Machine Learning Engineer</h2><p class="company">Nyla Technology Solutions</p></div><span class="when">1 hour ago</span></div>
+    <p class="location">Annapolis Junction, MD</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/machine-learning-engineer-at-nyla-technology-solutions-4484804334" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="infrastructure systems engineer iii conduent united states" data-remote="false" data-posted="2026-10-30T02:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Infrastructure Systems Engineer III</h2><p class="company">Conduent</p></div><span class="when">1 hour ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/infrastructure-systems-engineer-iii-at-conduent-4485270784" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="systems engineer pandologic quantico, va" data-remote="false" data-posted="2026-10-30T02:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Systems Engineer</h2><p class="company">PandoLogic</p></div><span class="when">1 hour ago</span></div>
+    <p class="location">Quantico, VA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/systems-engineer-at-pandologic-4484801353" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="data infrastructure engineer – storage &amp; platforms fintal partners chicago, il" data-remote="false" data-posted="2026-10-30T02:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Data Infrastructure Engineer – Storage &amp; Platforms</h2><p class="company">Fintal Partners</p></div><span class="when">1 hour ago</span></div>
+    <p class="location">Chicago, IL</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/data-infrastructure-engineer-%E2%80%93-storage-platforms-at-fintal-partners-4484595762" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software development engineer, audible ai voice production audible culver city, ca" data-remote="false" data-posted="2026-10-30T02:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Development Engineer, Audible AI Voice Production</h2><p class="company">Audible</p></div><span class="when">1 hour ago</span></div>
+    <p class="location">Culver City, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-development-engineer-audible-ai-voice-production-at-audible-4485277326" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="platform engineer – kubernetes fintal partners chicago, il" data-remote="false" data-posted="2026-10-30T02:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Platform Engineer – Kubernetes</h2><p class="company">Fintal Partners</p></div><span class="when">1 hour ago</span></div>
+    <p class="location">Chicago, IL</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/platform-engineer-%E2%80%93-kubernetes-at-fintal-partners-4484594720" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="founding infrastructure engineer structured ai new york, ny" data-remote="false" data-posted="2026-10-30T02:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Founding Infrastructure Engineer</h2><p class="company">Structured AI</p></div><span class="when">1 hour ago</span></div>
+    <p class="location">New York, NY</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/founding-infrastructure-engineer-at-structured-ai-4484810135" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="frontend developer troveo, inc. united states" data-remote="false" data-posted="2026-10-30T02:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Frontend Developer</h2><p class="company">Troveo, Inc.</p></div><span class="when">1 hour ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/frontend-developer-at-troveo-inc-4485280598" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer, product &amp; growth (full-stack) at blockit, founded by an ex-sequoia partner harper san francisco, ca llm" data-remote="false" data-posted="2026-10-30T02:01:28.464191+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer, Product &amp; Growth (Full-Stack) at Blockit, Founded by an Ex-Sequoia Partner</h2><p class="company">Harper</p></div><span class="when">1 hour ago</span></div>
+    <p class="location">San Francisco, CA</p>
+    <div class="chips"><span class="chip">LLM</span><span class="chip">97 applicants</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-product-growth-full-stack-at-blockit-founded-by-an-ex-sequoia-partner-at-harper-4483847893" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="full stack agent platform developer deloitte chicago, il azure, css, docker, llm, llms, openai, python, react, redis, shell" data-remote="false" data-posted="2026-10-30T02:00:59.578728+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Full Stack Agent Platform Developer</h2><p class="company">Deloitte</p></div><span class="when">1 hour ago</span></div>
+    <p class="location">Chicago, IL</p>
+    <div class="chips"><span class="chip pay">3-6</span><span class="chip">Azure</span><span class="chip">CSS</span><span class="chip">Docker</span><span class="chip">LLM</span><span class="chip">LLMs</span><span class="chip">OpenAI</span><span class="chip">Python</span><span class="chip">React</span><span class="chip">3-6 years of experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/full-stack-agent-platform-developer-at-deloitte-4485278468" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer, ai agents at blockit (sequoia-backed ai scheduling agent), san francisco harper san francisco, ca llm, llms" data-remote="false" data-posted="2026-10-30T02:00:59.119784+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer, AI Agents at Blockit (Sequoia-Backed AI Scheduling Agent), San Francisco</h2><p class="company">Harper</p></div><span class="when">1 hour ago</span></div>
+    <p class="location">San Francisco, CA</p>
+    <div class="chips"><span class="chip">LLM</span><span class="chip">LLMs</span><span class="chip">2+ years of experience</span><span class="chip">147 applicants</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-ai-agents-at-blockit-sequoia-backed-ai-scheduling-agent-san-francisco-at-harper-4483856624" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer, infrastructure (4+ yrs), sf at blockit, seeded by sequoia&#x27;s pat grady harper san francisco, ca api, kafka, llm, postgresql, redis" data-remote="false" data-posted="2026-10-30T02:00:25.723111+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer, Infrastructure (4+ yrs), SF at Blockit, Seeded by Sequoia&#x27;s Pat Grady</h2><p class="company">Harper</p></div><span class="when">1 hour ago</span></div>
+    <p class="location">San Francisco, CA</p>
+    <div class="chips"><span class="chip">API</span><span class="chip">Kafka</span><span class="chip">LLM</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">31 applicants</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-infrastructure-4%2B-yrs-sf-at-blockit-seeded-by-sequoia-s-pat-grady-at-harper-4483869221" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="devops engineer admiral talent mississippi, united states api, aws, agile, ansible, azure, bash, ci/cd, docker, gcp, git, github actions, jenkins, kubernetes, linux, microservices, python, terraform" data-remote="false" data-posted="2026-10-30T02:00:20.018586+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>DevOps Engineer</h2><p class="company">Admiral Talent</p></div><span class="when">1 hour ago</span></div>
+    <p class="location">Mississippi, United States</p>
+    <div class="chips"><span class="chip">API</span><span class="chip">AWS</span><span class="chip">Agile</span><span class="chip">Ansible</span><span class="chip">Azure</span><span class="chip">Bash</span><span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">5 years of professional experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/devops-engineer-at-admiral-talent-4483074765" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="full stack agent platform developer deloitte detroit, mi azure, css, docker, llm, llms, openai, python, react, redis, shell" data-remote="false" data-posted="2026-10-30T01:59:26.925402+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Full Stack Agent Platform Developer</h2><p class="company">Deloitte</p></div><span class="when">1 hour ago</span></div>
+    <p class="location">Detroit, MI</p>
+    <div class="chips"><span class="chip pay">3-6</span><span class="chip">Azure</span><span class="chip">CSS</span><span class="chip">Docker</span><span class="chip">LLM</span><span class="chip">LLMs</span><span class="chip">OpenAI</span><span class="chip">Python</span><span class="chip">React</span><span class="chip">3-6 years of experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/full-stack-agent-platform-developer-at-deloitte-4485277487" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="full stack agent platform developer deloitte arlington, va azure, css, docker, llm, llms, openai, python, react, redis, shell" data-remote="false" data-posted="2026-10-30T01:59:26.575918+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Full Stack Agent Platform Developer</h2><p class="company">Deloitte</p></div><span class="when">1 hour ago</span></div>
+    <p class="location">Arlington, VA</p>
+    <div class="chips"><span class="chip pay">3-6</span><span class="chip">Azure</span><span class="chip">CSS</span><span class="chip">Docker</span><span class="chip">LLM</span><span class="chip">LLMs</span><span class="chip">OpenAI</span><span class="chip">Python</span><span class="chip">React</span><span class="chip">3-6 years of experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/full-stack-agent-platform-developer-at-deloitte-4485261936" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="machine learning engineer cvs health new york, ny" data-remote="false" data-posted="2026-10-30T01:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Machine Learning Engineer</h2><p class="company">CVS Health</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">New York, NY</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/machine-learning-engineer-at-cvs-health-4485270551" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="ai application developer - remote work considered bae systems, inc. merrimack, nh" data-remote="false" data-posted="2026-10-30T01:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>AI Application Developer - Remote Work Considered</h2><p class="company">BAE Systems, Inc.</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Merrimack, NH</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/ai-application-developer-remote-work-considered-at-bae-systems-inc-4483094668" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="ai engineer fisher investments camas, wa" data-remote="false" data-posted="2026-10-30T01:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>AI Engineer</h2><p class="company">Fisher Investments</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Camas, WA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/ai-engineer-at-fisher-investments-4483095619" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="sr. ai engineer capco orlando, fl" data-remote="false" data-posted="2026-10-30T01:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Sr. AI Engineer</h2><p class="company">Capco</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Orlando, FL</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/sr-ai-engineer-at-capco-4485282308" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="applied ai engineer ii blue origin merritt island, fl" data-remote="false" data-posted="2026-10-30T01:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Applied AI Engineer II</h2><p class="company">Blue Origin</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Merritt Island, FL</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/applied-ai-engineer-ii-at-blue-origin-4483087962" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="systems engineer iii (infrastructure) louisville metro government louisville, ky" data-remote="false" data-posted="2026-10-30T01:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Systems Engineer III (Infrastructure)</h2><p class="company">Louisville Metro Government</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Louisville, KY</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/systems-engineer-iii-infrastructure-at-louisville-metro-government-4484582620" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="network systems engineer capricor therapeutics, inc. san diego, ca" data-remote="false" data-posted="2026-10-30T01:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Network Systems Engineer</h2><p class="company">Capricor Therapeutics, Inc.</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">San Diego, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/network-systems-engineer-at-capricor-therapeutics-inc-4485267404" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior network infrastructure engineer peckham, inc. lansing, mi" data-remote="false" data-posted="2026-10-30T01:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Network Infrastructure Engineer</h2><p class="company">Peckham, Inc.</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Lansing, MI</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-network-infrastructure-engineer-at-peckham-inc-4482929175" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="enterprise web and devops architect (it@jh cloud &amp; virtualization services) the johns hopkins university baltimore, md" data-remote="false" data-posted="2026-10-30T01:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Enterprise Web and DevOps Architect (IT@JH Cloud &amp; Virtualization Services)</h2><p class="company">The Johns Hopkins University</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Baltimore, MD</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/enterprise-web-and-devops-architect-it%40jh-cloud-virtualization-services-at-the-johns-hopkins-university-4485276197" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="sde ii, avms, avms amazon austin, tx" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>SDE II, AVMS, AVMS</h2><p class="company">Amazon</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Austin, TX</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/sde-ii-avms-avms-at-amazon-4485263854" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer aaa auto club enterprises coppell, tx" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer</h2><p class="company">AAA Auto Club Enterprises</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Coppell, TX</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-at-aaa-auto-club-enterprises-4483406315" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="associate reliability engineer (remote) kohl&#x27;s menomonee falls, wi" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Associate Reliability Engineer (Remote)</h2><p class="company">Kohl&#x27;s</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Menomonee Falls, WI</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/associate-reliability-engineer-remote-at-kohl-s-4485274434" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer, site reliability freenome united states" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer, Site Reliability</h2><p class="company">Freenome</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-site-reliability-at-freenome-4485273210" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer i/ii - infrastructure samsara united states" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer I/II - Infrastructure</h2><p class="company">Samsara</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-i-ii-infrastructure-at-samsara-4483401380" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior platform engineer endor labs palo alto, ca" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Platform Engineer</h2><p class="company">Endor Labs</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Palo Alto, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-platform-engineer-at-endor-labs-4485267323" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="it cloud engineer forrest t. jones &amp; company kansas city, mo" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>IT Cloud Engineer</h2><p class="company">Forrest T. Jones &amp; Company</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Kansas City, MO</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/it-cloud-engineer-at-forrest-t-jones-company-4484552205" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="ai infrastructure engineer [tooling] tessera labs united states" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>AI Infrastructure Engineer [Tooling]</h2><p class="company">Tessera Labs</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/ai-infrastructure-engineer-tooling-at-tessera-labs-4484578756" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior cloud engineer | hedge fund (22eb627) referment new york, ny" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Cloud Engineer | Hedge Fund (22EB627)</h2><p class="company">Referment</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">New York, NY</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-cloud-engineer-hedge-fund-22eb627-at-referment-4485267633" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="ai infrastructure engineer [senior] tessera labs united states" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>AI Infrastructure Engineer [Senior]</h2><p class="company">Tessera Labs</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/ai-infrastructure-engineer-senior-at-tessera-labs-4484573888" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="lead principal platform software engineer oracle seattle, wa" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Lead Principal Platform Software Engineer</h2><p class="company">Oracle</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Seattle, WA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/lead-principal-platform-software-engineer-at-oracle-4483407138" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="experienced infrastructure engineer serco pennsylvania, united states" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Experienced Infrastructure Engineer</h2><p class="company">Serco</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Pennsylvania, United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/experienced-infrastructure-engineer-at-serco-4485272537" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer ii, devex samsara united states" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer II, DevEx</h2><p class="company">Samsara</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-ii-devex-at-samsara-4483097492" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer flightsafety international bergen county, nj" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer</h2><p class="company">FlightSafety International</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Bergen County, NJ</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-at-flightsafety-international-4485276434" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="sr.software dev engineer, ddb index and search amazon web services (aws) seattle, wa" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Sr.Software Dev Engineer, DDB Index and Search</h2><p class="company">Amazon Web Services (AWS)</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Seattle, WA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/sr-software-dev-engineer-ddb-index-and-search-at-amazon-web-services-aws-4485274569" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software development engineer, selling partner promotions amazon seattle, wa" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Development Engineer, Selling Partner Promotions</h2><p class="company">Amazon</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Seattle, WA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-development-engineer-selling-partner-promotions-at-amazon-4485265622" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="java engineer capgemini dallas, tx" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>JAVA Engineer</h2><p class="company">Capgemini</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Dallas, TX</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/java-engineer-at-capgemini-4483722566" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="staff software development engineer – wallet - authentication id.me san francisco bay area" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Staff Software Development Engineer – Wallet - Authentication</h2><p class="company">ID.me</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">San Francisco Bay Area</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/staff-software-development-engineer-%E2%80%93-wallet-authentication-at-id-me-4485266684" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior backend engineer, payments day one partners united states" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Backend Engineer, Payments</h2><p class="company">Day One Partners</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-backend-engineer-payments-at-day-one-partners-4484585676" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="web developer cohere new york, ny" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Web Developer</h2><p class="company">Cohere</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">New York, NY</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/web-developer-at-cohere-4484580704" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer (frontend) › filevine eu san francisco, ca" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer (Frontend) ›</h2><p class="company">Filevine EU</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">San Francisco, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-frontend-%E2%80%BA-at-filevine-eu-4484581898" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer (remote) m3 usa united states" data-remote="false" data-posted="2026-10-30T01:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer (Remote)</h2><p class="company">M3 USA</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-remote-at-m3-usa-4485284050" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="sr. software dev engineer, aws eks amazon web services (aws) seattle, wa" data-remote="false" data-posted="2026-10-30T01:02:32+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Sr. Software Dev Engineer, AWS EKS</h2><p class="company">Amazon Web Services (AWS)</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Seattle, WA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/sr-software-dev-engineer-aws-eks-at-amazon-web-services-aws-4485275359" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="sr systems engineer – ibmi lightedge chaska, mn" data-remote="false" data-posted="2026-10-30T01:02:31.553619+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Sr Systems Engineer – IBMi</h2><p class="company">Lightedge</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Chaska, MN</p>
+    <div class="chips"><span class="chip pay">20000-1,</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/sr-systems-engineer-%E2%80%93-ibmi-at-lightedge-4485268347" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="ai engineer fisher investments plano, tx api, azure, ci/cd, docker, kubernetes, llm, llms, microservices, python, rag" data-remote="false" data-posted="2026-10-30T01:02:08.330472+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>AI Engineer</h2><p class="company">Fisher Investments</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Plano, TX</p>
+    <div class="chips"><span class="chip">API</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">LLM</span><span class="chip">LLMs</span><span class="chip">Microservices</span><span class="chip">6+ years of experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/ai-engineer-at-fisher-investments-4483413058" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior machine learning engineer samsara denver, co aws, azure, ci/cd, docker, gcp, golang, java, kubernetes, mlflow, pytorch, python, scala, spark" data-remote="false" data-posted="2026-10-30T01:01:55.170696+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Machine Learning Engineer</h2><p class="company">Samsara</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Denver, CO</p>
+    <div class="chips"><span class="chip">AWS</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">GCP</span><span class="chip">Golang</span><span class="chip">Java</span><span class="chip">Kubernetes</span><span class="chip">6+ years of experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-machine-learning-engineer-at-samsara-4483411009" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior machine learning engineer samsara new york, ny aws, azure, ci/cd, docker, gcp, golang, java, kubernetes, mlflow, pytorch, python, scala, spark" data-remote="false" data-posted="2026-10-30T01:01:55.069165+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Machine Learning Engineer</h2><p class="company">Samsara</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">New York, NY</p>
+    <div class="chips"><span class="chip">AWS</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">GCP</span><span class="chip">Golang</span><span class="chip">Java</span><span class="chip">Kubernetes</span><span class="chip">6+ years of experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-machine-learning-engineer-at-samsara-4483408147" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="java fullstack_developer capgemini irving, tx aws, agile, angular, docker, java, jenkins, kubernetes, postgresql, python, scrum, terraform" data-remote="false" data-posted="2026-10-30T01:01:33.052714+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Java FullStack_Developer</h2><p class="company">Capgemini</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Irving, TX</p>
+    <div class="chips"><span class="chip pay">85,000 - 96,655</span><span class="chip">AWS</span><span class="chip">Agile</span><span class="chip">Angular</span><span class="chip">Docker</span><span class="chip">Java</span><span class="chip">Jenkins</span><span class="chip">Kubernetes</span><span class="chip">PostgreSQL</span><span class="chip">40 applicants</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/java-fullstack-developer-at-capgemini-4483729086" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer docusign san francisco, ca aws, agile, azure, ci/cd, git, java, javascript, microservices, react, scrum" data-remote="false" data-posted="2026-10-30T01:01:30.994070+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer</h2><p class="company">Docusign</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">San Francisco, CA</p>
+    <div class="chips"><span class="chip">AWS</span><span class="chip">Agile</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Git</span><span class="chip">Java</span><span class="chip">JavaScript</span><span class="chip">Microservices</span><span class="chip">5+ years of professional experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-at-docusign-4484587922" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer docusign seattle, wa aws, agile, azure, ci/cd, git, java, javascript, microservices, react, scrum" data-remote="false" data-posted="2026-10-30T01:01:29.278174+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer</h2><p class="company">Docusign</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Seattle, WA</p>
+    <div class="chips"><span class="chip">AWS</span><span class="chip">Agile</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Git</span><span class="chip">Java</span><span class="chip">JavaScript</span><span class="chip">Microservices</span><span class="chip">5+ years of professional experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-at-docusign-4484803146" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="full stack engineer fincons group culver city, ca aws, python, react" data-remote="false" data-posted="2026-10-30T01:01:27.490259+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Full Stack Engineer</h2><p class="company">Fincons Group</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Culver City, CA</p>
+    <div class="chips"><span class="chip pay">5–7</span><span class="chip">AWS</span><span class="chip">Python</span><span class="chip">React</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/full-stack-engineer-at-fincons-group-4485261848" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="web developer, drupal tyler technologies columbia, sc ci/cd, css, git, html, javascript" data-remote="false" data-posted="2026-10-30T01:01:21.295167+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Web Developer, Drupal</h2><p class="company">Tyler Technologies</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Columbia, SC</p>
+    <div class="chips"><span class="chip">CI/CD</span><span class="chip">CSS</span><span class="chip">Git</span><span class="chip">HTML</span><span class="chip">JavaScript</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/web-developer-drupal-at-tyler-technologies-4484575861" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior full stack engineer incedo inc. texas, united states aws, agile, angular, azure, ci/cd, docker, gcp, git, java, javascript, kafka, kubernetes, microservices, react, scrum, typescript" data-remote="false" data-posted="2026-10-30T01:01:18.112493+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Full Stack Engineer</h2><p class="company">Incedo Inc.</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Texas, United States</p>
+    <div class="chips"><span class="chip">AWS</span><span class="chip">Agile</span><span class="chip">Angular</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">GCP</span><span class="chip">Git</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-full-stack-engineer-at-incedo-inc-4485272235" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer meeboss united states java" data-remote="false" data-posted="2026-10-30T01:01:03.581520+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer</h2><p class="company">MeeBoss</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"><span class="chip pay">100,000-300,000/year</span><span class="chip">Java</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-at-meeboss-4485257884" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="backend engineer - oort loft orbital san francisco, ca api, aws, ci/cd, docker, gcp, graphql, kubernetes, python, react" data-remote="false" data-posted="2026-10-30T01:00:49.598197+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Backend Engineer - Oort</h2><p class="company">Loft Orbital</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">San Francisco, CA</p>
+    <div class="chips"><span class="chip pay">$140,000- $190,000</span><span class="chip">API</span><span class="chip">AWS</span><span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">GCP</span><span class="chip">GraphQL</span><span class="chip">Kubernetes</span><span class="chip">Python</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/backend-engineer-oort-at-loft-orbital-4483413065" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="staff software development engineer - digital cvs health austin, tx api, aws, azure, ci/cd, cassandra, gcp, graphql, java, jenkins, kafka, microservices, mongodb, mysql, node.js, postgresql, python, rest, react, redis, typescript" data-remote="false" data-posted="2026-10-30T01:00:47.546739+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Staff Software Development Engineer - Digital</h2><p class="company">CVS Health</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Austin, TX</p>
+    <div class="chips"><span class="chip">API</span><span class="chip">AWS</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Cassandra</span><span class="chip">GCP</span><span class="chip">GraphQL</span><span class="chip">Java</span><span class="chip">5+ years of experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/staff-software-development-engineer-digital-at-cvs-health-4485270541" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer ii - platform samsara los angeles, ca ci/cd, go, python, typescript" data-remote="false" data-posted="2026-10-30T01:00:46.863199+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer II - Platform</h2><p class="company">Samsara</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Los Angeles, CA</p>
+    <div class="chips"><span class="chip">CI/CD</span><span class="chip">Go</span><span class="chip">Python</span><span class="chip">TypeScript</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-ii-platform-at-samsara-4483090802" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer ii - platform samsara san diego, ca ci/cd, go, python, typescript" data-remote="false" data-posted="2026-10-30T01:00:44.273482+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer II - Platform</h2><p class="company">Samsara</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">San Diego, CA</p>
+    <div class="chips"><span class="chip">CI/CD</span><span class="chip">Go</span><span class="chip">Python</span><span class="chip">TypeScript</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-ii-platform-at-samsara-4483408148" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="lead principal platform software engineer oracle nashville, tn api" data-remote="false" data-posted="2026-10-30T01:00:26.396549+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Lead Principal Platform Software Engineer</h2><p class="company">Oracle</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Nashville, TN</p>
+    <div class="chips"><span class="chip pay">$113,600 - $306,400</span><span class="chip">API</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/lead-principal-platform-software-engineer-at-oracle-4483408114" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software development engineer, ai studios engineering prime video &amp; amazon mgm studios culver city, ca api" data-remote="false" data-posted="2026-10-30T00:59:54.437192+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Development Engineer, AI Studios Engineering</h2><p class="company">Prime Video &amp; Amazon MGM Studios</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Culver City, CA</p>
+    <div class="chips"><span class="chip pay">00 - 227,400</span><span class="chip">API</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-development-engineer-ai-studios-engineering-at-prime-video-amazon-mgm-studios-4485265575" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="staff software development engineer cvs health salt lake city, ut aws, agile, azure, gcp, javascript, kafka, microservices, mongodb, node.js, postgresql, redis, scrum, typescript" data-remote="false" data-posted="2026-10-30T00:59:46.284061+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Staff Software Development Engineer</h2><p class="company">CVS Health</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Salt Lake City, UT</p>
+    <div class="chips"><span class="chip">AWS</span><span class="chip">Agile</span><span class="chip">Azure</span><span class="chip">GCP</span><span class="chip">JavaScript</span><span class="chip">Kafka</span><span class="chip">Microservices</span><span class="chip">MongoDB</span><span class="chip">4+ years of experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/staff-software-development-engineer-at-cvs-health-4485222562" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer i (c#/.net) costar group arlington, va api, aws, agile, azure, dynamodb, llms, prompt engineering" data-remote="false" data-posted="2026-10-30T00:59:42.028163+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer I (C#/.NET)</h2><p class="company">CoStar Group</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Arlington, VA</p>
+    <div class="chips"><span class="chip pay">$108,000 - $154,000</span><span class="chip">API</span><span class="chip">AWS</span><span class="chip">Agile</span><span class="chip">Azure</span><span class="chip">DynamoDB</span><span class="chip">LLMs</span><span class="chip">Prompt Engineering</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-i-c%23-net-at-costar-group-4485275088" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer (c#/.net) - up to $250k usd + bonus! - options trading - chicago (hybrid) hunter bond chicago, il" data-remote="false" data-posted="2026-10-30T00:59:39.674558+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer (C#/.NET) - Up to $250k USD + Bonus! - Options Trading - Chicago (Hybrid)</h2><p class="company">Hunter Bond</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Chicago, IL</p>
+    <div class="chips"><span class="chip pay">Up to $250,000</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-c%23-net-up-to-%24250k-usd-%2B-bonus%21-options-trading-chicago-hybrid-at-hunter-bond-4483409199" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software dev engineer ii, amazon key ring austin, tx java" data-remote="false" data-posted="2026-10-30T00:59:33.309729+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Dev Engineer II, Amazon Key</h2><p class="company">Ring</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Austin, TX</p>
+    <div class="chips"><span class="chip pay">00 - 194,400</span><span class="chip">Java</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-dev-engineer-ii-amazon-key-at-ring-4485259754" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="sde, aws opensearch service, opensearch amazon web services (aws) austin, tx aws, java, python" data-remote="false" data-posted="2026-10-30T00:59:33.243243+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>SDE, AWS OpenSearch Service, Opensearch</h2><p class="company">Amazon Web Services (AWS)</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Austin, TX</p>
+    <div class="chips"><span class="chip pay">00 - 194,400</span><span class="chip">AWS</span><span class="chip">Java</span><span class="chip">Python</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/sde-aws-opensearch-service-opensearch-at-amazon-web-services-aws-4485261767" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software development engineer, checkout applications team amazon seattle, wa agile" data-remote="false" data-posted="2026-10-30T00:59:29.439694+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Development Engineer, Checkout Applications Team</h2><p class="company">Amazon</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Seattle, WA</p>
+    <div class="chips"><span class="chip pay">00 - 194,400</span><span class="chip">Agile</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-development-engineer-checkout-applications-team-at-amazon-4485282098" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior platform software engineer oracle nashville, tn aws, azure, ci/cd, gcp, git, go, java, microservices, python, rest" data-remote="false" data-posted="2026-10-30T00:59:26.695279+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Platform Software Engineer</h2><p class="company">Oracle</p></div><span class="when">2 hours ago</span></div>
+    <p class="location">Nashville, TN</p>
+    <div class="chips"><span class="chip pay">$92,500 - $209,500</span><span class="chip">AWS</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">GCP</span><span class="chip">Git</span><span class="chip">Go</span><span class="chip">Java</span><span class="chip">Microservices</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-platform-software-engineer-at-oracle-4483400391" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="web developer / information systems analyst i, option w illinois department of innovation &amp; technology (doit) springfield, il" data-remote="false" data-posted="2026-10-30T00:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Web Developer / Information Systems Analyst I, Option W</h2><p class="company">Illinois Department of Innovation &amp; Technology (DoIT)</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Springfield, IL</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/web-developer-information-systems-analyst-i-option-w-at-illinois-department-of-innovation-technology-doit-4483081984" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software developer, sr onpoint community credit union portland, or" data-remote="false" data-posted="2026-10-30T00:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Developer, Sr</h2><p class="company">OnPoint Community Credit Union</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Portland, OR</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-developer-sr-at-onpoint-community-credit-union-4485258599" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="staff software engineer, full stack, google cloud google sunnyvale, ca" data-remote="false" data-posted="2026-10-30T00:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Staff Software Engineer, Full Stack, Google Cloud</h2><p class="company">Google</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Sunnyvale, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/staff-software-engineer-full-stack-google-cloud-at-google-4484583438" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer meeboss san francisco, ca" data-remote="false" data-posted="2026-10-30T00:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer</h2><p class="company">MeeBoss</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">San Francisco, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-at-meeboss-4485272054" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior devops engineer (azure) tops products llc st louis, mo" data-remote="false" data-posted="2026-10-30T00:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior DevOps Engineer (Azure)</h2><p class="company">TOPS Products LLC</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">St Louis, MO</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-devops-engineer-azure-at-tops-products-llc-4485246917" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer, ai/ml, ads bidding google new york, united states" data-remote="false" data-posted="2026-10-30T00:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer, AI/ML, Ads Bidding</h2><p class="company">Google</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">New York, United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-ai-ml-ads-bidding-at-google-4484572814" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="sr engineer, applied machine learning (onsite) collins aerospace troy, oh" data-remote="false" data-posted="2026-10-30T00:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Sr Engineer, Applied Machine Learning (Onsite)</h2><p class="company">Collins Aerospace</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Troy, OH</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/sr-engineer-applied-machine-learning-onsite-at-collins-aerospace-4485254529" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="lead machine learning engineer , ai defense (hybrid) cisco milpitas, ca" data-remote="false" data-posted="2026-10-30T00:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Lead Machine Learning Engineer , AI Defense (Hybrid)</h2><p class="company">Cisco</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Milpitas, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/lead-machine-learning-engineer-ai-defense-hybrid-at-cisco-4485266069" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="applied ai engineer fico united states" data-remote="false" data-posted="2026-10-30T00:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Applied AI Engineer</h2><p class="company">FICO</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/applied-ai-engineer-at-fico-4485254568" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior principal ai engineer rapid7 california, united states" data-remote="false" data-posted="2026-10-30T00:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Principal AI Engineer</h2><p class="company">Rapid7</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">California, United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-principal-ai-engineer-at-rapid7-4484584482" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="autosys platform engineer infosys san antonio, tx" data-remote="false" data-posted="2026-10-30T00:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>AutoSys Platform Engineer</h2><p class="company">Infosys</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">San Antonio, TX</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/autosys-platform-engineer-at-infosys-4483098392" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="autosys platform engineer infosys irvine, ca" data-remote="false" data-posted="2026-10-30T00:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>AutoSys Platform Engineer</h2><p class="company">Infosys</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Irvine, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/autosys-platform-engineer-at-infosys-4483407065" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="data platform engineer pacific gas and electric company oakland, ca" data-remote="false" data-posted="2026-10-30T00:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Data Platform Engineer</h2><p class="company">Pacific Gas and Electric Company</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Oakland, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/data-platform-engineer-at-pacific-gas-and-electric-company-4485263381" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer, ai/ml, google workspace google sunnyvale, ca" data-remote="false" data-posted="2026-10-30T00:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer, AI/ML, Google Workspace</h2><p class="company">Google</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Sunnyvale, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-ai-ml-google-workspace-at-google-4484586353" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer, ai/ml, google workspace google mountain view, ca" data-remote="false" data-posted="2026-10-30T00:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer, AI/ML, Google Workspace</h2><p class="company">Google</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Mountain View, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-ai-ml-google-workspace-at-google-4484571870" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer iii, site reliability engineering google durham, nc" data-remote="false" data-posted="2026-10-30T00:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer III, Site Reliability Engineering</h2><p class="company">Google</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Durham, NC</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-iii-site-reliability-engineering-at-google-4484574731" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="workforce compute ops sre senior infrastructure engineer wells fargo charlotte, nc" data-remote="false" data-posted="2026-10-30T00:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Workforce Compute Ops SRE Senior Infrastructure Engineer</h2><p class="company">Wells Fargo</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Charlotte, NC</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/workforce-compute-ops-sre-senior-infrastructure-engineer-at-wells-fargo-4485242817" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="workforce compute ops sre senior infrastructure engineer wells fargo irving, tx" data-remote="false" data-posted="2026-10-30T00:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Workforce Compute Ops SRE Senior Infrastructure Engineer</h2><p class="company">Wells Fargo</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Irving, TX</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/workforce-compute-ops-sre-senior-infrastructure-engineer-at-wells-fargo-4485247828" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="cloud engineer trulieve tallahassee, fl" data-remote="false" data-posted="2026-10-30T00:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Cloud Engineer</h2><p class="company">Trulieve</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Tallahassee, FL</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/cloud-engineer-at-trulieve-4484528923" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior platform engineer loop united states" data-remote="false" data-posted="2026-10-30T00:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Platform Engineer</h2><p class="company">Loop</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-platform-engineer-at-loop-4483408103" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="sre- core infrastructure engineer - professional level experis minneapolis, mn" data-remote="false" data-posted="2026-10-30T00:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>SRE- Core Infrastructure Engineer - Professional Level</h2><p class="company">Experis</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Minneapolis, MN</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/sre-core-infrastructure-engineer-professional-level-at-experis-4484588194" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer paypal scottsdale, az" data-remote="false" data-posted="2026-10-30T00:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer</h2><p class="company">PayPal</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Scottsdale, AZ</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-at-paypal-4485247779" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="staff database reliability engineer (dbre) huntress united states" data-remote="false" data-posted="2026-10-30T00:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Staff Database Reliability Engineer (DBRE)</h2><p class="company">Huntress</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/staff-database-reliability-engineer-dbre-at-huntress-4485247908" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="staff software engineer datarobot boston, ma" data-remote="false" data-posted="2026-10-30T00:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Staff Software Engineer</h2><p class="company">DataRobot</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Boston, MA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/staff-software-engineer-at-datarobot-4483409022" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior cloud engineer, information technology [r0150849] university of nevada-las vegas las vegas, nv" data-remote="false" data-posted="2026-10-30T00:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Cloud Engineer, Information Technology [R0150849]</h2><p class="company">University of Nevada-Las Vegas</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Las Vegas, NV</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-cloud-engineer-information-technology-r0150849-at-university-of-nevada-las-vegas-4485246967" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="cloud engineer, ts/sci with polygraph required general dynamics information technology herndon, va" data-remote="false" data-posted="2026-10-30T00:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Cloud Engineer, TS/SCI with Polygraph required</h2><p class="company">General Dynamics Information Technology</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Herndon, VA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/cloud-engineer-ts-sci-with-polygraph-required-at-general-dynamics-information-technology-4485244852" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="(usa) staff, software engineer walmart bentonville, ar" data-remote="false" data-posted="2026-10-30T00:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>(USA) Staff, Software Engineer</h2><p class="company">Walmart</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Bentonville, AR</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/usa-staff-software-engineer-at-walmart-4483099358" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="staff full stack software engineer clever real estate united states" data-remote="false" data-posted="2026-10-30T00:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Staff Full Stack Software Engineer</h2><p class="company">Clever Real Estate</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/staff-full-stack-software-engineer-at-clever-real-estate-4484574598" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior backend engineer meeboss united states" data-remote="false" data-posted="2026-10-30T00:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Backend Engineer</h2><p class="company">MeeBoss</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-backend-engineer-at-meeboss-4485267077" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior frontend engineer, ads formats reddit, inc. san francisco, ca" data-remote="false" data-posted="2026-10-30T00:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Frontend Engineer, Ads Formats</h2><p class="company">Reddit, Inc.</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">San Francisco, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-frontend-engineer-ads-formats-at-reddit-inc-4485257439" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="frontend developer the cake florida, united states" data-remote="false" data-posted="2026-10-30T00:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Frontend Developer</h2><p class="company">The Cake</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Florida, United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/frontend-developer-at-the-cake-4483401328" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer northwell health lake success, ny" data-remote="false" data-posted="2026-10-30T00:02:32+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer</h2><p class="company">Northwell Health</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Lake Success, NY</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-at-northwell-health-4484718025" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="applied ai engineer inventure los angeles, ca llm, llms, langchain, pytorch, python, rag" data-remote="false" data-posted="2026-10-30T00:02:05.902913+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Applied AI Engineer</h2><p class="company">Inventure</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Los Angeles, CA</p>
+    <div class="chips"><span class="chip pay">$220K–$320K</span><span class="chip">LLM</span><span class="chip">LLMs</span><span class="chip">LangChain</span><span class="chip">PyTorch</span><span class="chip">Python</span><span class="chip">RAG</span><span class="chip">25 applicants</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/applied-ai-engineer-at-inventure-4484570926" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior ai/ml engineer vizient irving, tx azure, ci/cd, prompt engineering, python" data-remote="false" data-posted="2026-10-30T00:02:04.851017+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior AI/ML Engineer</h2><p class="company">Vizient</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Irving, TX</p>
+    <div class="chips"><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Prompt Engineering</span><span class="chip">Python</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-ai-ml-engineer-at-vizient-4484577476" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="machine learning engineer boise cascade company united states azure, llm, python" data-remote="false" data-posted="2026-10-30T00:01:57.632661+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Machine Learning Engineer</h2><p class="company">Boise Cascade Company</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"><span class="chip pay">$100,000 - $150,000</span><span class="chip">Azure</span><span class="chip">LLM</span><span class="chip">Python</span><span class="chip">3+ years of experience</span><span class="chip">31 applicants</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/machine-learning-engineer-at-boise-cascade-company-4483087811" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior ai/ml engineer vizient chicago, il azure, ci/cd, prompt engineering, python" data-remote="false" data-posted="2026-10-30T00:01:57.533300+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior AI/ML Engineer</h2><p class="company">Vizient</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Chicago, IL</p>
+    <div class="chips"><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Prompt Engineering</span><span class="chip">Python</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-ai-ml-engineer-at-vizient-4484586256" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineering - lead data scientist fico united states aws, airflow, ci/cd, docker, llm, llms, mlflow, numpy, openai, pandas, pytorch, python, rag, sagemaker, spark, tensorflow, scikit-learn" data-remote="false" data-posted="2026-10-30T00:01:54.460407+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineering - Lead Data Scientist</h2><p class="company">FICO</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"><span class="chip pay">$105,000 to $165,000</span><span class="chip">AWS</span><span class="chip">Airflow</span><span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">LLM</span><span class="chip">LLMs</span><span class="chip">MLflow</span><span class="chip">NumPy</span><span class="chip">85 applicants</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineering-lead-data-scientist-at-fico-4484999596" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="cloud engineer / devsecops / ci-cd halvik mclean, va aws, agile, azure, bash, ci/cd, docker, git, github actions, java, kubernetes, python, scrum, terraform" data-remote="false" data-posted="2026-10-30T00:01:44.045791+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Cloud Engineer / DevSecOps / CI-CD</h2><p class="company">Halvik</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">McLean, VA</p>
+    <div class="chips"><span class="chip pay">2025-007</span><span class="chip">AWS</span><span class="chip">Agile</span><span class="chip">Azure</span><span class="chip">Bash</span><span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">GitHub Actions</span><span class="chip">7 years of professional experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/cloud-engineer-devsecops-ci-cd-at-halvik-4485241871" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer - salesforce, java m&amp;t bank buffalo, ny api, azure, ci/cd, java, javascript, rest" data-remote="false" data-posted="2026-10-30T00:01:39.674416+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer - Salesforce, Java</h2><p class="company">M&amp;T Bank</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Buffalo, NY</p>
+    <div class="chips"><span class="chip">API</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Java</span><span class="chip">JavaScript</span><span class="chip">REST</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-salesforce-java-at-m-t-bank-4485274021" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="junior software engineer meeboss streamwood, il aws, llm, node.js, rag, rest, react, typescript" data-remote="false" data-posted="2026-10-30T00:01:32.597005+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Junior Software Engineer</h2><p class="company">MeeBoss</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Streamwood, IL</p>
+    <div class="chips"><span class="chip">AWS</span><span class="chip">LLM</span><span class="chip">Node.js</span><span class="chip">RAG</span><span class="chip">REST</span><span class="chip">React</span><span class="chip">TypeScript</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/junior-software-engineer-at-meeboss-4485262289" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="web developer cohere san francisco, ca next.js, react, typescript" data-remote="false" data-posted="2026-10-30T00:01:06.504743+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Web Developer</h2><p class="company">Cohere</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">San Francisco, CA</p>
+    <div class="chips"><span class="chip pay">$180K</span><span class="chip">Next.js</span><span class="chip">React</span><span class="chip">TypeScript</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/web-developer-at-cohere-4484583558" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer iii, knowledge catalog for ai google kirkland, wa bigquery, go, java" data-remote="false" data-posted="2026-10-30T00:01:06.170657+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer III, Knowledge Catalog For AI</h2><p class="company">Google</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Kirkland, WA</p>
+    <div class="chips"><span class="chip pay">28-30</span><span class="chip">BigQuery</span><span class="chip">Go</span><span class="chip">Java</span><span class="chip">2 years of experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-iii-knowledge-catalog-for-ai-at-google-4484589253" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer, platform (partner 16, partner 18) andreessen horowitz san francisco, ca aws, azure, ci/cd, docker, elasticsearch, gcp, github actions, kubernetes, mysql, postgresql, python, rust, terraform" data-remote="false" data-posted="2026-10-30T00:00:25.838789+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer, Platform (Partner 16, Partner 18)</h2><p class="company">Andreessen Horowitz</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">San Francisco, CA</p>
+    <div class="chips"><span class="chip pay">2-3</span><span class="chip">AWS</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">Elasticsearch</span><span class="chip">GCP</span><span class="chip">GitHub Actions</span><span class="chip">Kubernetes</span><span class="chip">32 applicants</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-platform-partner-16-partner-18-at-andreessen-horowitz-4485247900" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer - platform infrastructure qualtrics seattle, wa aws, bash, go, golang, kubernetes, linux, rest" data-remote="false" data-posted="2026-10-30T00:00:23.775000+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer - Platform Infrastructure</h2><p class="company">Qualtrics</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Seattle, WA</p>
+    <div class="chips"><span class="chip">AWS</span><span class="chip">Bash</span><span class="chip">Go</span><span class="chip">Golang</span><span class="chip">Kubernetes</span><span class="chip">Linux</span><span class="chip">REST</span><span class="chip">5+ years of experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-platform-infrastructure-at-qualtrics-4485271030" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer paypal san jose, ca gcp, go, java, kubernetes, python" data-remote="false" data-posted="2026-10-30T00:00:17.721212+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer</h2><p class="company">PayPal</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">San Jose, CA</p>
+    <div class="chips"><span class="chip">GCP</span><span class="chip">Go</span><span class="chip">Java</span><span class="chip">Kubernetes</span><span class="chip">Python</span><span class="chip">121 applicants</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-at-paypal-4485258523" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="staff / senior platform engineer prysm health united states aws, azure, ci/cd, gcp" data-remote="false" data-posted="2026-10-30T00:00:07.934355+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Staff / Senior Platform Engineer</h2><p class="company">Prysm Health</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"><span class="chip">AWS</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">GCP</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/staff-senior-platform-engineer-at-prysm-health-4483892513" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="staff site reliability engineer- remote beyondtrust united states api, aws, ansible, azure, ci/cd, docker, go, java, kubernetes, linux, terraform" data-remote="false" data-posted="2026-10-30T00:00:03.616653+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Staff Site Reliability Engineer- Remote</h2><p class="company">BeyondTrust</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"><span class="chip">API</span><span class="chip">AWS</span><span class="chip">Ansible</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">Go</span><span class="chip">Java</span><span class="chip">7+ years of experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/staff-site-reliability-engineer-remote-at-beyondtrust-4485272011" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer iii, site reliability engineering google raleigh, nc" data-remote="false" data-posted="2026-10-29T23:59:57.089020+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer III, Site Reliability Engineering</h2><p class="company">Google</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Raleigh, NC</p>
+    <div class="chips"><span class="chip pay">$147000 - $210000</span><span class="chip">2 years of experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-iii-site-reliability-engineering-at-google-4484574730" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="sr. software engineer - ignition kpmg us denver, co angular, azure, html, llms, microservices, openai, pytorch, python, tensorflow, typescript" data-remote="false" data-posted="2026-10-29T23:59:53.593828+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Sr. Software Engineer - Ignition</h2><p class="company">KPMG US</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Denver, CO</p>
+    <div class="chips"><span class="chip">Angular</span><span class="chip">Azure</span><span class="chip">HTML</span><span class="chip">LLMs</span><span class="chip">Microservices</span><span class="chip">OpenAI</span><span class="chip">PyTorch</span><span class="chip">Python</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/sr-software-engineer-ignition-at-kpmg-us-4484578539" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer iii interactive brokers greenwich, ct java, python" data-remote="false" data-posted="2026-10-29T23:59:38.975935+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer III</h2><p class="company">Interactive Brokers</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Greenwich, CT</p>
+    <div class="chips"><span class="chip">Java</span><span class="chip">Python</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-iii-at-interactive-brokers-4485235859" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer – c#, .net m&amp;t bank buffalo, ny agile, azure, ci/cd, git, scrum, terraform" data-remote="false" data-posted="2026-10-29T23:59:35.934514+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer – C#, .NET</h2><p class="company">M&amp;T Bank</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Buffalo, NY</p>
+    <div class="chips"><span class="chip">Agile</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Git</span><span class="chip">Scrum</span><span class="chip">Terraform</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-%E2%80%93-c%23-net-at-m-t-bank-4485263405" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer alarm.com needham, ma" data-remote="false" data-posted="2026-10-29T23:59:30.208172+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer</h2><p class="company">Alarm.com</p></div><span class="when">3 hours ago</span></div>
+    <p class="location">Needham, MA</p>
+    <div class="chips"><span class="chip">28 applicants</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-at-alarm-com-4483097197" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="ai agentic software engineer trimble inc. lake oswego, or" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>AI Agentic Software Engineer</h2><p class="company">Trimble Inc.</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Lake Oswego, OR</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/ai-agentic-software-engineer-at-trimble-inc-4484584118" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="full-stack software engineer – aws &amp; identity state farm bloomington, il" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Full-Stack Software Engineer – AWS &amp; Identity</h2><p class="company">State Farm</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Bloomington, IL</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/full-stack-software-engineer-%E2%80%93-aws-identity-at-state-farm-4484588000" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="full stack engineer brillio seattle, wa" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Full Stack Engineer</h2><p class="company">Brillio</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Seattle, WA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/full-stack-engineer-at-brillio-4484582275" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="full stack engineer 4 capital one mclean, va" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Full Stack Engineer 4</h2><p class="company">Capital One</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">McLean, VA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/full-stack-engineer-4-at-capital-one-4485244382" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="full stack developer booz allen hamilton atlanta, ga" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Full Stack Developer</h2><p class="company">Booz Allen Hamilton</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Atlanta, GA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/full-stack-developer-at-booz-allen-hamilton-4485254295" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="full stack developer ware new albany, in" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Full Stack Developer</h2><p class="company">WARE</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">New Albany, IN</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/full-stack-developer-at-ware-4485243537" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="full stack web developer wiraa united states" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Full Stack Web Developer</h2><p class="company">Wiraa</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/full-stack-web-developer-at-wiraa-4483869727" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer, senior toyota north america plano, tx" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer, Senior</h2><p class="company">Toyota North America</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Plano, TX</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-senior-at-toyota-north-america-4484578464" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="full-stack engineer 4 (python, go, api, aws) (cloud operations resilience engineering) capital one richmond, va" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Full-Stack Engineer 4 (Python, GO, API, AWS) (Cloud Operations Resilience Engineering)</h2><p class="company">Capital One</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Richmond, VA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/full-stack-engineer-4-python-go-api-aws-cloud-operations-resilience-engineering-at-capital-one-4485240432" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="lead devsecops platform engineer / scrum master leidos eagan, mn" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Lead DevSecOps Platform Engineer / Scrum Master</h2><p class="company">Leidos</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Eagan, MN</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/lead-devsecops-platform-engineer-scrum-master-at-leidos-4485241197" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="dataops / platform engineer uvm health - uvm medical center south burlington, vt" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>DataOps / Platform Engineer</h2><p class="company">UVM Health - UVM Medical Center</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">South Burlington, VT</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/dataops-platform-engineer-at-uvm-health-uvm-medical-center-4485248227" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer, site reliability (agentforce ops) salesforce boston, ma" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer, Site Reliability (Agentforce Ops)</h2><p class="company">Salesforce</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Boston, MA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-site-reliability-agentforce-ops-at-salesforce-4485230954" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior machine learning engineer cybercoders durham, nc" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Machine Learning Engineer</h2><p class="company">CyberCoders</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Durham, NC</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-machine-learning-engineer-at-cybercoders-4483085680" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior machine learning engineer - boston, ma motion recruitment boston, ma" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Machine Learning Engineer - Boston, MA</h2><p class="company">Motion Recruitment</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Boston, MA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-machine-learning-engineer-boston-ma-at-motion-recruitment-4485238831" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="machine learning engineer wiraa united states" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Machine Learning Engineer</h2><p class="company">Wiraa</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/machine-learning-engineer-at-wiraa-4483869725" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="machine learning engineer adt irving, tx" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Machine Learning Engineer</h2><p class="company">ADT</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Irving, TX</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/machine-learning-engineer-at-adt-4485247484" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="machine learning engineer servicenow santa clara, ca" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Machine Learning Engineer</h2><p class="company">ServiceNow</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Santa Clara, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/machine-learning-engineer-at-servicenow-4485248183" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="principal ai engineer, agentic systems vuori carlsbad, ca" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Principal AI Engineer, Agentic Systems</h2><p class="company">Vuori</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Carlsbad, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/principal-ai-engineer-agentic-systems-at-vuori-4485234903" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="ai engineer doctors without borders/médecins sans frontières - usa new york, ny" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>AI Engineer</h2><p class="company">Doctors Without Borders/Médecins Sans Frontières - USA</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">New York, NY</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/ai-engineer-at-doctors-without-borders-m%C3%A9decins-sans-fronti%C3%A8res-usa-4485252235" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="gen ai developer virtusa irving, tx" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Gen AI Developer</h2><p class="company">Virtusa</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Irving, TX</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/gen-ai-developer-at-virtusa-4483083886" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="generative ai engineer optomi charlotte, nc" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Generative AI Engineer</h2><p class="company">Optomi</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Charlotte, NC</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/generative-ai-engineer-at-optomi-4484577197" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="principal engineer - ai/ ml - home broadband solutions verizon irving, tx" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Principal Engineer - AI/ ML - Home Broadband Solutions</h2><p class="company">Verizon</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Irving, TX</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/principal-engineer-ai-ml-home-broadband-solutions-at-verizon-4485236508" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="systems engineer ii - infrastructure engineer the henry m. jackson foundation for the advancement of military medicine bethesda, md" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Systems Engineer II - Infrastructure Engineer</h2><p class="company">The Henry M. Jackson Foundation for the Advancement of Military Medicine</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Bethesda, MD</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/systems-engineer-ii-infrastructure-engineer-at-the-henry-m-jackson-foundation-for-the-advancement-of-military-medicine-4483079888" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior infrastructure engineer sps commerce minneapolis, mn" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Infrastructure Engineer</h2><p class="company">SPS Commerce</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Minneapolis, MN</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-infrastructure-engineer-at-sps-commerce-4484581359" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="systems engineer, leo core infrastructure development amazon bellevue, wa" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Systems Engineer, Leo Core Infrastructure Development</h2><p class="company">Amazon</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Bellevue, WA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/systems-engineer-leo-core-infrastructure-development-at-amazon-4485215615" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior systems engineer american public education, inc. (apei) united states" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Systems Engineer</h2><p class="company">American Public Education, Inc. (APEI)</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-systems-engineer-at-american-public-education-inc-apei-4484577202" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="sr. linux server engineer (information systems specialist 8) state of oregon salem, or" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Sr. Linux Server Engineer (Information Systems Specialist 8)</h2><p class="company">State of Oregon</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Salem, OR</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/sr-linux-server-engineer-information-systems-specialist-8-at-state-of-oregon-4485236700" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior cloud engineer i (hybrid) american institutes for research arlington, va" data-remote="false" data-posted="2026-10-29T23:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Cloud Engineer I (Hybrid)</h2><p class="company">American Institutes for Research</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Arlington, VA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-cloud-engineer-i-hybrid-at-american-institutes-for-research-4485245290" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer jobot san francisco, ca" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer</h2><p class="company">Jobot</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">San Francisco, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-at-jobot-4483096041" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer, ai security robinhood menlo park, ca" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer, AI Security</h2><p class="company">Robinhood</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Menlo Park, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-ai-security-at-robinhood-4483078959" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior full stack engineer vynyl bozeman, mt" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Full Stack Engineer</h2><p class="company">VYNYL</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Bozeman, MT</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-full-stack-engineer-at-vynyl-4485245615" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="staff software engineer permitflow new york, ny" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Staff Software Engineer</h2><p class="company">PermitFlow</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">New York, NY</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/staff-software-engineer-at-permitflow-4485236925" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior full stack engineer vynyl seattle, wa" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Full Stack Engineer</h2><p class="company">VYNYL</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Seattle, WA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-full-stack-engineer-at-vynyl-4485241687" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer mintive san mateo, ca" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer</h2><p class="company">Mintive</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">San Mateo, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-at-mintive-4485258200" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="frontend software engineer, auth nominal austin, tx" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Frontend Software Engineer, Auth</h2><p class="company">Nominal</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Austin, TX</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/frontend-software-engineer-auth-at-nominal-4483096150" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer, site reliability (agentforce ops) salesforce mclean, va" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer, Site Reliability (Agentforce Ops)</h2><p class="company">Salesforce</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">McLean, VA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-site-reliability-agentforce-ops-at-salesforce-4485251145" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="site reliability engineer, reuters thomson reuters new york, ny" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Site Reliability Engineer, Reuters</h2><p class="company">Thomson Reuters</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">New York, NY</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/site-reliability-engineer-reuters-at-thomson-reuters-4484581363" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer, observability robinhood menlo park, ca" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer, Observability</h2><p class="company">Robinhood</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Menlo Park, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-observability-at-robinhood-4483090371" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior devops engineer blitzy cambridge, ma" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior DevOps Engineer</h2><p class="company">Blitzy</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Cambridge, MA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-devops-engineer-at-blitzy-4485242265" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="devops engineer sabel systems beavercreek, oh" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>DevOps Engineer</h2><p class="company">Sabel Systems</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Beavercreek, OH</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/devops-engineer-at-sabel-systems-4485236554" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="platform engineer sabel systems beavercreek, oh" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Platform Engineer</h2><p class="company">Sabel Systems</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Beavercreek, OH</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/platform-engineer-at-sabel-systems-4484003319" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="sr. infrastructure engineer (aws, azure, terraform &amp; automation) u.s. bank charlotte, nc" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Sr. Infrastructure Engineer (AWS, Azure, Terraform &amp; Automation)</h2><p class="company">U.S. Bank</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Charlotte, NC</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/sr-infrastructure-engineer-aws-azure-terraform-automation-at-u-s-bank-4485239563" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="principal software engineer, platform permitflow new york, ny" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Principal Software Engineer, Platform</h2><p class="company">PermitFlow</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">New York, NY</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/principal-software-engineer-platform-at-permitflow-4485250475" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="platform engineer, senior booz allen hamilton washington, dc" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Platform Engineer, Senior</h2><p class="company">Booz Allen Hamilton</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Washington, DC</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/platform-engineer-senior-at-booz-allen-hamilton-4485244558" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="meridian: forward deployed infrastructure engineer (senior / washington, d.c. / hybrid) [ts/sci with ci poly] spear ai washington, dc" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Meridian: Forward Deployed Infrastructure Engineer (Senior / Washington, D.C. / Hybrid) [TS/SCI with CI poly]</h2><p class="company">Spear AI</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Washington, DC</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/meridian-forward-deployed-infrastructure-engineer-senior-washington-d-c-hybrid-ts-sci-with-ci-poly-at-spear-ai-4485240667" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="devops engineer, jr. wiraa united states" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>DevOps Engineer, Jr.</h2><p class="company">Wiraa</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/devops-engineer-jr-at-wiraa-4484193818" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="platform engineer ii aflac columbus, ga" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Platform Engineer II</h2><p class="company">Aflac</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Columbus, GA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/platform-engineer-ii-at-aflac-4484574505" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="lead software engineer truist charlotte, nc" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Lead Software Engineer</h2><p class="company">Truist</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Charlotte, NC</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/lead-software-engineer-at-truist-4484739682" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="staff software engineer, startup products stripe chicago, il" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Staff Software Engineer, Startup Products</h2><p class="company">Stripe</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Chicago, IL</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/staff-software-engineer-startup-products-at-stripe-4485239813" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="backend software engineer (php, java) wiraa united states" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Backend Software Engineer (PHP, Java)</h2><p class="company">Wiraa</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/backend-software-engineer-php-java-at-wiraa-4483869712" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="lead backend engineer bright vision technologies cerritos, ca" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Lead Backend Engineer</h2><p class="company">Bright Vision Technologies</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Cerritos, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/lead-backend-engineer-at-bright-vision-technologies-4485244458" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior / staff python engineer - remote cybercoders united states" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior / Staff Python Engineer - REMOTE</h2><p class="company">CyberCoders</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-staff-python-engineer-remote-at-cybercoders-4483076985" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer uniti group inc. united states" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer</h2><p class="company">Uniti Group Inc.</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-at-uniti-group-inc-4485241646" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="staff software engineer natera united states" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Staff Software Engineer</h2><p class="company">Natera</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/staff-software-engineer-at-natera-4483400122" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="frontend software engineer, auth nominal seattle, wa" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Frontend Software Engineer, Auth</h2><p class="company">Nominal</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Seattle, WA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/frontend-software-engineer-auth-at-nominal-4483091409" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="frontend software engineer (reactjs, typescript) wiraa united states" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Frontend Software Engineer (ReactJs, TypeScript)</h2><p class="company">Wiraa</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/frontend-software-engineer-reactjs-typescript-at-wiraa-4483881331" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="front end developer (reactjs, css) wiraa united states" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Front End Developer (ReactJs, CSS)</h2><p class="company">Wiraa</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/front-end-developer-reactjs-css-at-wiraa-4483868754" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior web developer, digital communications university of chicago chicago, il" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Web Developer, Digital Communications</h2><p class="company">University of Chicago</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Chicago, IL</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-web-developer-digital-communications-at-university-of-chicago-4484586163" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="itd web technical developer cleveland clinic cleveland, oh" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>ITD Web Technical Developer</h2><p class="company">Cleveland Clinic</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Cleveland, OH</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/itd-web-technical-developer-at-cleveland-clinic-4484135639" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="python developer with angular or react synechron irving, tx" data-remote="false" data-posted="2026-10-29T23:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Python Developer with Angular or React</h2><p class="company">Synechron</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Irving, TX</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/python-developer-with-angular-or-react-at-synechron-4484582132" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="full-stack software engineer – aws &amp; identity state farm tempe, az" data-remote="false" data-posted="2026-10-29T23:02:32+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Full-Stack Software Engineer – AWS &amp; Identity</h2><p class="company">State Farm</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Tempe, AZ</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/full-stack-software-engineer-%E2%80%93-aws-identity-at-state-farm-4484566743" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="java full stack developer virtusa tampa, fl" data-remote="false" data-posted="2026-10-29T23:02:32+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Java Full Stack developer</h2><p class="company">Virtusa</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Tampa, FL</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/java-full-stack-developer-at-virtusa-4483079945" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer voiceerp greater cleveland" data-remote="false" data-posted="2026-10-29T23:02:32+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer</h2><p class="company">voiceERP</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Greater Cleveland</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-at-voiceerp-4484576457" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="java fullstack developer virtusa irving, tx" data-remote="false" data-posted="2026-10-29T23:02:32+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Java FullStack Developer</h2><p class="company">Virtusa</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Irving, TX</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/java-fullstack-developer-at-virtusa-4483090488" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="jr software developer leidos eagan, mn" data-remote="false" data-posted="2026-10-29T23:02:32+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Jr Software Developer</h2><p class="company">Leidos</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Eagan, MN</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/jr-software-developer-at-leidos-4485238464" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer light iron los angeles, ca" data-remote="false" data-posted="2026-10-29T23:02:32+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer</h2><p class="company">Light Iron</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Los Angeles, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-at-light-iron-4484574243" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="systems engineer, media systems support televisaunivision miami, fl aws, azure, gcp, linux" data-remote="false" data-posted="2026-10-29T23:02:23.079646+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Systems Engineer, Media Systems Support</h2><p class="company">TelevisaUnivision</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Miami, FL</p>
+    <div class="chips"><span class="chip">AWS</span><span class="chip">Azure</span><span class="chip">GCP</span><span class="chip">Linux</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/systems-engineer-media-systems-support-at-televisaunivision-4485244265" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="infrastructure engineer adrian adrian, mi azure, bash, kubernetes" data-remote="false" data-posted="2026-10-29T23:02:23.000394+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Infrastructure Engineer</h2><p class="company">Adrian</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Adrian, MI</p>
+    <div class="chips"><span class="chip pay">2-3</span><span class="chip">Azure</span><span class="chip">Bash</span><span class="chip">Kubernetes</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/infrastructure-engineer-at-adrian-4485247337" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="sr. infrastructure engineer (aws, azure, terraform &amp; automation) u.s. bank cupertino, ca aws, ansible, azure, ci/cd, python, terraform" data-remote="false" data-posted="2026-10-29T23:02:20.341895+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Sr. Infrastructure Engineer (AWS, Azure, Terraform &amp; Automation)</h2><p class="company">U.S. Bank</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Cupertino, CA</p>
+    <div class="chips"><span class="chip">AWS</span><span class="chip">Ansible</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Python</span><span class="chip">Terraform</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/sr-infrastructure-engineer-aws-azure-terraform-automation-at-u-s-bank-4485228930" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="ai research engineer (new york) edra new york, ny llm" data-remote="false" data-posted="2026-10-29T23:02:07.141826+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>AI Research Engineer (New York)</h2><p class="company">Edra</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">New York, NY</p>
+    <div class="chips"><span class="chip pay">$250K - $350K</span><span class="chip">LLM</span><span class="chip">3+ years of professional experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/ai-research-engineer-new-york-at-edra-4483083859" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior machine learning engineer capital group seattle, wa go, llm" data-remote="false" data-posted="2026-10-29T23:01:54.826658+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Machine Learning Engineer</h2><p class="company">Capital Group</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Seattle, WA</p>
+    <div class="chips"><span class="chip pay">$201,683-$322,693</span><span class="chip">Go</span><span class="chip">LLM</span><span class="chip">7+ years of professional experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-machine-learning-engineer-at-capital-group-4484577219" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="machine learning engineer adt boca raton, fl agile, bigquery, ci/cd, git, pytorch, python, tensorflow, vertex ai, scikit-learn" data-remote="false" data-posted="2026-10-29T23:01:54.046622+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Machine Learning Engineer</h2><p class="company">ADT</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Boca Raton, FL</p>
+    <div class="chips"><span class="chip">Agile</span><span class="chip">BigQuery</span><span class="chip">CI/CD</span><span class="chip">Git</span><span class="chip">PyTorch</span><span class="chip">Python</span><span class="chip">TensorFlow</span><span class="chip">Vertex AI</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/machine-learning-engineer-at-adt-4485248415" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="lead devsecops platform engineer / scrum master leidos gaithersburg, md aws, agile, bash, ci/cd, docker, kubernetes, linux, python, scrum, terraform" data-remote="false" data-posted="2026-10-29T23:01:45.695471+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Lead DevSecOps Platform Engineer / Scrum Master</h2><p class="company">Leidos</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Gaithersburg, MD</p>
+    <div class="chips"><span class="chip pay">4–8</span><span class="chip">AWS</span><span class="chip">Agile</span><span class="chip">Bash</span><span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Linux</span><span class="chip">Python</span><span class="chip">2–6 years of experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/lead-devsecops-platform-engineer-scrum-master-at-leidos-4485245121" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior full stack .net developer team velocity united states aws, agile, angular, azure, ci/cd, cassandra, docker, elasticsearch, gcp, kafka, kubernetes, microservices, mysql, postgresql, react, redis, scrum, snowflake, vue" data-remote="false" data-posted="2026-10-29T23:01:38.298310+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Full Stack .NET Developer</h2><p class="company">Team Velocity</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"><span class="chip pay">7-10</span><span class="chip">AWS</span><span class="chip">Agile</span><span class="chip">Angular</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Cassandra</span><span class="chip">Docker</span><span class="chip">Elasticsearch</span><span class="chip">37 applicants</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-full-stack-net-developer-at-team-velocity-4484569623" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="lead .net full stack engineer bright vision technologies cerritos, ca api, aws, angular, azure, ci/cd, docker, git, javascript, kubernetes, microservices, react" data-remote="false" data-posted="2026-10-29T23:01:26.477800+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Lead .NET Full Stack Engineer</h2><p class="company">Bright Vision Technologies</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Cerritos, CA</p>
+    <div class="chips"><span class="chip pay">$90,000–$100,000</span><span class="chip">API</span><span class="chip">AWS</span><span class="chip">Angular</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">JavaScript</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/lead-net-full-stack-engineer-at-bright-vision-technologies-4485243445" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior developer (full stack) remote from anywhere in colorado. state of colorado colorado, united states api, aws, angular, ci/cd, javascript, node.js, rest, react, typescript" data-remote="false" data-posted="2026-10-29T23:01:17.781109+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Developer (Full Stack) Remote From Anywhere In Colorado.</h2><p class="company">State of Colorado</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Colorado, United States</p>
+    <div class="chips"><span class="chip pay">764-7900</span><span class="chip">API</span><span class="chip">AWS</span><span class="chip">Angular</span><span class="chip">CI/CD</span><span class="chip">JavaScript</span><span class="chip">Node.js</span><span class="chip">REST</span><span class="chip">React</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-developer-full-stack-remote-from-anywhere-in-colorado-at-state-of-colorado-4485248575" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="full stack engineer trimah technologies llc st louis park, mn api, aws, agile, python, react" data-remote="false" data-posted="2026-10-29T23:01:16.996908+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Full Stack Engineer</h2><p class="company">TRIMAH TECHNOLOGIES LLC</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">St Louis Park, MN</p>
+    <div class="chips"><span class="chip">API</span><span class="chip">AWS</span><span class="chip">Agile</span><span class="chip">Python</span><span class="chip">React</span><span class="chip">2+ years of experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/full-stack-engineer-at-trimah-technologies-llc-4484573471" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="developer ii (full stack) remote from anywhere in colorado. state of colorado colorado, united states api, aws, angular, javascript, node.js, react, typescript" data-remote="false" data-posted="2026-10-29T23:01:16.012710+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Developer II (Full Stack) Remote From Anywhere In Colorado.</h2><p class="company">State of Colorado</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Colorado, United States</p>
+    <div class="chips"><span class="chip pay">764-7900</span><span class="chip">API</span><span class="chip">AWS</span><span class="chip">Angular</span><span class="chip">JavaScript</span><span class="chip">Node.js</span><span class="chip">React</span><span class="chip">TypeScript</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/developer-ii-full-stack-remote-from-anywhere-in-colorado-at-state-of-colorado-4485249590" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior founding engineer, distributed systems inventure san francisco, ca llms, openai, python, typescript" data-remote="false" data-posted="2026-10-29T23:01:06.255809+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Founding Engineer, Distributed Systems</h2><p class="company">Inventure</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">San Francisco, CA</p>
+    <div class="chips"><span class="chip pay">$200K–$300K</span><span class="chip">LLMs</span><span class="chip">OpenAI</span><span class="chip">Python</span><span class="chip">TypeScript</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-founding-engineer-distributed-systems-at-inventure-4484578503" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer, data team style analytics pittsburgh, pa api, azure, docker, pandas, python, snowflake" data-remote="false" data-posted="2026-10-29T23:01:02.386062+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer, Data Team</h2><p class="company">Style Analytics</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Pittsburgh, PA</p>
+    <div class="chips"><span class="chip pay">1-3</span><span class="chip">API</span><span class="chip">Azure</span><span class="chip">Docker</span><span class="chip">Pandas</span><span class="chip">Python</span><span class="chip">Snowflake</span><span class="chip">1-3 years of experience</span><span class="chip">48 applicants</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-data-team-at-style-analytics-4485242687" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="golang developer 1st-recruit llc, an e-verified company menlo park, ca aws, agile, azure, ci/cd, docker, gcp, git, go, golang, kubernetes, microservices, mongodb, mysql, postgresql, rest, redis, grpc" data-remote="false" data-posted="2026-10-29T23:00:57.041681+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Golang Developer</h2><p class="company">1ST-RECRUIT LLC, An E-Verified Company</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Menlo Park, CA</p>
+    <div class="chips"><span class="chip">AWS</span><span class="chip">Agile</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">GCP</span><span class="chip">Git</span><span class="chip">Go</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/golang-developer-at-1st-recruit-llc-an-e-verified-company-4485241553" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="lead backend developer bright vision technologies cerritos, ca go, java, kafka, kubernetes, rust, scala" data-remote="false" data-posted="2026-10-29T23:00:54.121200+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Lead Backend Developer</h2><p class="company">Bright Vision Technologies</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Cerritos, CA</p>
+    <div class="chips"><span class="chip pay">$80,000–$95,000</span><span class="chip">Go</span><span class="chip">Java</span><span class="chip">Kafka</span><span class="chip">Kubernetes</span><span class="chip">Rust</span><span class="chip">Scala</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/lead-backend-developer-at-bright-vision-technologies-4485254146" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="sr. aws java developer synechron dallas, tx aws, ci/cd, docker, git, java, kafka, kubernetes, microservices, rest, terraform" data-remote="false" data-posted="2026-10-29T23:00:52.845863+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Sr. AWS Java Developer</h2><p class="company">Synechron</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Dallas, TX</p>
+    <div class="chips"><span class="chip pay">$115k - $125k/year</span><span class="chip">AWS</span><span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">Java</span><span class="chip">Kafka</span><span class="chip">Kubernetes</span><span class="chip">Microservices</span><span class="chip">5+ years of experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/sr-aws-java-developer-at-synechron-4484564848" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="backend engineer, profile &amp; community airbnb united states" data-remote="false" data-posted="2026-10-29T23:00:40.670900+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Backend Engineer, Profile &amp; Community</h2><p class="company">Airbnb</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"><span class="chip">116 applicants</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/backend-engineer-profile-community-at-airbnb-4485243405" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="platform engineer bounteous united states aws, dynamodb, python, shell" data-remote="false" data-posted="2026-10-29T23:00:37.525648+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Platform Engineer</h2><p class="company">Bounteous</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"><span class="chip">AWS</span><span class="chip">DynamoDB</span><span class="chip">Python</span><span class="chip">Shell</span><span class="chip">28 applicants</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/platform-engineer-at-bounteous-4485251213" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="aws cloud engineer bright vision technologies monroe, nj aws, bash, ci/cd, go, python, r, terraform" data-remote="false" data-posted="2026-10-29T23:00:34.235134+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>AWS Cloud Engineer</h2><p class="company">Bright Vision Technologies</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Monroe, NJ</p>
+    <div class="chips"><span class="chip pay">$100,000–$150,000</span><span class="chip">AWS</span><span class="chip">Bash</span><span class="chip">CI/CD</span><span class="chip">Go</span><span class="chip">Python</span><span class="chip">R</span><span class="chip">Terraform</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/aws-cloud-engineer-at-bright-vision-technologies-4485247427" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior devops engineer - 173591 - 177434 piper companies raleigh, nc aws, ci/cd, go, java, kubernetes, python, ruby" data-remote="false" data-posted="2026-10-29T23:00:21.263983+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Devops Engineer - 173591 - 177434</h2><p class="company">Piper Companies</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Raleigh, NC</p>
+    <div class="chips"><span class="chip pay">$150,000 - $180,000</span><span class="chip">AWS</span><span class="chip">CI/CD</span><span class="chip">Go</span><span class="chip">Java</span><span class="chip">Kubernetes</span><span class="chip">Python</span><span class="chip">Ruby</span><span class="chip">5+ years of experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-devops-engineer-173591-177434-at-piper-companies-4484567577" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior database reliability engineer clicklease draper, ut aws, airflow, bash, ci/cd, git, go, linux, postgresql, python, snowflake, terraform" data-remote="false" data-posted="2026-10-29T23:00:20.570439+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Database Reliability Engineer</h2><p class="company">Clicklease</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Draper, UT</p>
+    <div class="chips"><span class="chip">AWS</span><span class="chip">Airflow</span><span class="chip">Bash</span><span class="chip">CI/CD</span><span class="chip">Git</span><span class="chip">Go</span><span class="chip">Linux</span><span class="chip">PostgreSQL</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-database-reliability-engineer-at-clicklease-4485240835" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="sr. infrastructure engineer (aws, azure, terraform &amp; automation) u.s. bank atlanta, ga aws, ansible, azure, ci/cd, python, terraform" data-remote="false" data-posted="2026-10-29T23:00:14.693559+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Sr. Infrastructure Engineer (AWS, Azure, Terraform &amp; Automation)</h2><p class="company">U.S. Bank</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Atlanta, GA</p>
+    <div class="chips"><span class="chip">AWS</span><span class="chip">Ansible</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Python</span><span class="chip">Terraform</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/sr-infrastructure-engineer-aws-azure-terraform-automation-at-u-s-bank-4485253160" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="devops engineer synapse its plano, tx aws, azure, bash, ci/cd, docker, gcp, git, github actions, go, jenkins, kafka, kubernetes, linux, python, terraform" data-remote="false" data-posted="2026-10-29T23:00:12.438846+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>DevOps Engineer</h2><p class="company">Synapse ITS</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Plano, TX</p>
+    <div class="chips"><span class="chip pay">3–5</span><span class="chip">AWS</span><span class="chip">Azure</span><span class="chip">Bash</span><span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">GCP</span><span class="chip">Git</span><span class="chip">GitHub Actions</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/devops-engineer-at-synapse-its-4484578239" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="devops engineer iv - remote net health pittsburgh, pa azure, ci/cd, docker, postgresql, terraform" data-remote="false" data-posted="2026-10-29T23:00:01.944618+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>DevOps Engineer IV - REMOTE</h2><p class="company">Net Health</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Pittsburgh, PA</p>
+    <div class="chips"><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">PostgreSQL</span><span class="chip">Terraform</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/devops-engineer-iv-remote-at-net-health-4483092301" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer ii akamai technologies cambridge, ma angular, ci/cd, cassandra, java, jenkins, postgresql, python, rag, typescript" data-remote="false" data-posted="2026-10-29T22:59:54.550091+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer II</h2><p class="company">Akamai Technologies</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Cambridge, MA</p>
+    <div class="chips"><span class="chip pay">$95,000 - $171,000/year</span><span class="chip">Angular</span><span class="chip">CI/CD</span><span class="chip">Cassandra</span><span class="chip">Java</span><span class="chip">Jenkins</span><span class="chip">PostgreSQL</span><span class="chip">Python</span><span class="chip">RAG</span><span class="chip">64 applicants</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-ii-at-akamai-technologies-4485236613" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer fidelity investments roanoke, tx aws, azure, java, python" data-remote="false" data-posted="2026-10-29T22:59:53.331518+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer</h2><p class="company">Fidelity Investments</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Roanoke, TX</p>
+    <div class="chips"><span class="chip">AWS</span><span class="chip">Azure</span><span class="chip">Java</span><span class="chip">Python</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-at-fidelity-investments-4485216959" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer mintive san francisco, ca python, rest, snowflake, typescript" data-remote="false" data-posted="2026-10-29T22:59:51.266109+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer</h2><p class="company">Mintive</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">San Francisco, CA</p>
+    <div class="chips"><span class="chip">Python</span><span class="chip">REST</span><span class="chip">Snowflake</span><span class="chip">TypeScript</span><span class="chip">35 applicants</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-at-mintive-4485242620" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="aws java full stack developer centraprise atlanta, ga api, aws, angular, java, microservices, rest" data-remote="false" data-posted="2026-10-29T22:59:49.820938+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>AWS Java Full Stack Developer</h2><p class="company">Centraprise</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Atlanta, GA</p>
+    <div class="chips"><span class="chip">API</span><span class="chip">AWS</span><span class="chip">Angular</span><span class="chip">Java</span><span class="chip">Microservices</span><span class="chip">REST</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/aws-java-full-stack-developer-at-centraprise-4484573556" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="java fullstack developer capgemini new york, united states aws, angular, azure, ci/cd, docker, git, java, jenkins, kafka, kubernetes, microservices, openai, rest, react" data-remote="false" data-posted="2026-10-29T22:59:47.884732+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Java Fullstack Developer</h2><p class="company">Capgemini</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">New York, United States</p>
+    <div class="chips"><span class="chip pay">$70000 - $85000</span><span class="chip">AWS</span><span class="chip">Angular</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">Java</span><span class="chip">Jenkins</span><span class="chip">5+ years of experience</span><span class="chip">49 applicants</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/java-fullstack-developer-at-capgemini-4482558675" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer, backend (coinbase one) coinbase new york, ny go, java, rust" data-remote="false" data-posted="2026-10-29T22:59:41.182561+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer, Backend (Coinbase One)</h2><p class="company">Coinbase</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">New York, NY</p>
+    <div class="chips"><span class="chip">Go</span><span class="chip">Java</span><span class="chip">Rust</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-backend-coinbase-one-at-coinbase-4485238906" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer jobot new york, ny golang, java, kafka, kubernetes, next.js, postgresql, python, react, redis, typescript, grpc" data-remote="false" data-posted="2026-10-29T22:59:39.966122+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer</h2><p class="company">Jobot</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">New York, NY</p>
+    <div class="chips"><span class="chip pay">$150,000 - $225,000</span><span class="chip">Golang</span><span class="chip">Java</span><span class="chip">Kafka</span><span class="chip">Kubernetes</span><span class="chip">Next.js</span><span class="chip">PostgreSQL</span><span class="chip">Python</span><span class="chip">React</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-at-jobot-4483091302" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer, ai security robinhood bellevue, wa aws, go, kafka, kubernetes, python, spark, grpc" data-remote="false" data-posted="2026-10-29T22:59:30.016270+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer, AI Security</h2><p class="company">Robinhood</p></div><span class="when">4 hours ago</span></div>
+    <p class="location">Bellevue, WA</p>
+    <div class="chips"><span class="chip">AWS</span><span class="chip">Go</span><span class="chip">Kafka</span><span class="chip">Kubernetes</span><span class="chip">Python</span><span class="chip">Spark</span><span class="chip">gRPC</span><span class="chip">3+ years of experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-ai-security-at-robinhood-4483085728" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="full stack software engineer iii trilyon, inc. denver, co" data-remote="false" data-posted="2026-10-29T22:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Full Stack Software Engineer III</h2><p class="company">Trilyon, Inc.</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">Denver, CO</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/full-stack-software-engineer-iii-at-trilyon-inc-4485241091" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="python full-stack developer - digital banking amtex systems inc minneapolis, mn" data-remote="false" data-posted="2026-10-29T22:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Python Full-Stack Developer - Digital banking</h2><p class="company">Amtex Systems Inc</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">Minneapolis, MN</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/python-full-stack-developer-digital-banking-at-amtex-systems-inc-4485253011" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="java full stack developer coforge dallas, tx" data-remote="false" data-posted="2026-10-29T22:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Java Full Stack Developer</h2><p class="company">Coforge</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">Dallas, TX</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/java-full-stack-developer-at-coforge-4484561751" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="devops engineer synergy united states" data-remote="false" data-posted="2026-10-29T22:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>DevOps Engineer</h2><p class="company">Synergy</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/devops-engineer-at-synergy-4482760726" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="ai engineer howmet aerospace pittsburgh, pa" data-remote="false" data-posted="2026-10-29T22:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>AI Engineer</h2><p class="company">Howmet Aerospace</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">Pittsburgh, PA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/ai-engineer-at-howmet-aerospace-4484572215" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="staff ai engineer harnham new york, ny" data-remote="false" data-posted="2026-10-29T22:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Staff AI Engineer</h2><p class="company">Harnham</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">New York, NY</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/staff-ai-engineer-at-harnham-4484574138" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="cloud network engineer american public education, inc. (apei) united states" data-remote="false" data-posted="2026-10-29T22:02:34+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Cloud Network Engineer</h2><p class="company">American Public Education, Inc. (APEI)</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/cloud-network-engineer-at-american-public-education-inc-apei-4484574266" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software engineer iii, kubernetes box redwood city, ca" data-remote="false" data-posted="2026-10-29T22:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Engineer III, Kubernetes</h2><p class="company">Box</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">Redwood City, CA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-engineer-iii-kubernetes-at-box-4485246045" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior azure platform engineer talentola minneapolis, mn" data-remote="false" data-posted="2026-10-29T22:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Azure Platform Engineer</h2><p class="company">TalentOla</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">Minneapolis, MN</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-azure-platform-engineer-at-talentola-4484575128" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior software engineer (ts/sci) avance consulting columbia, md" data-remote="false" data-posted="2026-10-29T22:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Software Engineer (TS/SCI)</h2><p class="company">Avance Consulting</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">Columbia, MD</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-software-engineer-ts-sci-at-avance-consulting-4484565753" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="staff software engineer openmined united states" data-remote="false" data-posted="2026-10-29T22:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Staff Software Engineer</h2><p class="company">OpenMined</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/staff-software-engineer-at-openmined-4483728974" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="react web developer clevanoo llc phoenix, az" data-remote="false" data-posted="2026-10-29T22:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>React Web Developer</h2><p class="company">Clevanoo LLC</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">Phoenix, AZ</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/react-web-developer-at-clevanoo-llc-4484575234" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="sr react frontend developer apptad alpharetta, ga" data-remote="false" data-posted="2026-10-29T22:02:33+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Sr React Frontend Developer</h2><p class="company">Apptad</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">Alpharetta, GA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/sr-react-frontend-developer-at-apptad-4484578030" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="microsoft full stack .net c# web developer chromalloy corporation newnan, ga" data-remote="false" data-posted="2026-10-29T22:02:32+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Microsoft Full Stack .NET C# Web Developer</h2><p class="company">Chromalloy Corporation</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">Newnan, GA</p>
+    <div class="chips"></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/microsoft-full-stack-net-c%23-web-developer-at-chromalloy-corporation-4485231822" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="ai engineer taskverse united states aws, azure, go, java, llm, llms, python, scala" data-remote="false" data-posted="2026-10-29T22:01:58.797347+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>AI Engineer</h2><p class="company">TaskVerse</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"><span class="chip pay">$229,900–$262,400</span><span class="chip">AWS</span><span class="chip">Azure</span><span class="chip">Go</span><span class="chip">Java</span><span class="chip">LLM</span><span class="chip">LLMs</span><span class="chip">Python</span><span class="chip">Scala</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/ai-engineer-at-taskverse-4485235411" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="machine learning engineer taskverse united states aws, agile, azure, gcp, golang, java, kubernetes, numpy, pandas, pytorch, python, scala, spark, tensorflow, scikit-learn" data-remote="false" data-posted="2026-10-29T22:01:49.050457+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Machine Learning Engineer</h2><p class="company">TaskVerse</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"><span class="chip pay">$229,900 to $262,400</span><span class="chip">AWS</span><span class="chip">Agile</span><span class="chip">Azure</span><span class="chip">GCP</span><span class="chip">Golang</span><span class="chip">Java</span><span class="chip">Kubernetes</span><span class="chip">NumPy</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/machine-learning-engineer-at-taskverse-4485240271" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="sr application developer phaxis nashville, tn aws, angular, azure, gcp, llms, rest, react, vue" data-remote="false" data-posted="2026-10-29T22:01:14.330828+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Sr Application Developer</h2><p class="company">Phaxis</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">Nashville, TN</p>
+    <div class="chips"><span class="chip">AWS</span><span class="chip">Angular</span><span class="chip">Azure</span><span class="chip">GCP</span><span class="chip">LLMs</span><span class="chip">REST</span><span class="chip">React</span><span class="chip">Vue</span><span class="chip">6+ years of professional experience</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/sr-application-developer-at-phaxis-4485234720" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior frontend developer astreon technologies austin, tx agile, css, html, javascript, scrum" data-remote="false" data-posted="2026-10-29T22:01:10.120724+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior Frontend Developer</h2><p class="company">Astreon Technologies</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">Austin, TX</p>
+    <div class="chips"><span class="chip">Agile</span><span class="chip">CSS</span><span class="chip">HTML</span><span class="chip">JavaScript</span><span class="chip">Scrum</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-frontend-developer-at-astreon-technologies-4485238292" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="corporate application developer mechdyne corporation cedar rapids, ia api, agile, java" data-remote="false" data-posted="2026-10-29T22:01:02.249230+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Corporate Application Developer</h2><p class="company">Mechdyne Corporation</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">Cedar Rapids, IA</p>
+    <div class="chips"><span class="chip">API</span><span class="chip">Agile</span><span class="chip">Java</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/corporate-application-developer-at-mechdyne-corporation-4484570351" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="backend developer se independent delivery services, inc. seffner, fl agile, azure, docker, git, rest, scrum" data-remote="false" data-posted="2026-10-29T22:00:53.722952+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>BackEnd Developer</h2><p class="company">SE Independent Delivery Services, Inc.</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">Seffner, FL</p>
+    <div class="chips"><span class="chip pay">0–2</span><span class="chip">Agile</span><span class="chip">Azure</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">REST</span><span class="chip">Scrum</span><span class="chip">38 applicants</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/backend-developer-at-se-independent-delivery-services-inc-4484555989" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="senior devops / sre / automation engineer redstream technology united states aws, bash, ci/cd, docker, github actions, java, kafka, linux, postgresql, python, terraform" data-remote="false" data-posted="2026-10-29T22:00:18.964302+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Senior DevOps / SRE / Automation Engineer</h2><p class="company">RedStream Technology</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">United States</p>
+    <div class="chips"><span class="chip">AWS</span><span class="chip">Bash</span><span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">GitHub Actions</span><span class="chip">Java</span><span class="chip">Kafka</span><span class="chip">Linux</span><span class="chip">51 applicants</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/senior-devops-sre-automation-engineer-at-redstream-technology-4485234708" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="platform engineer apexon st louis, mo ci/cd, linux, python, shell" data-remote="false" data-posted="2026-10-29T22:00:14.182885+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Platform Engineer</h2><p class="company">Apexon</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">St Louis, MO</p>
+    <div class="chips"><span class="chip">CI/CD</span><span class="chip">Linux</span><span class="chip">Python</span><span class="chip">Shell</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/platform-engineer-at-apexon-4485224940" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="ai devops engineer covalent resource group southfield, mi aws, ci/cd, docker, github actions, kubernetes, llm, terraform" data-remote="false" data-posted="2026-10-29T22:00:11.643742+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>AI DevOps Engineer</h2><p class="company">Covalent Resource Group</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">Southfield, MI</p>
+    <div class="chips"><span class="chip pay">6–8</span><span class="chip">AWS</span><span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">GitHub Actions</span><span class="chip">Kubernetes</span><span class="chip">LLM</span><span class="chip">Terraform</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/ai-devops-engineer-at-covalent-resource-group-4485235327" target="_blank" rel="noopener noreferrer">View job</a>
+</article>
+<article class="job" data-search="software development engineer ii fleet response hudson, oh api, aws, agile, angular, azure, ci/cd, css, docker, git, javascript, kubernetes, node.js, typescript" data-remote="false" data-posted="2026-10-29T21:59:42.126106+00:00">
+  <div class="job-main">
+    <div class="top"><div><h2>Software Development Engineer II</h2><p class="company">Fleet Response</p></div><span class="when">5 hours ago</span></div>
+    <p class="location">Hudson, OH</p>
+    <div class="chips"><span class="chip">API</span><span class="chip">AWS</span><span class="chip">Agile</span><span class="chip">Angular</span><span class="chip">Azure</span><span class="chip">CI/CD</span><span class="chip">CSS</span><span class="chip">Docker</span></div>
+    
+  </div>
+  <a class="apply" href="https://www.linkedin.com/jobs/view/software-development-engineer-ii-at-fleet-response-4485237420" target="_blank" rel="noopener noreferrer">View job</a>
+</article></section><p id="empty" class="empty">No matching jobs are available right now.</p>
+<script>
+const search=document.querySelector('#search'),remote=document.querySelector('#remote'),cards=[...document.querySelectorAll('.job')],count=document.querySelector('#count'),empty=document.querySelector('#empty');
+function filter(){const q=search.value.trim().toLowerCase(),r=remote.classList.contains('on');let shown=0;for(const card of cards){const visible=(!q||card.dataset.search.includes(q))&&(!r||card.dataset.remote==='true');card.hidden=!visible;if(visible)shown++}count.textContent=`${shown} job${shown===1?'':'s'} shown`;empty.classList.toggle('show',shown===0)}
+search.addEventListener('input',filter);remote.addEventListener('click',()=>{remote.classList.toggle('on');remote.setAttribute('aria-pressed',remote.classList.contains('on'));filter()});filter();
+</script></main></body></html>
