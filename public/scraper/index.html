@@ -4,11 +4,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f6f7f9;--fg:#14161a;--muted:#5f6670;--faint:#8a9099;--card:#fff;--line:#e4e7ec;--shadow:0 1px 2px rgba(16,24,40,.05),0 4px 16px rgba(16,24,40,.04);
-  --c1:#2f5bea;--c1-bg:#eaf0ff;--c2:#0a66c2;--c2-bg:#e8f1fb;--c3:#0f8a4b;--c3-bg:#e3f5ea;--ok:#12a150;--warn:#d68a00;--stale:#a0a6b0}
+  --c1:#2f5bea;--c1-bg:#eaf0ff;--c2:#0a66c2;--c2-bg:#e8f1fb;--c3:#0f8a4b;--c3-bg:#e3f5ea;--c4:#7c3aed;--c4-bg:#f1eafe;--ok:#12a150;--warn:#d68a00;--stale:#a0a6b0}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1115;--fg:#e8eaed;--muted:#a0a6b0;--faint:#7a808a;--card:#171a20;--line:#272b33;--shadow:none;
-  --c1:#7d9bff;--c1-bg:#1a2340;--c2:#6cb2f5;--c2-bg:#14263a;--c3:#4cc98a;--c3-bg:#123222;--ok:#4cc98a;--warn:#e8b04a;--stale:#5f6670}}
+  --c1:#7d9bff;--c1-bg:#1a2340;--c2:#6cb2f5;--c2-bg:#14263a;--c3:#4cc98a;--c3-bg:#123222;--c4:#b39afc;--c4-bg:#261b42;--ok:#4cc98a;--warn:#e8b04a;--stale:#5f6670}}
 :root[data-theme="dark"]{--bg:#0f1115;--fg:#e8eaed;--muted:#a0a6b0;--faint:#7a808a;--card:#171a20;--line:#272b33;--shadow:none;
-  --c1:#7d9bff;--c1-bg:#1a2340;--c2:#6cb2f5;--c2-bg:#14263a;--c3:#4cc98a;--c3-bg:#123222;--ok:#4cc98a;--warn:#e8b04a;--stale:#5f6670}
+  --c1:#7d9bff;--c1-bg:#1a2340;--c2:#6cb2f5;--c2-bg:#14263a;--c3:#4cc98a;--c3-bg:#123222;--c4:#b39afc;--c4-bg:#261b42;--ok:#4cc98a;--warn:#e8b04a;--stale:#5f6670}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 main{max-width:880px;margin:0 auto;padding:48px 16px 64px}
@@ -29,7 +29,7 @@ a.tile::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;backgroun
 a.tile:hover{border-color:color-mix(in srgb,var(--c) 45%,var(--line));transform:translateY(-1px)}
 a.tile:hover::before{opacity:1}
 a.tile:focus-visible{outline:2px solid var(--c);outline-offset:2px}
-a.tile.t2{--c:var(--c2);--c-bg:var(--c2-bg)}a.tile.t3{--c:var(--c3);--c-bg:var(--c3-bg)}
+a.tile.t2{--c:var(--c2);--c-bg:var(--c2-bg)}a.tile.t3{--c:var(--c3);--c-bg:var(--c3-bg)}a.tile.t4{--c:var(--c4);--c-bg:var(--c4-bg)}
 .icon{width:44px;height:44px;border-radius:11px;background:var(--c-bg);color:var(--c);display:grid;place-items:center}
 .icon svg{width:22px;height:22px}
 .body h2{font-size:17px;font-weight:600;letter-spacing:-.01em;margin:0 0 4px}
@@ -52,11 +52,18 @@ footer{margin-top:32px;font-size:12.5px;color:var(--faint)}
 <div class="summary" id="summary"><span class="pill"><span class="dot"></span>Checking feeds…</span></div>
 
 <div class="grid">
-<a class="tile" href="linkedin/jobs/"><b>LinkedIn job matches</b><span>Fresh LinkedIn roles that passed the job scraper filters.</span></a>
 <a class="tile t1" href="hrishi/" data-src="hrishi">
   <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></div>
   <div class="body"><h2>Job matches for Hrishi</h2>
     <p>US backend and SWE roles from company job boards, ranked against my resumes.</p>
+    <div class="meta"><span>Updated each scan</span><span class="fresh"></span></div>
+    <div class="stats"></div></div>
+  <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+</a>
+<a class="tile t4" href="linkedin/jobs/" data-src="linkedinJobs">
+  <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></div>
+  <div class="body"><h2>LinkedIn job matches</h2>
+    <p>Fresh LinkedIn roles that passed the job scraper filters.</p>
     <div class="meta"><span>Updated each scan</span><span class="fresh"></span></div>
     <div class="stats"></div></div>
   <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -103,6 +110,10 @@ const PARSERS={
   linkedin(html){const doc=new DOMParser().parseFromString(html,"text/html");
     const cards=[...doc.querySelectorAll("#data .card")];
     return{when:parseWhen(doc.getElementById("scanned")?.textContent),stats:[[cards.length,"posts"]]}},
+  linkedinJobs(html){const doc=new DOMParser().parseFromString(html,"text/html");
+    const jobs=[...doc.querySelectorAll("article.job")];
+    return{when:Date.parse(doc.querySelector("time[data-generated-at]")?.dataset.generatedAt)||null,
+      stats:[[jobs.length,"matching jobs"],[new Set(jobs.map(j=>j.querySelector(".company")?.textContent.trim())).size,"companies"]]}},
   startups(html){const d=jsonVar(html,"DATA");const lead=new DOMParser().parseFromString(html,"text/html").querySelector(".lead")?.textContent||"";
     const yes=d.filter(c=>c.h1b==="yes");
     return{when:parseWhen(lead),stats:[[yes.length,"H-1B sponsors hiring"],[d.reduce((a,c)=>a+c.jobs.length,0),"open roles"],[d.reduce((a,c)=>a+c.new,0),"new since last run"]]}},
