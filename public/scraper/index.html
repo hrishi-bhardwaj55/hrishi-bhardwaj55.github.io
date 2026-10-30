@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Scraper Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7f9;--fg:#14161a;--muted:#5f6670;--card:#fff;--line:#e4e7ec;--accent:#0a66c2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1115;--fg:#e8eaed;--muted:#a0a6b0;--card:#171a20;--line:#272b33;--accent:#6cb2f5}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 Inter,system-ui,sans-serif}
+main{max-width:760px;margin:0 auto;padding:40px 16px}
+h1{font-size:26px;letter-spacing:-.02em;margin:0}
+.sub{color:var(--muted);margin:6px 0 24px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+a.tile{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;text-decoration:none;color:var(--fg);transition:border-color .15s}
+a.tile:hover{border-color:var(--accent)}
+.tile b{display:block;font-size:16px;margin-bottom:4px}
+.tile span{color:var(--muted);font-size:13.5px}
+</style></head><body><main>
+<h1>Scraper home</h1>
+<p class="sub">Private dashboards for my job scrapers.</p>
+<div class="grid">
+<a class="tile" href="linkedin/posts/"><b>LinkedIn hiring posts</b><span>US software roles posted by people hiring for their own team. Updated every 6 hours.</span></a>
+</div>
+</main></body></html>
